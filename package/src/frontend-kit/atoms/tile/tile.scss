@@ -1,0 +1,105 @@
+/* stylelint-disable no-descending-specificity */
+.a-tile {
+  // default styling and reset
+  a,
+  a:hover {
+    color: var(--plain__enabled__front__default);
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: var(--plain__enabled__fill__hovered);
+
+    .a-tile__link {
+      text-decoration: none;
+    }
+  }
+
+  &:active {
+    background: var(--plain__enabled__fill__pressed);
+  }
+
+  // Major Highlight Purple
+  &.-purple {
+    background: var(--major-highlight-purple__enabled__fill__default);
+    color: var(--major-highlight-purple__enabled__front__default);
+
+    a,
+    a:hover {
+      color: var(--major-highlight-purple__enabled__front__default);
+    }
+
+    &:hover {
+      background: var(--major-highlight-purple__enabled__fill__hovered);
+      color: var(--major-highlight-purple__enabled__front__hovered);
+    }
+
+    &:active {
+      background: var(--major-highlight-purple__enabled__fill__pressed);
+      color: var(--major-highlight-purple__enabled__front__pressed);
+    }
+  }
+
+  // Major Highlight Blue
+  &.-blue {
+    background: var(--major-highlight-blue__enabled__fill__default);
+    color: var(--major-highlight-blue__enabled__front__default);
+
+    a,
+    a:hover {
+      color: var(--major-highlight-blue__enabled__front__default);
+    }
+
+    &:hover {
+      background: var(--major-highlight-blue__enabled__fill__hovered);
+      color: var(--major-highlight-blue__enabled__front__hovered);
+    }
+
+    &:active {
+      background: var(--major-highlight-blue__enabled__fill__pressed);
+      color: var(--major-highlight-blue__enabled__front__pressed);
+    }
+  }
+
+  // Major Highlight Turquoise
+  &.-turquoise {
+    background: var(--major-highlight-turquoise__enabled__fill__default);
+    color: var(--major-highlight-turquoise__enabled__front__default);
+
+    a,
+    a:hover {
+      color: var(--major-highlight-turquoise__enabled__front__default);
+    }
+
+    &:hover {
+      background: var(--major-highlight-turquoise__enabled__fill__hovered);
+      color: var(--major-highlight-turquoise__enabled__front__hovered);
+    }
+
+    &:active {
+      background: var(--major-highlight-turquoise__enabled__fill__pressed);
+      color: var(--major-highlight-turquoise__enabled__front__pressed);
+    }
+  }
+
+  // Major Highlight Green
+  &.-green {
+    background: var(--major-highlight-green__enabled__fill__default);
+    color: var(--major-highlight-green__enabled__front__default);
+
+    a,
+    a:hover {
+      color: var(--major-highlight-green__enabled__front__default);
+    }
+
+    &:hover {
+      background: var(--major-highlight-green__enabled__fill__hovered);
+      color: var(--major-highlight-green__enabled__front__hovered);
+    }
+
+    &:active {
+      background: var(--major-highlight-green__enabled__fill__pressed);
+      color: var(--major-highlight-green__enabled__front__pressed);
+    }
+  }
+}

@@ -1,0 +1,124 @@
+.o-header {
+  // we're using off-canvas tricks again, so the header cannot make anything scroll
+  // this time, it's on the horizontal axis
+  overflow-x: hidden;
+
+  &.-search-open {
+    overflow: hidden;
+  }
+
+  &__search {
+    display: flex;
+  }
+
+  // adjust the search from to match header requirements
+  &__search .m-search-form {
+
+    // do not "flash" in the search bar when opening
+    opacity: 0;
+    // make width animatable - per se, not used on mobile
+    width: 0;
+    transition: width $default-transition-easing $default-transition-timing,
+      opacity $default-transition-easing $default-transition-timing;
+
+    // remove unneeded spacing
+    margin-bottom: 0;
+
+    // do not render above the button
+    position: relative;
+    z-index: -1;
+
+    /* stylelint-disable-next-line selector-max-compound-selectors */
+    .a-text-field input {
+
+      /* since we're overlaying the "close" button here, we need more padding inside the input field */
+      padding-right: rem(96px);
+    }
+
+    &__suggestions {
+      position: absolute;
+    }
+  }
+
+  &.-search-open &__search .m-search-form {
+    z-index: 1;
+    opacity: 1;
+    min-width: 100vw;
+  }
+
+  /* stylelint-disable-next-line a11y/no-display-none */
+  &.-search-open &__search-open {
+    display: none;
+  }
+
+  /* stylelint-disable-next-line a11y/no-display-none */
+  .a-search-suggestions {
+    // align the suggestion text with the search field text
+    padding-left: rem(16px);
+
+    // remove container margins
+    margin-left: rem(-16px);
+    margin-right: rem(-16px);
+
+    // add some spacing towards the search field
+    padding-top: rem(24px);
+  }
+
+  &.-search-open.-show-suggestions .a-search-suggestions {
+    height: auto;
+  }
+
+  &__search_suggestions_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    // close the container immediately
+    transition: max-height ease 0s;
+  }
+
+  &.-search-open.-show-suggestions &__search_suggestions_container {
+    // 48px top-header height + 6px supergraphic
+    padding-top: rem(54px);
+    max-height: 100vh;
+    // make some room for the shadow
+    margin-bottom: rem(16px);
+    box-shadow: rem(-16px) 0 var(--bosch-white), 0 0 rem(16px) rgb(0 0 0 / 25%);
+    transition: max-height $default-transition-easing $default-transition-timing;
+  }
+}
+
+@include tablet-and-up {
+  .o-header {
+    &.-search-open &__search {
+      position: static;
+    }
+
+    &.-search-open &__search .m-search-form {
+      // when appearing, the search form should already be wide enough to accommodate both buttons / icons so that we can avoid layout jumps
+      min-width: rem(128px);
+      // push any other content off the viewport
+      margin-left: 100vw;
+    }
+
+    /* stylelint-disable-next-line a11y/no-display-none */
+    .a-search-suggestions {
+      // move the suggestions so they appear to be attached to the lower edge of the search form
+      margin-top: rem(-28px);
+
+      // from now own, we need the container margins
+      margin-left: 0;
+      margin-right: 0;
+
+      // no spacing needed anymore
+      padding-left: 0;
+    }
+
+    &.-search-open.-show-suggestions &__search_suggestions_container {
+      // 96px header-top height + 6px supergraphic
+      padding-top: rem(102px);
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.m-language-selector {
+  display: flex;
+
+  .a-link {
+    color: var(--plain__enabled__front__default);
+
+    // Styling for coloring the link and the globe
+    &:hover {
+      color: var(--minor-accent__enabled__front__hovered);
+      text-decoration: none;
+    }
+
+    a {
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .a-icon {
+      margin-right: 0.25rem;
+    }
+  }
+
+  .a-dropdown {
+    margin-left: rem(12px);
+    height: auto;
+
+    select {
+      padding-left: rem(6px);
+      padding-right: rem(26px);
+      height: 1.75em;
+      margin-top: -0.5em;
+    }
+
+    &::after {
+      top: 0;
+      right: rem(2px);
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "text field",
+  "default": {
+    "id": "1",
+    "name": "Standard text field"
+  },
+  "variants": [
+    {
+      "id": "2",
+      "name": "Standard text field disabled",
+      "disabled": true
+    },
+    {
+      "id": "3",
+      "name": "Standard text field label",
+      "label": "Label"
+    },
+    {
+      "id": "4",
+      "name": "Standard text field very long label",
+      "label": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae omnis labore consequatur distinctio provident voluptatum nisi recusandae quod asperiores quo, architecto cum nesciunt nemo, vel minima possimus et blanditiis numquam, cupiditate deserunt fugit delectus earum ducimus alias! Quam atque laborum tempore alias magnam tenetur fuga facere totam, harum, ipsa sit!"
+    },
+    {
+      "id": "5",
+      "name": "Standard text field label and placeholder",
+      "placeholder": "Type something",
+      "label": "Label"
+    },
+    {
+      "id": "6",
+      "name": "Standard text field placeholder",
+      "placeholder": "Type something"
+    },
+    {
+      "id": "7",
+      "name": "Standard password field",
+      "type": "password"
+    },
+    {
+      "id": "8",
+      "name": "Standard password field disabled",
+      "type": "password",
+      "disabled": true
+    },
+    {
+      "id": "9",
+      "name": "Standard password field placeholder",
+      "type": "password",
+      "placeholder": "Your Password"
+    },
+    {
+      "id": "10",
+      "name": "Standard password field placeholder disabled",
+      "type": "password",
+      "placeholder": "Your Password",
+      "disabled": true
+    },
+    {
+      "id": "11",
+      "name": "Standard password field label",
+      "type": "password",
+      "label": "Label"
+    },
+    {
+      "id": "12",
+      "name": "Search field",
+      "type": "search"
+    },
+    {
+      "id": "13",
+      "name": "Search field with placeholder",
+      "type": "search",
+      "placeholder": "e.g. hint"
+    },
+    {
+      "id": "14",
+      "name": "Search field with reset option",
+      "type": "search",
+      "withReset": true
+    },
+    {
+      "id": "15",
+      "name": "Search field with placeholder and reset option",
+      "type": "search",
+      "withReset": true,
+      "placeholder": "e.g. hint"
+    },
+    {
+      "id": "16",
+      "name": "Disabled search field",
+      "type": "search",
+      "disabled": true
+    }
+  ]
+}

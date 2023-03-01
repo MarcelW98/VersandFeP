@@ -1,0 +1,85 @@
+.a-text-area {
+  position: relative;
+  height: rem(120px);
+  width: 100%;
+  overflow: hidden;
+
+  textarea,
+  &__shadow {
+    background-color: var(--neutral__enabled__fill__default);
+    border: 0;
+    border-bottom: rem(1px) solid var(--neutral__enabled__front__default);
+    color: var(--neutral__enabled__front__default);
+    padding: rem(12px) rem(16px) rem(12px) rem(16px);
+    width: 100%;
+    resize: none;
+    line-height: 1.5;
+    height: rem(120px);
+    min-height: rem(120px);
+
+    &::placeholder {
+      color: var(--bosch-gray-40);
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: var(--neutral__enabled__fill__hovered);
+    }
+
+    &:active {
+      background-color: var(--neutral__enabled__fill__pressed);
+    }
+
+    /* stylelint-disable-next-line a11y/no-outline-none */
+    &:focus {
+      background-color: var(--neutral__focused__fill__default);
+      border-bottom-color: var(--neutral__focused__front__default);
+      outline: none;
+    }
+
+    &:disabled {
+      border-bottom-color: var(--neutral__disabled__front__default);
+      pointer-events: none;
+
+      + label::before {
+        color: var(--neutral__disabled__front__default);
+      }
+
+      &::placeholder {
+        color: var(--neutral__disabled__front__default);
+      }
+    }
+  }
+
+  &__shadow {
+    white-space: pre-wrap;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    left: -9999px;
+  }
+
+  &--dynamic-height {
+    height: 100%;
+    // a grid is being used to make it possible that the text area's height would be dynamic,
+    // with the data attribute on the after pseudo element
+    vertical-align: top;
+    align-items: center;
+    grid-template-columns: 100% 100%;
+  }
+
+  label {
+    position: absolute;
+    margin: rem(4px) rem(16px) auto rem(16px);
+    font-size: rem(12px);
+    max-width: calc(100% - 2.25rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    + textarea {
+      border-top: 1.375rem solid transparent;
+      padding-top: 0;
+    }
+  }
+}

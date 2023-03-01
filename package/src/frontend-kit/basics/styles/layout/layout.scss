@@ -1,0 +1,48 @@
+/* container for on-grid design without full width background color */
+.e-container {
+  width: calc(100% - 2rem);
+  max-width: 1120px;
+  margin: 0 1rem;
+
+  /* all direct descendent get styles for max-width */
+  > * {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+}
+
+/* 1120 + 2 * 2rem from margin/padding */
+@media (min-width: 1152px) {
+  .e-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* container which is full width to color background on full width */
+.e-container.-full-width {
+  width: 100%;
+  max-width: unset;
+  margin: 0;
+  padding: 0 1rem;
+
+  > * {
+    margin: 0 auto;
+  }
+}
+
+// breakpoint definitions
+@mixin tablet-and-up {
+
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin desktop-and-up {
+
+  @media (min-width: 1194px) { @content; }
+}
+
+// transitions
+
+$default-transition-easing: cubic-bezier(.38, .04, .35, .96);
+$default-transition-timing: 250ms;

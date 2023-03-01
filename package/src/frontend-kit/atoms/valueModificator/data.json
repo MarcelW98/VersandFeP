@@ -1,0 +1,19 @@
+{
+    "name": "value modificator",
+    "default": {
+        "id": "1",
+        "name": "Standard value modificator"
+    },
+    "variants": [
+        {
+            "id": "2",
+            "name": "Standard value modificator disabled",
+            "disabled": true
+        },
+        {
+            "id": "3",
+            "name": "Standard value modificator with label",
+            "label": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae omnis labore consequatur distinctio provident voluptatum nisi recusandae quod asperiores quo, architecto cum nesciunt nemo, vel minima possimus et blanditiis numquam, cupiditate deserunt fugit delectus earum ducimus alias! Quam atque laborum tempore alias magnam tenetur fuga facere totam, harum, ipsa sit!"
+        }
+    ]
+}

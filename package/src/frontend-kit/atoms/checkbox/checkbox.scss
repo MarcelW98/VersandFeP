@@ -1,0 +1,141 @@
+@mixin checkbox-icon {
+  color: var(--major-accent__enabled__front__default);
+  position: absolute;
+  content: '';
+  left: 0;
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+.a-checkbox {
+  position: relative;
+  height: auto;
+
+  label {
+    color: var(--plain__enabled__front__default);
+    background-color: var(--plain__enabled__fill__default);
+    position: relative;
+    left: 0;
+    margin: 0;
+    line-height: 1.5;
+    font-size: rem(16px);
+    padding-left: 2rem;
+    display: inline-flex;
+    align-items: start;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--small__enabled__fill__default);
+      content: '';
+      display: inline-block;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  input[type='checkbox'] {
+    width: 0;
+    opacity: 0;
+    height: 0;
+    -moz-appearance: none;
+
+    // Cursors Definitions
+    &:hover + label,
+    &:active + label {
+      cursor: pointer;
+    }
+
+    &:disabled + label {
+      cursor: default;
+      color: var(--plain__disabled__front__default);
+      background-color: var(--plain__disabled__fill__default);
+    }
+
+    // unselected state
+    &:hover + label::before {
+      background-color: var(--small__enabled__fill__hovered);
+    }
+
+    &:active + label::before {
+      background-color: var(--small__enabled__fill__pressed);
+    }
+
+    &:disabled + label::before {
+      background-color: var(--small__disabled__fill__default);
+      pointer-events: none;
+    }
+
+    // Default Icon Rules
+    &:checked + label::after {
+
+      @include uiIconForComponents();
+      @include checkbox-icon();
+
+      content: var(--ui-ic-checkmark);
+    }
+
+    // selected state
+    &:checked + label::before {
+      background-color: var(--major-accent__enabled__fill__default);
+    }
+
+    &:checked:hover + label::before {
+      background-color: var(--major-accent__enabled__fill__hovered);
+    }
+
+    &:checked:active + label::before {
+      background-color: var(--major-accent__enabled__fill__pressed);
+    }
+
+    &:checked:disabled {
+      + label::before {
+        background-color: var(--major-accent__disabled__fill__default);
+      }
+
+      + label::after {
+        color: var(--major-accent__disabled__front__default);
+      }
+    }
+
+    // Outline for keyboard navigation
+    &:focus-visible + label::before {
+      outline: auto;
+      outline-offset: 3px;
+    }
+  }
+
+  /* stylelint-disable no-descending-specificity */
+  &--indeterminate input[type='checkbox'],
+  input[type='checkbox']:indeterminate {
+    + label::after {
+
+      @include uiIconForComponents();
+      @include checkbox-icon();
+
+      content: var(--ui-ic-indeterminate);
+    }
+
+    + label::before {
+      background-color: var(--major-accent__enabled__fill__default);
+    }
+
+    &:hover + label::before {
+      background-color: var(--major-accent__enabled__fill__hovered);
+    }
+
+    &:active + label::before {
+      background-color: var(--major-accent__enabled__fill__pressed);
+    }
+
+    &:disabled {
+      + label::before {
+        background-color: var(--major-accent__disabled__fill__default);
+      }
+
+      + label::after {
+        color: var(--major-accent__disabled__front__default);
+      }
+    }
+  }
+}

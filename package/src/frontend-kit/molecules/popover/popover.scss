@@ -1,0 +1,265 @@
+/* stylelint-disable-next-line a11y/no-display-none */
+.m-popover {
+  max-width: rem(384px);
+  width: max-content;
+
+  &__content {
+    @include box-shadow;
+
+    background-color: inherit;
+    padding: rem(16px);
+    position: relative;
+  }
+
+  &__paragraph,
+  .a-button {
+    margin-bottom: rem(16px);
+  }
+
+  &__head {
+    display: flex;
+    margin-top: rem(-6px);
+    margin-bottom: rem(8px);
+    min-height: rem(24px);
+
+    @include text-highlight;
+    @include size-l;
+
+    .a-button--integrated {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  &.-close-button &__head {
+    // 16px basic padding + 32px for the close button
+    padding-right: rem(32px);
+  }
+
+  .a-box {
+    position: relative;
+    box-shadow: none;
+
+    &::before,
+    &::after {
+      @include box-shadow;
+
+      content: "";
+      position: absolute;
+      top: -11px;
+      right: auto;
+      bottom: auto;
+      left: calc(50% - 11px);
+      display: block;
+      height: 22px;
+      width: 22px;
+      transform-origin: center;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      background-color: transparent;
+    }
+
+    &::after {
+      background-color: inherit;
+      box-shadow: none;
+    }
+  }
+
+  // arrow variants clockwise from -top-left to -left-top
+  &.-top-left {
+    .a-box {
+      &::before,
+      &::after {
+        top: -22px;
+        right: auto;
+        bottom: auto;
+        left: 0.5rem;
+        transform-origin: bottom left;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-top-center {
+    .a-box {
+      &::before,
+      &::after {
+        top: -11px;
+        right: auto;
+        bottom: auto;
+        left: calc(50% - 11px);
+        transform-origin: center;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-top-right {
+    .a-box {
+      &::before,
+      &::after {
+        top: -22px;
+        right: 0.5rem;
+        bottom: 0;
+        left: auto;
+        transform-origin: bottom right;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &.-right-top {
+    .a-box {
+      &::before,
+      &::after {
+        top: 0.5rem;
+        right: -22px;
+        bottom: auto;
+        left: auto;
+        transform-origin: top left;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-right-center {
+    .a-box {
+      &::before,
+      &::after {
+        top: calc(50% - 11px);
+        right: -11px;
+        bottom: 0;
+        left: auto;
+        transform-origin: center;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-right-bottom {
+    .a-box {
+      &::before,
+      &::after {
+        top: auto;
+        right: -22px;
+        bottom: 0.5rem;
+        left: auto;
+        transform-origin: bottom left;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &.-bottom-right {
+    .a-box {
+      &::before,
+      &::after {
+        top: auto;
+        right: 0.5rem;
+        bottom: -22px;
+        left: auto;
+        transform-origin: top right;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-bottom-center {
+    .a-box {
+      &::before,
+      &::after {
+        top: auto;
+        right: 0;
+        bottom: -11px;
+        left: calc(50% - 11px);
+        transform-origin: center;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-bottom-left {
+    .a-box {
+      &::before,
+      &::after {
+        top: auto;
+        right: 0;
+        bottom: -22px;
+        left: 0.5rem;
+        transform-origin: top left;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &.-left-bottom {
+    .a-box {
+      &::before,
+      &::after {
+        top: auto;
+        right: 0;
+        bottom: 0.5rem;
+        left: -22px;
+        transform-origin: bottom right;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-left-center {
+    .a-box {
+      &::before,
+      &::after {
+        top: calc(50% - 11px);
+        right: 0;
+        bottom: 0;
+        left: -11px;
+        transform-origin: center;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &.-left-top {
+    .a-box {
+      &::before,
+      &::after {
+        top: 0.5rem;
+        right: 0;
+        bottom: 0;
+        left: -22px;
+        transform-origin: top right;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &.-without-arrow {
+    .a-box {
+      /* stylelint-disable a11y/content-property-no-static-value */
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  display: none;
+  position: absolute;
+
+  &.-detached {
+    position: static;
+    display: block;
+  }
+
+  &.-show {
+    display: block;
+  }
+}

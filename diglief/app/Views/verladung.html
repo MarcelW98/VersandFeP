@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<div style="padding: 0px 10px">
+<div style="position: absolute; right: 10px; top: 5px;">
+    <button class="btn btn-info" ng-click="vm.openLegend()">Legende</button>
+    <button class="btn" ng-if="vm.AuthorizedWrite('verladung')" ng-click="vm.logout()">Logout</button>
+    <input type="button" ng-if="!vm.AuthorizedWrite('verladung')" onclick="window.location.href='#!/login';" class="btn" value="Login" />
+</div>
+<div style="position: absolute; top: 5px; right: 15%; color: red; width: 50%">
+    {{vm.dataStatus}}
+</div>
+<h2>Verladung</h2>
+<div style="overflow-x:auto;">
+    <table class="orderlist">
+        <thead>
+        <tr>
+            <th>Versanddatum<br/>SOLL</th>
+            <th>Spedition</th>
+            <th>Bearbeiter</th>
+            <th>Auslagerung IST</th>
+            <th>Zeitfenster Spedition</th>
+            <th>Status</th>
+            <th>Bemerkung</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="order in vm.orders | orderBy: ['Datum', 'Spediteur']" ng-click="vm.openDetailPopup(order)"
+            ng-class="{priorisierung: order.Priorisierung == true}">
+            <td>{{order.Datum | date: 'dd.MM.yyyy'}}</td>
+            <td>{{order.Spediteur}}</td>
+            <td>{{order.Bearbeiter}}</td>
+            <td>{{order.Auslagerung_Ist}}</td>
+            <td>{{order.Plan_Ankunft}} - {{order.Plan_Abfahrt}}</td>
+            <td><span>{{order.Fehler_Verladung1}}<span ng-if="order.Fehler_Verladung2 != 0"> : {{order.Fehler_Verladung2}}<span ng-if="order.Fehler_Verladung3 != 0"> : {{order.Fehler_Verladung3}}</span></span></span></td>
+            <td class="Comment">{{order.Bemerkung}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</html>

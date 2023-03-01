@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Legende</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td  style="width: 10%">Status</td>
+        <td>Text</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="error in vm.locationError" value="{{error.ID}}">
+        <td>{{error.ID}}</td>
+        <td>{{error.Text}}</td>
+    </tr>
+    </tbody>
+</table>
+<table ng-if="vm.location === 'monitor'">
+    <tr>
+        <td></td>
+        <td><b><i><u>Status Büro/Werkstatt</u></i></b></td>
+    </tr>
+    <tr ng-repeat="error in vm.statuses_buero" value="{{error.ID}}">
+        <td  style="width: 10%">{{error.ID}}</td>
+        <td>{{error.Text}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><b><i><u>Status kPunkt</u></i></b></td>
+    </tr>
+    <tr ng-repeat="error in vm.statuses_iPoint" value="{{error.ID}}">
+        <td>{{error.ID}}</td>
+        <td>{{error.Text}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><b><i><u>Status Verladung</u></i></b></td>
+    </tr>
+    <tr ng-repeat="error in vm.statuses_verladung" value="{{error.ID}}">
+        <td>{{error.ID}}</td>
+        <td>{{error.Text}}</td>
+    </tr>
+</table>
+<table ng-if="vm.location === 'iPunkt'">
+    <tbody>
+    <tr>
+        <td class="partialRelease" style="width: 4em"></td>
+        <td>Teilauslagerung</td>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <tbody>
+    <tr>
+        <td class="priorisierung" style="width: 4.3em"></td>
+        <td>Sonderfahrt</td>
+    </tr>
+    </tbody>
+</table>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="vm.closeLegendPopup()" style="float: left">Schließen
+    </button>
+</div>
+</body>
+</html>

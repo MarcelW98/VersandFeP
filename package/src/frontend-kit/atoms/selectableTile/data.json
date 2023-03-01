@@ -1,0 +1,69 @@
+{
+  "name": "selectable tile",
+  "default": {
+      "name": "Selectable Tile",
+      "id": "selectable-tile",
+      "headline": "Headline",
+      "subheadline": "Subheadline",
+      "image": {
+        "altText": "Lorem ipsum dolor sit amet",
+        "srcSet": [
+          {
+            "width": 400,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+          },
+          {
+            "width": 800,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+          },
+          {
+            "width": 1600,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+          }
+        ],
+        "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      }
+  },
+  "variants": [
+    {
+      "name": "Selectable Tile Checkbox",
+      "id": "selectable-tile-checkbox",
+      "headline": "Headline",
+      "subheadline": "Subheadline",
+      "type": "checkbox",
+      "image": {
+        "altText": "Lorem ipsum dolor sit amet",
+        "srcSet": [
+          {
+            "width": 400,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+          },
+          {
+            "width": 800,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+          },
+          {
+            "width": 1600,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+          }
+        ],
+        "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      }
+    },    
+    {
+      "name": "Selectable Tile small",
+      "id": "selectable-tile-small",
+      "headline": "Headline",
+      "subheadline": "Subheadline",
+      "size": "small"
+    },
+    {
+      "name": "Selectable Tile small checkbox",
+      "id": "selectable-tile-small-checkbox",
+      "headline": "Headline",
+      "subheadline": "Subheadline",
+      "size": "small",
+      "type": "checkbox"
+    }    
+  ]
+}

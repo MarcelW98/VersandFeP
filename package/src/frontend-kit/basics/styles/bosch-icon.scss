@@ -1,0 +1,63 @@
+@use './boschicon' as boschicon;
+
+@font-face {
+  font-family: 'Bosch-Icon';
+  src: url(#{$font-base-path}/bosch_icon.woff2) format('woff2'), url(#{$font-base-path}/bosch_icon.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bosch-UI-Icon';
+  src: url(#{$font-base-path}/bosch_ui_icon.woff2) format('woff2'), url(#{$font-base-path}/bosch_ui_icon.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+  no generic font family (see original BoschIcon font styles);
+  use !important to prevent issues with browser extensions that change fonts
+*/
+[class^='boschicon-bosch-ic'],
+[class*=' boschicon-bosch-ic'] {
+  /* stylelint-disable-next-line declaration-no-important */
+  font-family: 'Bosch-Icon', sans-serif !important;
+
+  @include boschicon.core-styles;
+}
+
+[class^='ui-ic'],
+[class*=' ui-ic'] {
+  /* stylelint-disable-next-line declaration-no-important */
+  font-family: 'Bosch-UI-Icon', sans-serif !important;
+
+  @include boschicon.core-styles;
+}
+
+:root {
+  --bosch-ui-ic-version: '#{boschicon.$ui-icon-version}';
+  --bosch-ic-version: '#{boschicon.$icon-version}';
+
+  @include boschicon.generateIconVariables(boschicon.$ui-icons);
+  @include boschicon.generateIconVariables(boschicon.$icons);
+}
+
+.bosch-ui-ic-version::before {
+  content: var(--bosch-ui-ic-version);
+}
+
+.bosch-ic-version::before {
+  content: var(--bosch-ic-version);
+}
+
+@include boschicon.generateIconClasses(boschicon.$ui-icons);
+@include boschicon.generateIconClasses(boschicon.$icons);
+
+// mixin for the usage in components, where the icon is the ::before or ::after element
+@mixin uiIconForComponents {
+  font-family: 'Bosch-UI-Icon';
+  font-size: 1.5rem;
+  line-height: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+}

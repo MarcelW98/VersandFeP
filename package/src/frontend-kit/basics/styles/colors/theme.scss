@@ -1,0 +1,12 @@
+/// define digital design system color variables
+@include generateTheme(gray, blue);
+
+.-dark-mode {
+
+  @include generateTheme(gray, blue, true);
+}
+
+.-light-mode {
+
+  @include generateTheme(gray, blue);
+}

@@ -1,0 +1,13 @@
+{
+  "name": "table",
+  "default": {
+    "name": "table default",
+    "variant": "header-top"
+  },
+  "variants": [
+    {
+      "name": "table default with highlighted row",
+      "highlightedRow": true
+    }
+  ]
+}

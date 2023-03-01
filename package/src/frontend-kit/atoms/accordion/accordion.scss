@@ -1,0 +1,63 @@
+.a-accordion {
+  border-top: .0625rem solid var(--small__enabled__fill__default);
+
+  &__headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--integrated__enabled__front__hovered);
+    }
+
+    &:active {
+      color: var(--major-accent__enabled__fill__pressed);
+    }
+  }
+
+  &__headline-text {
+
+    @include size-xl;
+
+    margin-right: .75rem;
+  }
+
+  .a-icon.a-accordion__headline-icon {
+    font-size: rem(36px);
+  }
+
+  &__content {
+    display: none;
+    padding: 0 3rem 3rem 0;
+  }
+
+  &.a-accordion--open {
+    .a-accordion__content {
+      display: block;
+    }
+  }
+
+  &.a-accordion--small {
+    .a-accordion__headline-text {
+
+      @include size-m;
+    }
+
+    .a-accordion__content {
+      padding: 0 0 3rem;
+    }
+  }
+
+  @include rb-core-up-to-tablet {
+    .a-accordion__headline-text {
+
+      @include size-m;
+    }
+
+    .a-accordion__content {
+      padding: 0 0 3rem;
+    }
+  }
+}

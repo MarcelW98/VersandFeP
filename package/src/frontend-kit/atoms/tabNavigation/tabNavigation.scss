@@ -1,0 +1,103 @@
+.a-tab-navigation {
+  // Reset the li elements
+  &__item {
+    margin: 0;
+    padding: 0;
+    /* stylelint-disable-next-line a11y/content-property-no-static-value */
+    &::before {
+      content: none;
+    }
+  }
+
+  // Reset the button elements
+  button {
+    background: none;
+    outline-offset: rem(4px);
+    border: 0;
+    color: var(--integrated__enabled__front__default);
+  }
+
+  // Reset the links elements
+  a {
+    text-decoration: none;
+    display: inline-block;
+    outline-offset: rem(4px);
+    color: var(--integrated__enabled__front__default);
+  }
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: var(--integrated__enabled__fill__default);
+  padding: 0 rem(16px);
+  border-bottom: 1px solid var(--bosch-gray-40);
+
+  &__tab {
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: rem(12px) rem(16px) 0;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--integrated__enabled__front__hovered);
+      background-color: var(--integrated__enabled__fill__hovered);
+    }
+
+    &:active {
+      color: var(--integrated__enabled__front__pressed);
+      background-color: var(--integrated__enabled__fill__pressed);
+    }
+
+    &.-disabled {
+      color: var(--integrated__disabled__front__default);
+      background-color: var(--integrated__disabled__fill__default);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &.-selected {
+      color: var(--minor-accent__enabled__front__default);
+      background-color: var(--minor-accent__enabled__fill__default);
+    }
+
+    &.-selected:hover {
+      color: var(--minor-accent__enabled__front__hovered);
+      // background-color: var(--minor-accent__enabled__fill__hovered);
+    }
+
+    &.-selected:active {
+      color: var(--minor-accent__enabled__front__pressed);
+      // background-color: var(--minor-accent__enabled__fill__pressed);
+    }
+
+    &.-only-icon {
+      padding-right: rem(12px);
+      padding-left: rem(12px);
+    }
+  }
+
+  &__tab-content {
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0;
+    border: 0;
+    border-bottom: solid rem(2px) transparent;
+    // The value below is the result of the following calculation.
+    // Total height (48px) - Padding top (12px) - Line height (24px) -
+    // Border bottom (2px) - Outer border of the ordered list (1px)
+    padding-bottom: rem(9px);
+  }
+
+  .-selected &__tab-content {
+    border-color: var(--minor-accent__enabled__front__default);
+  }
+
+  &__icon + &__label {
+    text-align: left;
+    margin-left: rem(8px);
+  }
+
+  &__icon {
+    font-size: rem(24px);
+  }
+}

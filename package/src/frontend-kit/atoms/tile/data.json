@@ -1,0 +1,101 @@
+{
+  "name": "tile",
+  "default": {
+      "name": "Default Tile with Primary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "primary",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+  },
+  "variants": [
+    {
+      "name": "Default Tile with Secondary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "secondary",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+    },
+    {
+      "name": "Default Tile with Contrast Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "contrast",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+    },
+    {
+      "name": "Purple Tile with Primary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "primary",
+      "fill": "purple",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+    },
+    {
+      "name": "Blue Tile with Primary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "primary",
+      "fill": "blue",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+    },
+    {
+      "name": "Turquoise Tile with Primary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "primary",
+      "fill": "turquoise",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+    },
+    {
+      "name": "Green Tile with Primary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "primary",
+      "fill": "green",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline"
+    },
+    {
+      "name": "Tile with Image on a Secondary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "primary",
+      "fill": "green",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline",
+      "image": {
+        "altText": "Lorem ipsum dolor sit amet",
+        "srcSet": [
+          {
+            "width": 400,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+          },
+          {
+            "width": 800,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+          },
+          {
+            "width": 1600,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+          }
+        ],
+        "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      }
+    },
+    {
+      "name": "Small Tile with Image on a Secondary Background",
+      "demonstrator": "tileDemonstrator",
+      "background": "secondary",
+      "category": "Category",
+      "headline": "Headline",
+      "subheadline": "Subheadline",
+      "isSmall": true
+    }
+  ]
+}

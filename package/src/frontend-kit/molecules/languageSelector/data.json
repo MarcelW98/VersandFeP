@@ -1,0 +1,16 @@
+{
+  "name": "language selector",
+  "default": {
+    "name": "default",
+    "languages": [
+      "Deutsch",
+      "English",
+      "Französisch",
+      "中国人",
+      "русский",
+      "עברית",
+      "العربية"
+    ]
+  },
+  "variants": []
+}

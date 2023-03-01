@@ -1,0 +1,107 @@
+@mixin tooltip--success {
+  background-color: var(--minor-signal-success__enabled__fill__default);
+  color: var(--minor-signal-success__enabled__front__default);
+}
+
+@mixin tooltip--warning {
+  background-color: var(--minor-signal-warning__enabled__fill__default);
+  color: var(--minor-signal-warning__enabled__front__default);
+}
+
+@mixin tooltip--error {
+  background-color: var(--minor-signal-error__enabled__fill__default);
+  color: var(--minor-signal-error__enabled__front__default);
+}
+
+@mixin tooltip--fixed-width {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: rem(160px);
+}
+
+@mixin tooltip--dynamic-width {
+  max-width: none;
+}
+
+@mixin tooltip {
+  display: inline-block;
+  z-index: 1;
+  max-width: rem(256px);
+  padding: 0.25rem 0.75rem;
+
+  // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
+  @extend .-floating;
+
+  &.a-tooltip--success {
+
+    @include tooltip--success;
+  }
+
+  &.a-tooltip--warning {
+
+    @include tooltip--warning;
+  }
+
+  &.a-tooltip--error {
+
+    @include tooltip--error;
+  }
+
+  &.a-tooltip.-dynamic-width {
+
+    @include tooltip--dynamic-width;
+  }
+
+  &.a-tooltip.-fixed-width {
+
+    @include tooltip--fixed-width;
+  }
+}
+
+
+.a-tooltip {
+
+  @include tooltip;
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+/* stylelint-disable-next-line a11y/content-property-no-static-value */
+[data-tooltip]:hover::before {
+
+  @include tooltip;
+  @include box-shadow;
+
+  position: absolute;
+  bottom: 100%;
+  left: rem(-14px);
+  content: attr(data-tooltip);
+}
+
+[data-tooltip][data-tooltip-width='fixed']:hover::before {
+
+  @include tooltip--fixed-width;
+}
+
+[data-tooltip][data-tooltip-width='dynamic']:hover::before {
+
+  @include tooltip--dynamic-width;
+}
+
+[data-tooltip][data-tooltip-type='success']:hover::before {
+
+  @include tooltip--success;
+}
+
+[data-tooltip][data-tooltip-type='warning']:hover::before {
+
+  @include tooltip--warning;
+}
+
+[data-tooltip][data-tooltip-type='error']:hover::before {
+
+  @include tooltip--error;
+}

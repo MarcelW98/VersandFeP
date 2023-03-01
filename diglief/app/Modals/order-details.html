@@ -1,0 +1,300 @@
+<div class="modal-header">
+    <h4 class="modal-title">Auftrag #{{vm.selectedOrder.ID}}</h4>
+</div>
+<div class="modal-body">
+
+    <table class="orderlist"
+           ng-if="vm.AuthorizedWrite('buero') || vm.AuthorizedWrite('monitor') || vm.AuthorizedWrite('iPunkt') || vm.AuthorizedWrite('verladung') || vm.AuthorizedWrite('admin')">
+        <tr>
+            <td>ID</td>
+            <td>{{vm.selectedOrder.ID}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  || vm.location === 'buero' ">
+            <td>Spedition</td>
+            <td ng-if="vm.AuthorizedWrite('Spediteur')">
+                <select ng-model="vm.selectedOrder.Spediteur">
+                    <option ng-repeat="spediteure in vm.spediteure" value="{{spediteure.Name}}">{{spediteure.Name}}
+                    </option>
+                </select>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Spediteur')">{{vm.selectedOrder.Spediteur}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'monitor'  || vm.location === 'iPunkt' ">
+            <td>Bearbeiter</td>
+            <td ng-if="vm.AuthorizedWrite('Bearbeiter')">
+                <input ng-model="vm.selectedOrder.Bearbeiter" placeholder="{{vm.selectedOrder.Bearbeiter}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Bearbeiter')">{{vm.selectedOrder.Bearbeiter}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'buero' || vm.location === 'iPunkt'">
+            <td>Versanddatum</td>
+            <td>
+            <span ng-if="vm.AuthorizedWrite('Datum')">
+                <input
+                        type="text"
+                        uib-datepicker-popup="dd.MM.yyyy"
+                        ng-model="vm.selectedOrder.Datum"
+                        is-open="status.opened"
+                        ng-click="status.opened = true"
+                        ng-focus="status.opened = true"
+                        ng-required="true"
+                        close-text="Close">
+            </span>
+                <span ng-if="!vm.AuthorizedWrite('Datum')">{{vm.selectedOrder.Datum | date: 'dd.MM.yyyy'}}</span>
+            </td>
+
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+            <td>Verladedatum</td>
+            <td ng-if="vm.AuthorizedWrite('Verladedatum')">
+                <input
+                        type="text"
+                        uib-datepicker-popup="dd.MM.yyyy"
+                        ng-model="vm.selectedOrder.Verladedatum"
+                        is-open="status.opened"
+                        ng-click="status.opened = true"
+                        ng-focus="status.opened = true"
+                        ng-required="true"
+                        close-text="Close">
+            </td>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Verladedatum')">{{vm.selectedOrder.Verladedatum | date: 'dd.MM.yyyy'}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'monitor' ">
+            <td>Versanddatum</td>
+            <td ng-if="vm.AuthorizedWrite('Versanddatum')">
+                <input
+                        type="text"
+                        uib-datepicker-popup="dd.MM.yyyy"
+                        ng-model="vm.selectedOrder.Versanddatum"
+                        is-open="status.opened"
+                        ng-click="status.opened = true"
+                        ng-focus="status.opened = true"
+                        ng-required="true"
+                        close-text="Close">
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Versanddatum')">{{vm.selectedOrder.Versanddatum | date: 'dd.MM.yyyy'}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'buero' ">
+            <td>Packstücke SOLL</td>
+            <td ng-if="vm.AuthorizedWrite('Pack_Soll')">
+                <input type="number" ng-model="vm.selectedOrder.Pack_Soll" placeholder="{{vm.selectedOrder.Pack_Soll}}"
+                       onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Pack_Soll')">{{vm.selectedOrder.Pack_Soll}}</td>
+
+        </tr>
+
+
+
+
+        <tr ng-if="vm.location === 'admin' || vm.location === 'iPunkt' || vm.location === 'buero' ">
+            <td>
+                <span ng-if="vm.location === 'admin' || vm.location === 'iPunkt'  ">Packstücke Soll</span> <span
+                    ng-if="vm.location === 'admin' || vm.location === 'iPunkt'  ">/IST</span>
+            </td>
+            <td>
+    <span>
+        <input type="number" ng-if="vm.AuthorizedWrite('Paletten_Soll')" ng-model="vm.selectedOrder.Paletten_Soll"
+               placeholder="{{vm.selectedOrder.Pack_Soll}}"
+               onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'/>
+        <span ng-if="!vm.AuthorizedWrite('Paletten_Soll')">{{vm.selectedOrder.Paletten_Soll}}</span>
+    </span>
+                <span>
+        <input ng-if="vm.AuthorizedWrite('Auslagerung_Ist')" type="number" ng-model="vm.selectedOrder.Auslagerung_Ist"
+               placeholder="{{vm.selectedOrder.Auslagerung_Ist}}"
+               onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'/>
+        <span ng-if="!vm.AuthorizedWrite('Auslagerung_Ist')">{{vm.selectedOrder.Auslagerung_Ist}}</span>
+    </span>
+            </td>
+
+        </tr>
+
+
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'iPunkt'  ">
+            <td>Auslagerung IST</td>
+            <td ng-if="vm.AuthorizedWrite('Auslagerung_Ist')">
+                <input type="number" ng-model="vm.selectedOrder.Auslagerung_Ist"
+                       placeholder="{{vm.selectedOrder.Auslagerung_Ist}}"
+                       onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Auslagerung_Ist')">{{vm.selectedOrder.Auslagerung_Ist}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+            <td>Zeitfenster Spedition</td>
+            <td ng-if="vm.AuthorizedWrite('Plan_Ankunft')">
+                <input maxlength="50%" type="text" ng-model="vm.selectedOrder.Plan_Ankunft"
+                       placeholder="{{vm.selectedOrder.Plan_Ankunft}}"/> - <input maxlength="50%" type="text"
+                                                                                  ng-model="vm.selectedOrder.Plan_Abfahrt"
+                                                                                  placeholder="{{vm.selectedOrder.Plan_Abfahrt}}"/>
+
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Plan_Ankunft')">{{vm.selectedOrder.Plan_Ankunft}} -
+                {{vm.selectedOrder.Plan_Abfahrt}}
+            </td>
+        </tr>
+        <!--<tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+            <td>Plan Abfahrt Spediteur</td>
+            <td ng-if="vm.AuthorizedWrite('Plan_Abfahrt')">
+                <input type="text" ng-model="vm.selectedOrder.Plan_Abfahrt" placeholder="{{vm.selectedOrder.Plan_Abfahrt}}" />
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Plan_Abfahrt')">{{vm.selectedOrder.Plan_Abfahrt}}</td>
+        </tr> -->
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'">
+            <td>IST Ankunft</td>
+            <td ng-if="vm.AuthorizedWrite('Ist_Ankunft')">
+                <input type="text" ng-model="vm.selectedOrder.Ist_Ankunft"
+                       placeholder="{{vm.selectedOrder.Ist_Ankunft}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Ist_Ankunft')">{{vm.selectedOrder.Ist_Ankunft}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+            <td>IST Abfahrt</td>
+            <td ng-if="vm.AuthorizedWrite('Ist_Abfahrt')">
+                <input type="text" ng-model="vm.selectedOrder.Ist_Abfahrt"
+                       placeholder="{{vm.selectedOrder.Ist_Abfahrt}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Ist_Abfahrt')">{{vm.selectedOrder.Ist_Abfahrt}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'iPunkt'  ">
+            <td>Auslagerung Zeitfenster</td>
+            <td ng-if="vm.AuthorizedWrite('Auslager_Zeitfenster')">
+                <input ng-model="vm.selectedOrder.Auslager_Zeitfenster"
+                       placeholder="{{vm.selectedOrder.Auslager_Zeitfenster}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Auslager-Zeitraum')">{{vm.selectedOrder.Auslager_Zeitfenster}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'monitor'  || vm.location === 'buero' ">
+            <td>Status Büro</td>
+            <td ng-if="vm.AuthorizedWrite('Fehler_Buero')">
+                {{vm.selectedOrder.Fehler_Buero}}
+                <select ng-model="vm.selectedOrder.Fehler_Buero">
+                    <option ng-repeat="error in vm.statuses_buero" value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Fehler_Buero')">{{vm.selectedOrder.Fehler_Buero}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+            <td>Status Verladung</td>
+            <td ng-if="vm.AuthorizedWrite('Fehler_Verladung')">
+                {{ vm.selectedOrder.Fehler_Verladung1}}
+                <select ng-model="vm.selectedOrder.Fehler_Verladung1">
+                    <option ng-selected="vm.selectedOrder.Fehler_Verladung1 == error.ID"
+                            ng-repeat="error in vm.statuses_verladung" value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+                {{ vm.selectedOrder.Fehler_Verladung2}}
+                <select ng-model="vm.selectedOrder.Fehler_Verladung2">
+                    <option ng-selected="vm.selectedOrder.Fehler_Verladung2" ng-repeat="error in vm.statuses_verladung"
+                            value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+                {{ vm.selectedOrder.Fehler_Verladung3}}
+                <select ng-model="vm.selectedOrder.Fehler_Verladung3">
+                    <option ng-selected="vm.selectedOrder.Fehler_Verladung3" ng-repeat="error in vm.statuses_verladung"
+                            value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Fehler_Verladung')">{{vm.selectedOrder.Fehler_Verladung1}} :
+                {{vm.selectedOrder.Fehler_Verladung2}} : {{vm.selectedOrder.Fehler_Verladung3}}
+            </td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+            <!--  <td>Status Verladung 2</td>
+              <td ng-if="vm.AuthorizedWrite('Fehler_Verladung')">
+                  <select  ng-model="vm.selectedOrder.Fehler_Verladung2">
+                      <option ng-repeat="error in vm.statuses_verladung" value="{{error.ID}}">{{error.ID}} - {{error.Text}}</option>
+                  </select>
+              </td>
+              <td ng-if="!vm.AuthorizedWrite('Fehler_Verladung')">{{vm.selectedOrder.Fehler_Verladung2}}</td>
+          </tr>
+          <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  ">
+              <td>Status Verladung 3</td>
+              <td ng-if="vm.AuthorizedWrite('Fehler_Verladung')">
+                  <select  ng-model="vm.selectedOrder.Fehler_Verladung3">
+                      <option ng-repeat="error in vm.statuses_verladung" value="{{error.ID}}">{{error.ID}} - {{error.Text}}</option>
+                  </select>
+              </td> -->
+            <td ng-if="!vm.AuthorizedWrite('Fehler_Verladung')">{{vm.selectedOrder.Fehler_Verladung3}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'monitor'  || vm.location === 'iPunkt'  ">
+            <td>Status IPunkt</td>
+            <td ng-if="vm.AuthorizedWrite('Fehler_IPunkt')">
+                {{vm.selectedOrder.Fehler_IPunkt1}}
+                <select ng-model="vm.selectedOrder.Fehler_IPunkt1">
+                    <option ng-repeat="error in vm.statuses_iPoint" value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+                {{vm.selectedOrder.Fehler_IPunkt2}}
+                <select ng-model="vm.selectedOrder.Fehler_IPunkt2">
+                    <option ng-repeat="error in vm.statuses_iPoint" value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+                {{vm.selectedOrder.Fehler_IPunkt3}}
+                <select ng-model="vm.selectedOrder.Fehler_IPunkt3">
+                    <option ng-repeat="error in vm.statuses_iPoint" value="{{error.ID}}">{{error.ID}} - {{error.Text}}
+                    </option>
+                </select>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Fehler_IPunkt')">{{vm.selectedOrder.Fehler_IPunkt1}} :
+                {{vm.selectedOrder.Fehler_IPunkt2}} : {{vm.selectedOrder.Fehler_IPunkt3}}
+            </td>
+            <!--</tr>
+            <tr ng-if="vm.location === 'admin' || vm.location === 'monitor'  || vm.location === 'iPunkt'  ">
+                <td>Status IPunkt 2</td>
+                <td ng-if="vm.AuthorizedWrite('Fehler_IPunkt')">
+                    <select  ng-model="vm.selectedOrder.Fehler_IPunkt2">
+                        <option ng-repeat="error in vm.statuses_iPoint" value="{{error.ID}}">{{error.ID}} - {{error.Text}}</option>
+                    </select>
+                </td>
+                <td ng-if="!vm.AuthorizedWrite('Fehler_IPunkt')">{{vm.selectedOrder.Fehler_IPunkt2}}</td>
+            </tr>
+            <tr ng-if="vm.location === 'admin' || vm.location === 'monitor'  || vm.location === 'iPunkt'  ">
+                <td>Status IPunkt 3</td>
+                <td ng-if="vm.AuthorizedWrite('Fehler_IPunkt')">
+                    <select  ng-model="vm.selectedOrder.Fehler_IPunkt3">
+                        <option ng-repeat="error in vm.statuses_iPoint" value="{{error.ID}}">{{error.ID}} - {{error.Text}}</option>
+                    </select>
+                </td>
+                <td ng-if="!vm.AuthorizedWrite('Fehler_IPunkt')">{{vm.selectedOrder.Fehler_IPunkt3}}</td>
+            </tr> -->
+        <tr ng-if="vm.location === 'admin' || vm.location === 'verladung'  || vm.location === 'monitor'  || vm.location === 'iPunkt'  || vm.location === 'buero' ">
+            <td>Bemerkung</td>
+            <td ng-if="vm.AuthorizedWrite('Bemerkung')">
+                <input ng-model="vm.selectedOrder.Bemerkung" placeholder="{{vm.selectedOrder.Bemerkung}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Bemerkung')">{{vm.selectedOrder.Bemerkung}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'iPunkt'  ">
+            <td>Ausgelagert</td>
+            <td ng-if="vm.AuthorizedWrite('Ausgelagert')">
+                <input type="checkbox" ng-model="vm.selectedOrder.Ausgelagert"
+                       placeholder="{{vm.selectedOrder.Ausgelagert}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Ausgelagert')">{{vm.selectedOrder.Ausgelagert}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'monitor'  " ng-if="vm.selectedOrder.DurchspracheErf">
+            <td>Durchsprache erfolgt</td>
+            <td ng-if="vm.AuthorizedWrite('Durchsprache')">
+                <input type="checkbox" ng-model="vm.selectedOrder.Durchsprache"
+                       placeholder="{{vm.selectedOrder.Durchsprache}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Durchsprache')">{{vm.selectedOrder.Durchsprache}}</td>
+        </tr>
+        <tr ng-if="vm.location === 'admin' || vm.location === 'monitor' || vm.location === 'verladung' ">
+            <td>Versand</td>
+            <td ng-if="vm.AuthorizedWrite('Versand')">
+                <input type="checkbox" ng-model="vm.selectedOrder.Versand" placeholder="{{vm.selectedOrder.Versand}}"/>
+            </td>
+            <td ng-if="!vm.AuthorizedWrite('Versand')">{{vm.selectedOrder.Versand}}</td>
+        </tr>
+    </table>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="vm.close()" style="float: left">Close</button>
+    <button type="button" class="btn btn-success" ng-click="vm.save()">Save</button>
+
+</div>

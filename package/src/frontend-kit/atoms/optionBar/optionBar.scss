@@ -1,0 +1,90 @@
+.a-option-bar {
+  // first, reset the ul
+  margin-bottom: 0;
+
+  // then reset the li elements
+  &__item {
+    margin: 0;
+    padding: 0;
+    /* stylelint-disable-next-line a11y/content-property-no-static-value */
+    &::before {
+      content: none;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  label {
+    font-size: inherit;
+  }
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 rem(16px);
+
+  &__label {
+    padding: rem(16px) rem(12px) rem(16px) 0;
+
+    &:only-child {
+      padding: rem(12px) rem(16px);
+    }
+  }
+
+  &__icon + &__label {
+    text-align: left;
+    margin-left: 8px;
+  }
+
+  &__icon {
+    font-size: rem(24px);
+    padding: rem(16px) 0 rem(16px) rem(12px);
+
+    &:only-child {
+      padding: rem(12px);
+    }
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  &__option {
+    display: inline-flex;
+    color: var(--neutral__enabled__front__default);
+    background-color: var(--neutral__enabled__fill__default);
+    cursor: pointer;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  :hover + &__option {
+    color: var(--neutral__enabled__front__hovered);
+    background-color: var(--neutral__enabled__fill__hovered);
+  }
+
+  :active + &__option {
+    color: var(--neutral__enabled__front__pressed);
+    background-color: var(--neutral__enabled__fill__pressed);
+  }
+
+  :disabled + &__option {
+    color: var(--neutral__disabled__front__default);
+    background-color: var(--neutral__disabled__fill__default);
+    cursor: default;
+  }
+
+  :checked + &__option {
+    color: var(--major-accent__enabled__front__default);
+    background-color: var(--major-accent__enabled__fill__default);
+  }
+
+  :checked:hover + &__option {
+    color: var(--major-accent__enabled__front__hovered);
+    background-color: var(--major-accent__enabled__fill__hovered);
+  }
+
+  :checked:active + &__option {
+    color: var(--major-accent__enabled__front__pressed);
+    background-color: var(--major-accent__enabled__fill__pressed);
+  }
+}

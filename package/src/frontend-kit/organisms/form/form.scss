@@ -1,0 +1,36 @@
+@use "sass:math";
+
+.o-form {
+  margin: rem(64px) 0;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+
+    .m-form-field {
+      margin-left: math.div($formFieldSpacing, 2);
+      margin-right: math.div($formFieldSpacing, 2);
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+  }
+
+  h4 {
+    margin: rem(48px) 0 rem(24px);
+  }
+
+  /* stylelint-disable-next-line selector-no-qualifying-type */
+  button[type='submit'] {
+    margin: rem(48px) 0;
+  }
+}

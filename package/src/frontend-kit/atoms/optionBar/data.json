@@ -1,0 +1,80 @@
+{
+  "name": "option bar",
+  "default": {
+    "name": "options with labels",
+    "options": [
+      {
+        "identifier": 1,
+        "label": "Option 1"
+      },
+      {
+        "identifier": 2,
+        "label": "Option 2"
+      },
+      {
+        "identifier": 3,
+        "label": "Option 3"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "options with labels and icons",
+      "options": [
+        {
+          "identifier": "1-1",
+          "label": "Option 1",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": "1-2",
+          "label": "Option 2",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": "1-3",
+          "label": "Option 3",
+          "icon": "emoji-happy"
+        }
+      ]
+    },
+    {
+      "name": "options with icons",
+      "options": [
+        {
+          "identifier": "2-1",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": "2-2",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": "2-3",
+          "icon": "emoji-happy"
+        }
+      ]
+    },
+    {
+      "name": "options with labels and icons, 3rd disabled",
+      "options": [
+        {
+          "identifier": "3-1",
+          "label": "Option 1",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": "3-2",
+          "label": "Option 2",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": "3-3",
+          "label": "Option 3",
+          "icon": "emoji-happy",
+          "isDisabled": true
+        }
+      ]
+    }
+  ]
+}

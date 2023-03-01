@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    
+<div style="padding: 0px 10px">
+<div style="position: absolute; right: 15px; top: 40px;">
+    <button class="btn" style="background-color:  #007bc0; color: white;" ng-click="vm.openLegend()">Legende</button>
+    <button class="btn" style="background-color:  #007bc0" ng-if="vm.AuthorizedWrite('kPunkt')" ng-click="vm.logout()">Logout</button>
+    <input type="button" style="background-color:  #007bc0; color: white;" ng-if="!vm.AuthorizedWrite('kPunkt')" onclick="window.location.href='#!/login';" class="btn" value="Login" />
+</div>
+<div style="position: absolute; top: 5px; right: 15%; color: red; width: 50%">
+    {{vm.dataStatus}}
+</div>
+<h2>kPunkt</h2>
+<div style="overflow-x:auto;">
+    <table class="orderlist">
+        <thead>
+        <tr>
+            <th>Versanddatumerer<br/>SOLL</th>
+            <th>Bearbeiter</th>
+            <th>Spedition</th>
+            <th>Zeitfenster<br/>Auslagerung</th>
+            <th>Bereitstel-<br/>lungszeit</th>
+            <th>Packstücke<br/>SOLL</th>
+            <th>Auslagerung<br/>IST</th>
+            <th>Status</th>
+            <th>Bemerkung</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="order in vm.orders| orderBy: ['Datum','StorageTimeStart', 'StorageTimeEnd']" ng-click="vm.openDetailPopup(order)" ng-class="{priorisierung: order.Priorisierung == true}">
+            <td>{{order.Datum | date: 'dd.MM.yyyy'}}</td>
+            <td>{{order.Bearbeiter}}</td>
+            <td>{{order.Spediteur}}</td>
+            <td>{{order.StorageTimeStart}} - {{order.StorageTimeEnd}}</td>
+            <td>{{order.Bereitstellungszeit}}</td>
+            <td ng-class="{partialRelease: (order.Auslagerung_Ist != order.Pack_Soll) && order.Auslagerung_Ist != 0}">{{order.Pack_Soll}}</td>
+            <td ng-class="{partialRelease: (order.Auslagerung_Ist != order.Pack_Soll) && order.Auslagerung_Ist != 0}">{{order.Auslagerung_Ist}}</td>
+            <td><span>{{order.Fehler_IPunkt1}}<span ng-if="order.Fehler_IPunkt2 != 0"> : {{order.Fehler_IPunkt2}}<span ng-if="order.Fehler_IPunkt3 != 0"> : {{order.Fehler_IPunkt3}}</span></span></span></td>
+            <td class="Comment">{{order.Bemerkung}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</html>

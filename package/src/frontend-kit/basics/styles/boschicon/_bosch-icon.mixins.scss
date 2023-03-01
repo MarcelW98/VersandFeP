@@ -1,0 +1,29 @@
+@mixin core-styles {
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin generateIconVariables($icons) {
+
+  @each $icon, $iconCode in $icons {
+    --#{$icon}: '#{$iconCode}';
+  }
+}
+
+@mixin generateIconClasses($icons) {
+
+  @each $icon, $iconCode in $icons {
+    .#{$icon}::before {
+      content: var(--#{$icon});
+    }
+  }
+}

@@ -1,0 +1,87 @@
+<h2 xmlns:min-date="http://www.w3.org/1999/xhtml">Neuer Auftrag</h2>
+<form name="order">
+<table>
+    <tr>        
+        <td style="width: 40%">Spedition</td>
+        <td>
+            <!-- <select id = "test" ng-model="vm.newOrder.Spediteur">                              
+                <option value="" style="display: none"></option>
+                <option ng-repeat="spediteure in vm.spediteure | orderBy: 'Name'" ng-click="vm.selectSped(spediteure)" value="{{spediteure.Name}}" ng-selected="$first">{{spediteure.Name}}</option>                  
+            </select> -->
+            <select id="spedi" ng-options="spediteure.Name as spediteure.Name for spediteure in vm.spediteure | orderBy: 'Name'"  ng-model="vm.newOrder.Spediteur" ng-change="vm.selectSped(vm.newOrder.Spediteur)" ng-click="vm.selectSped(vm.newOrder.Spediteur)">
+                    <option value="" style="display: none"></option>
+            </select>
+        </td>        
+    </tr>
+    <tr ng-if="!vm.newOrder.Spediteur">
+        <td>
+        </td>
+        <td>
+            <p style="color: crimson">Bitte wählen Sie eine Spedition aus!</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Bearbeiter</td>
+        <td><input id="bearbei" ng-model="vm.newOrder.Bearbeiter"></td>
+    </tr>
+	<tr ng-if="!vm.newOrder.Bearbeiter">
+        <td>
+        </td>
+        <td>
+            <p style="color: crimson">Bitte Bearbeiter angeben!</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Versanddatum SOLL</td>
+        <td>
+            <input
+                id="vsdate"
+                type="text"
+                uib-datepicker-popup="dd.MM.yyyy"
+                placeholder="dd.mm.yyyy"
+                ng-model="vm.newOrder.Datum"
+                is-open="status.opened"
+                show-button-bar="false"
+                ng-click="status.opened = true"
+                ng-required="true"
+                datepicker-options="options"
+                close-text="Close" >            
+        </td>
+    </tr>
+
+    <tr>
+        <td>Zeitfenster Spedition</td>
+        <td><div>{{vm.newOrder.Plan_Ankunft}} - {{vm.newOrder.Plan_Abfahrt}}</div></td>
+    </tr>
+    <tr>
+        <td>Zuteilungszeitfenster</td>
+        <td>{{vm.newOrder.AllocationWindStart}} - {{vm.newOrder.AllocationWindEnd}}</td>
+    </tr>
+    <tr>
+        <td>Packstücke SOLL</td>
+        <td><input id="packst" type="number" min="0" ng-model="vm.newOrder.Pack_Soll" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'/></td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>
+            <select id="state" ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_buero" ng-model="vm.newOrder.Fehler_Buero"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Bemerkung</td>
+        <td><input id="bemerk" style="min-width: 100%"ng-model="vm.newOrder.Bemerkung"/></td>
+    </tr>
+    <tr>
+        <td>kPunkt Relevant</td>
+        <td><input id="krelev" type="checkbox" ng-model="vm.newOrder.kPointRelevant" placeholder="{{vm.newOrder.kPointRelevant}}" /></td>
+    </tr>
+    <tr>
+        <td>Sonderfahrt</td>
+        <td><input id="sofa" type="checkbox" ng-model="vm.newOrder.Priorisierung" placeholder="{{vm.newOrder.Priorisierung}}" /></td>
+    </tr>
+</table>
+<div class=" modal-footer">
+    <button id="addord" ng-click="vm.closePopup()" class="btn btn-default">Schließen</button>
+    <button id="close" ng-click="vm.addOrder()" class="btn btn-success" ng-disabled="!vm.newOrder.Spediteur || !vm.newOrder.Bearbeiter">Hinzufügen</button>
+</div>
+</form>

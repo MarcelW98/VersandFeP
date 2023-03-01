@@ -1,0 +1,321 @@
+.o-footer {
+  &__search-container {
+    padding-top: rem(32px);
+    padding-bottom: rem(32px);
+
+    .m-search-form {
+      margin-bottom: 0;
+    }
+  }
+
+  &__search-cta {
+
+    @include size-l;
+
+    font-weight: bold;
+    margin-bottom: rem(16px);
+  }
+
+  &__claim {
+
+    @include size-xl;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: rem(32px);
+    padding-top: rem(48px);
+    padding-bottom: rem(24px);
+  }
+
+  &__share {
+    margin-left: rem(-12px);
+
+    .a-button:not(:first-child) {
+      margin-left: rem(16px);
+    }
+  }
+
+  &__bottom {
+
+    @include size-s;
+
+    padding-top: rem(24px);
+    padding-bottom: rem(32px);
+    position: relative;
+  }
+
+  &__back-to-top {
+    position: absolute;
+    top: rem(-4px);
+    right: rem(-12px);
+
+    .a-icon {
+      font-size: 36px;
+    }
+  }
+
+  &__links {
+    padding: 0;
+    margin: 0;
+
+    > li {
+      font-size: inherit;
+      padding: 0;
+
+      /* stylelint-disable-next-line a11y/content-property-no-static-value */
+      &::before {
+        content: none;
+      }
+    }
+
+    // again, we invent an "integrated link" here that can be replaced once the component exists
+    a,
+    a:visited {
+      color: var(--integrated__enabled__front__default);
+
+      &:hover {
+        color: var(--integrated__enabled__front__hovered);
+      }
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      &:active {
+        color: var(--integrated__enabled__front__pressed);
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    .-external a {
+      // we do _not_ want the underline below the external link icon, so
+      // see https://stackoverflow.com/questions/1238881/text-decoration-and-the-after-pseudo-element-revisited,
+      // and in particular the answer
+      // https://stackoverflow.com/a/15688237
+      display: inline-block;
+
+      /* stylelint-disable-next-line a11y/content-property-no-static-value */
+      &::after {
+        /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+
+        @include uiIconForComponents();
+
+        content: var(--ui-ic-inline-externallink);
+        display: inline-block;
+
+        // nudge the icon into position
+        padding-left: 0.5em;
+      }
+
+      /* stylelint-disable-next-line selector-max-compound-selectors */
+      &:hover a::after {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__bottom &__links {
+    margin-bottom: rem(16px);
+  }
+
+  .m-search-form {
+    position: relative;
+
+    .a-text-field {
+      z-index: 2;
+    }
+  }
+
+  .a-search-suggestions {
+    max-height: 0;
+    background: var(--bosch-white);
+    overflow: hidden;
+    position: absolute;
+    margin-top: rem(-48px);
+    z-index: 1;
+  }
+
+  &:not(.-show-suggestions) .a-search-suggestions__item {
+    visibility: hidden;
+  }
+
+  &.-show-suggestions .a-search-suggestions {
+    max-height: 100vh;
+    margin-top: 0;
+    transition: max-height $default-transition-easing $default-transition-timing;
+    box-shadow: 0 0 rem(16px) rgb(0 0 0 / 25%);
+  }
+
+  // Styling for the footer's minimal variant.
+  &.-minimal {
+    > .a-divider {
+      margin: 0;
+    }
+
+    .o-footer__bottom {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+
+      .a-divider {
+        margin: 1rem 0;
+        order: 2;
+      }
+    }
+
+    .o-footer__copyright {
+      align-items: center;
+      display: flex;
+      order: 1;
+
+      .a-icon {
+        font-size: rem(18px);
+        margin-right: rem(4px);
+      }
+    }
+
+    .o-footer__links {
+      margin-bottom: 0;
+      order: 3;
+
+      li {
+        margin-bottom: 1.5rem;
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@include tablet-and-up {
+  .o-footer {
+    &__search {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: rem(32px);
+      align-items: baseline;
+    }
+
+    &__search-cta {
+      margin-bottom: 0;
+    }
+
+    &__top {
+      grid-template-rows: auto auto;
+      /* stylelint-disable-next-line declaration-colon-space-after */
+      grid-template-areas:
+        'claim    share'
+        'language language'
+        'links    links';
+      padding-top: rem(56px);
+      padding-bottom: rem(56px);
+    }
+
+    &__claim {
+      margin-top: rem(8px);
+      grid-area: claim;
+    }
+
+    &__share {
+      grid-area: share;
+      justify-self: right;
+      margin-right: rem(-12px);
+    }
+
+    &__bottom {
+      display: flex;
+      flex-wrap: wrap-reverse;
+    }
+
+    &__copyright {
+      margin-right: rem(24px);
+      order: 1;
+    }
+
+    &__bottom &__links {
+      order: 2;
+      // do no slide "under " the back-to-top arrow
+      padding-right: rem(48px);
+    }
+
+    .m-language-selector {
+      grid-area: language;
+    }
+
+    &__top &__links {
+      grid-area: links;
+    }
+
+    &__top &__links,
+    &__bottom &__links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      > li {
+        display: inline-block;
+        margin-bottom: 0;
+
+        &:not(:last-child) {
+          margin-right: rem(24px);
+        }
+      }
+    }
+
+    &.-minimal {
+      .o-footer__copyright {
+        margin-right: 0;
+      }
+
+      .o-footer__links {
+        padding-right: 0;
+
+        li {
+          margin-right: 2rem;
+          margin-bottom: 0;
+        }
+
+        li:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@include desktop-and-up {
+  .o-footer {
+    &__top {
+      /* stylelint-disable-next-line declaration-colon-space-after */
+      grid-template-areas:
+        'claim    share'
+        'language links';
+    }
+
+    &__search-cta {
+
+      @include size-xl;
+    }
+
+    &__top &__links {
+      // baseline-align with the language selector
+      margin-top: -1px;
+      align-self: start;
+      justify-self: end;
+    }
+
+    &.-minimal {
+      .o-footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+
+        /* stylelint-disable-next-line a11y/no-display-none */
+        .a-divider {
+          display: none;
+        }
+      }
+    }
+  }
+}

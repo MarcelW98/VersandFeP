@@ -1,0 +1,38 @@
+{
+  "default": {
+    "headline": "Accordion Headline",
+    "name": "accordion",
+    "open": false,
+    "size": "large"
+  },
+  "name": "accordion",
+  "variants": [
+    {
+      "headline": "Accordion Headline",
+      "name": "accordion open",
+      "open": true,
+      "size": "large"
+    },
+    {
+      "headline": "Accordion Headline",
+      "name": "accordion small",
+      "open": false,
+      "size": "small"
+    },
+    {
+      "headline": "Accordion Headline",
+      "name": "accordion small open",
+      "open": true,
+      "size": "small"
+    },
+    {
+      "demonstrator": "multiAccordionDemonstrator",
+      "name": "Multi-Accordion Demo"
+    },
+    {
+      "demonstrator": "multiAccordionDemonstrator",
+      "name": "Multi-Accordion small Demo",
+      "size": "small"
+    }
+  ]
+}

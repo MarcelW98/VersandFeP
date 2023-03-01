@@ -1,0 +1,103 @@
+/* stylelint-disable no-descending-specificity */
+// sane default styles
+a,
+a:visited {
+  color: var(--minor-accent__enabled__front__default);
+
+  &:hover {
+    color: var(--minor-accent__enabled__front__hovered);
+  }
+
+  &:active {
+    color: var(--minor-accent__enabled__front__pressed);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    color: var(--minor-accent__disabled__front__default);
+  }
+}
+
+// styles for frontend-kit link
+.a-link {
+  text-decoration: none;
+  color: var(--minor-accent__enabled__front__default);
+
+  a {
+    color: currentColor;
+  }
+
+  &:hover {
+    color: var(--minor-accent__enabled__front__hovered);
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &:active {
+    color: var(--minor-accent__enabled__front__pressed);
+  }
+
+  &.-disabled,
+  &.-disabled a {
+    pointer-events: none;
+    color: var(--minor-accent__disabled__front__default);
+  }
+}
+
+.a-link--simple,
+.a-link--primary {
+  display: inline-block;
+
+  a {
+    display: flex;
+  }
+
+  a,
+  a:visited {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.a-link--primary {
+  a {
+    &::after {
+      content: '';
+      border-top: rem(1px) solid currentColor;
+      border-right: rem(1px) solid currentColor;
+      position: relative;
+      width: .5em;
+      height: .5em;
+      margin-left: .25em;
+      transform: translateY(.465em) rotate(45deg);
+    }
+  }
+}
+
+.a-link:hover .a-icon,
+.a-link:hover .a-icon::before {
+  // without this, the underline will not be removed.
+  display: inline-block;
+  text-decoration: none;
+}
+
+.a-link.-icon-left .a-icon {
+  margin-right: 0.5rem;
+}
+
+.a-link.-icon-right a {
+  display: inline;
+}
+
+.a-link.-icon-right .a-icon {
+  margin-left: 0.5rem;
+  display: inline-block;
+  margin-top: -1rem;
+  position: relative;
+  top: 0.25rem;
+}

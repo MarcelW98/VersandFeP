@@ -1,0 +1,100 @@
+{
+  "name": "slider",
+  "default": {
+    "id": "slider1",
+    "name": "Standard slider"
+  },
+  "variants": [
+    {
+      "id": "slider2",
+      "name": "Standard slider disabled",
+      "disabled": true
+    },
+    {
+      "id": "slider3",
+      "name": "Standard slider with tooltip",
+      "tooltip": true
+    },
+    {
+      "id": "slider4",
+      "name": "Standard slider with left label",
+      "labelLeft": "Label",
+      "tooltip": true
+    },
+    {
+      "id": "slider5",
+      "name": "Standard slider with right label",
+      "labelRight": "Label",
+      "tooltip": true
+    },
+    {
+      "id": "slider6",
+      "name": "Standard slider with left and right label",
+      "labelLeft": "Left",
+      "labelRight": "Right",
+      "tooltip": true
+    },
+    {
+      "id": "slider7",
+      "min": 1,
+      "max": 1000,
+      "name": "Standard slider with absolute value tooltip",
+      "tooltip": true,
+      "tooltipType": "absolute"
+    },
+    {
+      "id": "slider8",
+      "min": 1,
+      "max": 360,
+      "name": "Standard slider with absolute value tooltip and unit",
+      "tooltip": true,
+      "tooltipType": "absolute",
+      "tooltipUnit": "°",
+      "labelLeft": "Degrees"
+    },
+    {
+      "id": "slider9",
+      "min": 1,
+      "max": 360,
+      "name": "Standard slider with label left top",
+      "tooltip": true,
+      "tooltipType": "absolute",
+      "tooltipUnit": "°",
+      "labelLeft": "Degrees",
+      "labelsOnTop": true
+    },
+    {
+      "id": "slider10",
+      "min": 1,
+      "max": 360,
+      "name": "Standard slider with label right top",
+      "tooltip": true,
+      "tooltipType": "absolute",
+      "tooltipUnit": "°",
+      "labelRight": "Degrees",
+      "labelsOnTop": true
+    },
+    {
+      "id": "slider11",
+      "min": 1,
+      "max": 360,
+      "name": "Standard slider with label left and right top",
+      "tooltip": true,
+      "tooltipType": "absolute",
+      "tooltipUnit": "°",
+      "labelRight": "Degrees",
+      "labelLeft": "Degrees left",
+      "labelsOnTop": true
+    },
+    {
+      "id": "slider12",
+      "min": 1,
+      "max": 360,
+      "name": "Standard slider with label left and right top, without tooltip",
+      "tooltip": false,
+      "labelRight": "Degrees",
+      "labelLeft": "Degrees left",
+      "labelsOnTop": true
+    }
+  ]
+}

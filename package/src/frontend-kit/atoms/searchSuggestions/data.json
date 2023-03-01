@@ -1,0 +1,29 @@
+{
+  "name": "search suggestions",
+  "default": {
+    "name": "default",
+    "suggestions": [
+      {
+        "text": "Product XYZ Lorem ipsum dolor",
+        "highlight": "Product XYZ",
+        "href": "#"
+      },
+      {
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr Product XYZ another line can be very long or very short, however when text breaks and the Product XYZ is mentioned again, we should highlight this",
+        "highlight": "we should highlight this",
+        "href": "#"
+      },
+      {
+        "text": "Lorem ipsum Product XYZ",
+        "highlight": "Product XYZ",
+        "href": "#"
+      },
+      {
+        "text": "Product XYZ Lorem ipsum dolor",
+        "highlight": "Product XYZ",
+        "href": "#"
+      }
+    ]
+  },
+  "variants": []
+}

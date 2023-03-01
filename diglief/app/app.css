@@ -1,0 +1,186 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+h1 {
+  font-size: 1.2em;
+  color: #999;
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 2em;
+  margin-top: 0;
+  padding-top: 0;
+}
+a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+a:visited, a:link {
+  color: #607D8B;
+}
+a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+a.active {
+  color: #039be5;
+}
+
+table.orderlist {
+  border-collapse: collapse;
+  width: 99.9%;
+}
+
+table.orderlist th, td {
+  text-align: left;
+  font-size: small;
+  padding: 8px;
+
+}
+
+table.orderlist td input {
+  min-width: 5em;
+}
+
+table.orderlist tr:nth-child(even){background-color: #f2f2f2}
+table.orderlist tr:hover{background-color: #f5f5f5;}
+
+table.spedMngmnt td input {
+  max-width: 5em !important;
+  overflow: scroll !important;
+}
+table.orderlist th{
+  background-color: #007bc0;
+  color: white;
+}
+
+table.orderlist th.zuteilung {
+  background-color: orange;
+  color: white;
+}
+
+table.orderlist th.bereitstellung {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+table.orderlist th.verladung {
+  background-color: olivedrab;
+  color: white;
+}
+table.orderlist td.Comment {
+  width: 15%;
+}
+
+table.orderlist .uib-datepicker th{
+  background-color: #4CAF50;
+  color: black;
+
+}
+
+/* Sets style for an order with priority*/
+.priorisierung {
+  background-color: #9fcdff !important;
+
+}
+
+.partialRelease {
+border: 3pt solid #ffc107;
+
+}
+/* */
+.zeroReady {
+  background-color: red !important;
+}
+/* */
+.allReady {
+background-color: green;
+}
+/* */
+.notAllReady {
+background-color: yellow;
+}
+
+.nothing {
+  background-color: white !important;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 90%;
+  border: 2px solid black;
+  display: inline-block;
+}
+.modal-backdrop
+{
+  opacity: 0.5 !important;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+.app-modal-window .modal-dialog  {
+  min-width: 80% !important;
+}
+
+.ui-datepicker .btn-group .btn-danger.btn{
+  display: none;
+}
+
+.table-scroll thead {
+  display: table;
+  /*width: 86.5%; /* aligns the carrier management table head with the table data*/
+  table-layout: fixed;
+}
+
+.table-scroll tbody {
+  max-height: 550px;
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-scroll tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-scroll td {
+  height: 47px; /* needed in order to keep rows from collapsing */
+}

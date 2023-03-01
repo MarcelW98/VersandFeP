@@ -1,0 +1,161 @@
+/* stylelint-disable selector-max-id */
+
+@use '../header/parts/supergraphic.scss';
+
+.o-minimal-header {
+  position: fixed;
+  z-index: 1;
+  background-color: var(--plain__enabled__fill__default);
+  width: 100%;
+
+  @include supergraphic-padding;
+
+  .m-side-navigation {
+    z-index: 1;
+
+    @include supergraphic-padding;
+
+    &.-opening,
+    &.-open {
+      max-width: 100%;
+    }
+  }
+
+  &__supergraphic {
+
+    @include supergraphic;
+  }
+
+  &__top {
+    height: rem(48px);
+    border-bottom: 1px solid var(--small__enabled__fill__default);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__logo {
+    width: rem(140px);
+    height: rem(48px);
+    padding: rem(12px) rem(15px) rem(12px) rem(16px);
+    display: none;
+    order: 2;
+
+    #bosch-logo-text {
+      fill: #ea0016;
+
+      .-dark-mode & {
+        fill: var(--plain__enabled__front__default);
+      }
+    }
+
+    #bosch-logo-anker {
+      fill: var(--plain__enabled__front__default);
+    }
+  }
+
+  // Reset
+  &__actions {
+    margin-bottom: 0;
+    padding: 0;
+
+    li {
+      /* stylelint-disable-next-line a11y/content-property-no-static-value */
+      &::before {
+        content: none;
+      }
+
+      padding: 0;
+      margin: 0;
+    }
+
+    display: none;
+
+    .a-button__label {
+      white-space: nowrap;
+    }
+  }
+
+  &__title {
+    flex: 0 1 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include size-m;
+
+    font-weight: bold;
+  }
+}
+
+@include tablet-and-up {
+  .o-minimal-header {
+    &__actions {
+      display: flex;
+      margin-right: rem(16px);
+      margin-left: rem(16px);
+    }
+
+    &__falafel {
+      display: none;
+    }
+
+    &__logo {
+      display: block;
+    }
+
+    &__title {
+
+      @include size-l;
+    }
+
+    .-opening,
+    .-open {
+      /* stylelint-disable-next-line selector-max-compound-selectors */
+      + * + .o-minimal-header__top {
+        /* stylelint-disable-next-line selector-max-compound-selectors */
+        .o-minimal-header__actions {
+          display: none;
+        }
+
+        /* stylelint-disable-next-line selector-max-compound-selectors */
+        .o-minimal-header__falafel {
+          display: block;
+          order: 1;
+          margin-right: rem(16px);
+        }
+      }
+    }
+  }
+}
+
+@include desktop-and-up {
+  .o-minimal-header {
+    &__title {
+      margin-left: rem(32px);
+    }
+
+    &__top {
+      transition: $default-transition-timing padding $default-transition-easing;
+    }
+
+    .-opening,
+    .-open {
+      /* stylelint-disable-next-line selector-max-compound-selectors */
+      + * + .o-minimal-header__top {
+        // the burger (48px) should still be hidden below the side navigation
+        padding-left: $m-side-navigation--open-width - rem(48px);
+
+        /* stylelint-disable-next-line selector-max-compound-selectors */
+        .o-minimal-header__actions {
+          display: flex;
+        }
+
+        /* stylelint-disable-next-line selector-max-compound-selectors */
+        .o-minimal-header__falafel {
+          display: none;
+        }
+      }
+    }
+  }
+}

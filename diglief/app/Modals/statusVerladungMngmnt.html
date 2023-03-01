@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de" ng-if="vm.AuthorizedWrite('admin')">
+<div class="modal-header">
+    <h4 class="modal-title">Status Verladung</h4>
+</div>
+<div class="modal-body">
+    <table class="orderlist">
+        <thead>
+        <td>ID</td>
+        <td>neue ID</td>
+        <td>Text</td>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="status in vm.statuses_verladung track by $index">
+            <td>{{status.ID}}</td>
+            <td><input ng-model="status.newID" placeholder="{{status.ID}}"></td>
+            <td><input style="min-width: 60em" ng-model="status.Text" placeholder="{{status.Text}}"></td>
+            <td>
+                <button class="btn btn-success" ng-click="vm.updateStatusLoading(status)">Speichern</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" ng-click="vm.deleteStatusLoading(status)">Löschen</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="number" ng-model="vm.newStatus.ID"></td>
+            <td><input style="min-width: 60em" ng-model="vm.newStatus.Text"></td>
+            <td>
+                <button class=" btn btn-success" ng-click="vm.addStatusLoading()">Hinzufügen</button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <button ng-click="vm.closePopup()" class="btn btn-default"style="float:right">Schließen</button>
+</div>
+</html>

@@ -1,0 +1,82 @@
+$icon-offset-left: rem(16px);
+$icon-offset-top: rem(16px);
+
+.o-header {
+  &__menu-trigger {
+    // we cannot reuse the integrated button here since it does not support the custom animated icon
+    background: var(--integrated__enabled__fill__default);
+    border: 0;
+    color: var(--integrated__enabled__front__default);
+
+    &-icon {
+      position: relative;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      box-sizing: content-box;
+    }
+
+    // this is an adaption of the ro-clickdummy's menu icon, adjusted for FROK sizing
+    &-icon-bar {
+      background: var(--integrated__enabled__front__default);
+      position: absolute;
+      top: $icon-offset-top;
+      left: $icon-offset-left;
+      margin: 0;
+      display: block;
+      width: rem(18px);
+      height: rem(1px);
+      transition: transform $default-transition-easing $default-transition-timing, opacity $default-transition-easing $default-transition-timing;
+
+      &:nth-child(1) {
+        top: $icon-offset-top + rem(1.5px);
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: $icon-offset-top + rem(7.5px);
+      }
+
+      &:nth-child(4) {
+        top: $icon-offset-top + rem(13.5px);
+      }
+    }
+
+    &:hover {
+      color: var(--integrated__enabled__front__hovered);
+    }
+
+    &:hover &-icon-bar {
+      background: var(--integrated__enabled__front__hovered);
+    }
+
+    &:active {
+      color: var(--integrated__enabled__front__pressed);
+    }
+
+    &:active &-icon-bar {
+      background: var(--integrated__enabled__front__pressed);
+    }
+  }
+
+  // this is an adaption of the ro-clickdummy's menu icon, adjusted for FROK sizing, see above
+  &.-menu-open &__menu-trigger-icon-bar {
+    &:nth-child(1) {
+      transform: scaleX(0) translateY(rem(6px));
+      opacity: 0;
+    }
+
+    &:nth-child(2) {
+      transform: rotate(45deg) scaleX(1.2);
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg) scaleX(1.2);
+    }
+
+    &:nth-child(4) {
+      transform: scaleX(0) translateY(rem(-6px));
+      opacity: 0;
+    }
+  }
+}

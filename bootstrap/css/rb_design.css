@@ -1,0 +1,164 @@
+.rb-button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity cubic-bezier(0.38, 0.04, 0.35, 0.96) 600ms;
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: none;
+  font-weight: 400;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding-right: 25px;
+  padding-left: 25px;
+  height: 38px;
+  font-size: 16px; }
+  .rb-button:active {
+    outline: none; }
+  .rb-button:disabled {
+    cursor: not-allowed; }
+  .rb-button > .rb-icon {
+    margin-right: 0.3em;
+    font-size: 1.35em; }
+
+.rb-button--primary {
+  border-color: #005691;
+  background-color: #005691;
+  color: #fff; }
+  .rb-button--primary:hover {
+    border-color: #7fc6e7;
+    background-color: #7fc6e7; }
+  .rb-button--primary:active {
+    outline: 0;
+    border-color: #008ecf;
+    background-color: #008ecf; }
+  .rb-button--primary:disabled {
+    border-color: #bfc0c2;
+    background-color: #bfc0c2; }
+  @media (hover: none) {
+    .rb-button--primary:hover {
+      border-color: #005691;
+      background-color: #005691; } }
+	  
+.rb-button-lg {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; 
+  transition-duration: 0.1s;
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: none;
+  font-weight: 500;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding-right: 25px;
+  padding-left: 25px;
+  height: 50px;
+  font-size: 20px; }
+  .rb-button:active {
+    outline: none; }
+  .rb-button:disabled {
+    cursor: not-allowed; }
+  .rb-button > .rb-icon {
+    margin-right: 0.3em;
+    font-size: 1.35em; }
+	
+	.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.rb-button-sm {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; 
+  transition-duration: 0.1s;
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: none;
+  font-weight: 400;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 30px;
+  font-size: 14px; }
+  .rb-button:active {
+    outline: none; }
+  .rb-button:disabled {
+    cursor: not-allowed; }
+  .rb-button > .rb-icon {
+    margin-right: 0.3em;
+    font-size: 1.35em; }
+	
+	.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.custom-control-label:before{
+  background-color:white;
+  outline: 1px solid black;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+  background-color:green;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
+.tooltip-inner {
+  max-width: 400px;
+  padding: 0.25rem 0.5rem;
+  color: #fff;
+  text-align: left;
+  background-color: rgb(255, 0, 0);
+  border-radius: 0.25rem;
+}
+
+.modal-body {
+  overflow-x: auto;
+}
+
+.test34 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .test34:hover {
+  filter: brightness(70%);
+}
+ */

@@ -1,0 +1,162 @@
+@mixin checkbox-icon-tile {
+  color: var(--major-accent__enabled__front__default);
+  position: absolute;
+  content: '';
+  left: .75rem;
+}
+
+/* stylelint-disable no-descending-specificity */
+.a-selectable-tile {
+  position: relative;
+
+  &.-small {
+    label {
+      display: flex;
+    }
+
+    .a-text {
+      flex: auto;
+      padding: 0.75rem;
+
+      &__headline {
+        margin: 0;
+      }
+    }
+  }
+
+  &--radio {
+    // visualy hide radio button
+    input[type='radio'] {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+    }
+  }
+
+  &--checkbox {
+    // visualy hide checkbox button
+    input[type='checkbox'] {
+      width: 0;
+      opacity: 0;
+      height: 0;
+      -moz-appearance: none;
+      position: absolute;
+
+      // Cursors Definitions
+      &:hover + label,
+      &:active + label {
+        cursor: pointer;
+      }
+
+      // unselected state
+      &:hover + label .checkbox-container::before {
+        background-color: var(--small__enabled__fill__hovered);
+      }
+
+      &:active + label .checkbox-container::before {
+        background-color: var(--small__enabled__fill__pressed);
+      }
+
+      &:disabled + label .checkbox-container::before {
+        background-color: var(--small__disabled__fill__default);
+        pointer-events: none;
+      }
+
+      &:checked + label .checkbox-container::after {
+
+        @include uiIconForComponents();
+        @include checkbox-icon-tile();
+
+        content: var(--ui-ic-checkmark);
+      }
+
+      // selected state
+      &:checked + label .checkbox-container::before {
+        background-color: var(--major-accent__enabled__fill__default);
+      }
+
+      &:checked:hover + label .checkbox-container::before {
+        background-color: var(--major-accent__enabled__fill__hovered);
+      }
+
+      &:checked:active + label .checkbox-container::before {
+        background-color: var(--major-accent__enabled__fill__pressed);
+      }
+
+      &:checked:disabled {
+        + label .checkbox-container::before {
+          background-color: var(--major-accent__disabled__fill__default);
+        }
+
+        + label .checkbox-container::after {
+          color: var(--major-accent__disabled__front__default);
+        }
+      }
+
+      // Outline for keyboard navigation
+      &:focus-visible + label .checkbox-container::before {
+        outline: auto;
+        outline-offset: 3px;
+      }
+    }
+
+    .checkbox-container {
+      padding: .75rem;
+      display: flex;
+
+      &::before {
+        position: relative;
+        top: 0;
+        left: 0;
+        background-color: var(--small__enabled__fill__default);
+        content: '';
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+
+    &.-small {
+      .a-text {
+        padding: 0.75rem 0.75rem 0.75rem 0;
+      }
+    }
+  }
+
+  label {
+    display: block;
+    border: .0625rem solid var(--small__enabled__fill__default);
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      border: .0625rem solid var(--small__enabled__fill__hovered);
+    }
+  }
+
+  input[type='radio']:checked,
+  input[type='checkbox']:checked {
+    + label::before {
+      content: '';
+      position: absolute;
+      background: transparent;
+      border: .125rem solid var(--major-accent__enabled__fill__default);
+      top: -.125rem;
+      left: -.125rem;
+      right: -.125rem;
+      bottom: -.125rem;
+    }
+
+    + label {
+      border-color: var(--major-accent__enabled__fill__default);
+    }
+  }
+
+  .a-text {
+    padding: .5rem .75rem .75rem;
+
+    &__headline {
+      margin: 0;
+    }
+  }
+}

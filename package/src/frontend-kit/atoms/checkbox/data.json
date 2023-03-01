@@ -1,0 +1,48 @@
+{
+  "name": "checkbox",
+  "documentation": "The client must give an unique ID to every checkbox",
+  "default": {
+    "name": "unselected checkbox",
+    "id": 1,
+    "labelCheckbox": "Checkbox Label"
+  },
+  "variants": [
+    {
+      "name": "unselected checkbox disabled",
+      "id": 2,
+      "labelCheckbox": "Checkbox Label",
+      "isDisabled": true
+    },
+    {
+      "name": "selected checkbox",
+      "id": 3,
+      "labelCheckbox": "Checkbox Label",
+      "isSelected": true
+    },
+    {
+      "name": "multiline label checkbox",
+      "id": 4,
+      "demonstrator": "multilineCheckboxDemonstrator"
+    },
+    {
+      "name": "selected checkbox disabled",
+      "id": 5,
+      "labelCheckbox": "Checkbox Label",
+      "isSelected": true,
+      "isDisabled": true
+    },
+    {
+      "name": "indeterminate checkbox",
+      "id": 6,
+      "labelCheckbox": "Checkbox Label",
+      "indeterminate": true
+    },
+    {
+      "name": "indeterminate checkbox disabled",
+      "id": 7,
+      "labelCheckbox": "Checkbox Label",
+      "indeterminate": true,
+      "isDisabled": true
+    }
+  ]
+}

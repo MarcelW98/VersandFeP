@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head class="modal-header">
+    <h4 class="modal-title">Details</h4>
+</head>
+<body class="modal-body">
+<form name="iPunktForm">
+    <table class="orderlist" ng-if="vm.AuthorizedWrite('kPunkt') || vm.AuthorizedWrite('admin')">
+        <tr>
+            <td style="width: 30%">Spedition</td>
+            <td>{{vm.selectedOrder.Spediteur}}</td>
+        </tr>
+        <tr>
+            <td>Bearbeiter</td>
+            <td>{{vm.selectedOrder.Bearbeiter}}</td>
+        </tr>
+        <tr ng-if="vm.selectedOrder.Auslagerung_Ist != 0">
+            <td>Bisher Ausgelagert:</td>
+            <td>{{vm.selectedOrder.Auslagerung_Ist}}</td>
+        </tr>
+        <tr>
+            <td>Packstücke SOLL : {{vm.selectedOrder.Pack_Soll}}</td>
+            <td> Auslagerung IST :
+                <input type="number" min="0" max="{{vm.selectedOrder.Pack_Soll - vm.selectedOrder.Auslagerung_Ist}}"
+                       ng-model="vm.selectedOrder.Differenz"
+                       placeholder="{{vm.selectedOrder.Differenz}}"
+                       onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>Zeitfenster Auslagerung</td>
+            <td>{{vm.selectedOrder.StorageTimeStart}} - {{vm.selectedOrder.StorageTimeEnd}}</td>
+        </tr>
+        <tr>
+            <td>Status kPunkt</td>
+            <td>
+                <select ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_iPoint"
+                        ng-model="vm.selectedOrder.Fehler_IPunkt1"></select>
+                <select ng-if="vm.selectedOrder.Fehler_IPunkt1 != 0" ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_iPoint"
+                        ng-model="vm.selectedOrder.Fehler_IPunkt2"></select>
+                <select ng-if="vm.selectedOrder.Fehler_IPunkt2 != 0" ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_iPoint"
+                        ng-model="vm.selectedOrder.Fehler_IPunkt3"></select>
+                <div
+                        ng-if="(vm.selectedOrder.Pack_Soll != vm.selectedOrder.Differenz) && vm.selectedOrder.Fehler_IPunkt1 === 0 && vm.selectedOrder.Fehler_IPunkt2 === 0 && vm.selectedOrder.Fehler_IPunkt3 === 0"
+                        style="color: red"> <b>Statusmeldung wird benötigt</b></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Teilauslagerung</td>
+            <td><input type="checkbox" ng-model="vm.selectedOrder.Ausgelagert"
+                       placeholder="{{vm.selectedOrder.Ausgelagert}}"/></td>
+        </tr>
+        <tr>
+            <td>Bemerkung</td>
+            <td><input style="min-width: 100%" ng-model="vm.selectedOrder.Bemerkung"
+                       placeholder="{{vm.selectedOrder.Bemerkung}}"/></td>
+        </tr>
+    </table>
+</form>
+<div class="modal-footer">
+    <button type="button"
+    ng-disabled="!(vm.selectedOrder.Pack_Soll ===  vm.selectedOrder.Differenz) && vm.selectedOrder.Fehler_IPunkt1 === 0 && vm.selectedOrder.Fehler_IPunkt2 === 0 && vm.selectedOrder.Fehler_IPunkt3 === 0 || iPunktForm.$invalid || !vm.AuthorizedWrite('kPunkt')"
+    class="btn btn-success"
+    ng-click="vm.save()">Auslagern
+</button>
+<button  type="button" class="btn btn-default" ng-click="vm.closePopup()" style="float: left">Schließen</button>
+
+</div>
+</body>
+</html>

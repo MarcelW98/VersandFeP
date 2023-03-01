@@ -1,0 +1,30 @@
+.a-sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 1.5rem;
+  width: auto;
+
+  &.-turquoise {
+    background-color: var(--major-highlight-turquoise__enabled__fill__default);
+    color: var(--small__enabled__front__default);
+  }
+
+  &.-purple {
+    background-color: var(--major-highlight-purple__enabled__fill__default);
+    color: var(--small__enabled__front__default);
+  }
+
+  &.-green {
+    background-color: var(--major-highlight-green__enabled__fill__default);
+    color: var(--small__enabled__front__default);
+  }
+
+  &__label {
+    margin: auto 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+  }
+}

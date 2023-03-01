@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<div style="padding: 0px 10px">
+<div style="position: absolute; right: 10px; top: 5px;">
+    <button class="btn btn-info" ng-click="vm.openLegend()">Legende</button>
+    <button class="btn" ng-if="vm.AuthorizedWrite('monitor')" ng-click="vm.logout()">Logout</button>
+    <input type="button" ng-if="!vm.AuthorizedWrite('monitor')" onclick="window.location.href='#!/login';" class="btn" value="Login" />
+</div>
+<div style="position: absolute; top: 5px; right: 15%; color: red; width: 50%">
+    {{vm.dataStatus}}
+</div>
+<h2>Monitor</h2>
+<div ng-if="vm.AuthorizedWrite('monitor')" style="margin-bottom:10px;">
+        <button class="btn btn-default" ng-click="vm.showFilter()">Filter Datum</button>
+        <button class="btn btn-default" id="Vortag" ng-click="vm.Vortag()">Letzter Werktag anzeigen</button>
+    </div>
+    <div ng-if="vm.AuthorizedWrite('monitor')" ng-show="vm.showFilterOptions">
+           <div style="display: inline">
+               <div style="display: inline-block">Datum Anfang: </div>
+               <div style="display: inline-block">
+                <input
+                        type="text"
+                        uib-datepicker-popup="dd.MM.yyyy"
+                        placeholder="{{vm.filterDateStart| date:'dd.MM.yyyy'}}"
+                        ng-model="vm.filterPreDateStart"
+                        is-open="status.opened"
+                        show-button-bar="false"
+                        ng-click="status.opened = true; vm.filterChangeMaxDate()"                     
+                        datepicker-options="filterMaxDateOption"
+                        ng-required="true"
+                        close-text="Close"> </div>
+               <div style="display: inline-block">Datum Ende: </div>
+               <div style="display: inline-block">
+                    <input
+                            type="text"
+                            uib-datepicker-popup="dd.MM.yyyy"
+                            placeholder="{{vm.filterDateStart| date:'dd.MM.yyyy'}}"
+                            ng-model="vm.filterPreDateEnd"
+                            is-open="statusEnd.opened"
+                            show-button-bar="false"
+                            ng-click="statusEnd.opened = true; vm.filterChangeMinDate()"                           
+                            datepicker-options="filterMinDateOption"
+                            ng-required="true"
+                            close-text="Close">
+                </div>
+                </div>    
+                <div style="margin-top: 5px">
+                    <div style="display: inline-block">Bearbeiter: </div>
+                    <div style="display: inline-block;margin-left: 31px">
+                        <input 
+                        type="text"
+                        ng-model = "vm.filterName"
+                        placeholder="Name"></input>
+                    </div>
+                </div>                   
+        <div style = "margin:5px 0">            
+            <button class="btn btn-secondary" ng-click="vm.applyFilter()">Übernehmen</button>
+        </div>
+        <div style = "margin: 5px 0">
+                <span>Filter Aktiv</span>
+                <span><input type="checkbox" ng-model="vm.filterPreSend" placeholder="vm.filterPreSend"></span>
+        </div>        
+    </div>  
+<div style="margin-bottom: 5px">
+    <button class="btn" ng-if="vm.AuthorizedWrite('monitor') && vm.monitorViewFilter" ng-click="vm.monitorFilter()">
+        Durchsprache
+    </button>
+    <button class="btn" ng-if="vm.AuthorizedWrite('monitor') && !vm.monitorViewFilter" ng-click="vm.monitorFilter()">
+        Gesamtübersicht
+    </button>
+</div>
+<div style="overflow-x:auto;">
+    <div ng-if="!vm.monitorViewFilter">
+        <table class="orderlist">
+            <thead>
+            <tr>
+                <th colspan="6" class="zuteilung" style="text-align: center; font-size: medium !important;">Zuteilung</th>
+                <th colspan="3" class="bereitstellung" style="text-align: center; font-size: medium !important;">Bereitstellung</th>
+                <th colspan="3" class="verladung" style="text-align: center; font-size: medium !important;">Verladung</th>
+                <th colspan="2"></th>
+                
+            </tr>
+            <tr>
+                <th class="zuteilung">Spedition</th>
+                <th class="zuteilung">Bearbeiter</th>
+                <th class="zuteilung">Versand-<br/>datum SOLL</th>
+                <th class="zuteilung">Zeitfenster<br/>Spedition SOLL</th>
+                <th class="zuteilung">Status<br/>Büro/Werkstatt</th>
+                <th class="zuteilung">Packstücke<br/>SOLL</th>
+                <th class="bereitstellung">Auslagerung<br/>IST</th>
+                <th class="bereitstellung">Auslager<br/>Zeitfenster</th>
+                <th class="bereitstellung">Status<br/>kPunkt</th>
+                <th class="verladung">Status<br/>Verladung</th>
+                <th class="verladung">Zeitfenster<br/>Spedition IST</th>
+                <th class="verladung">Versand-<br/>datum IST</th>
+                <th>Bemerkung</th>
+                <th>Durchsprache<br/>erfolgt</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in vm.orders | orderBy: ['Datum', 'Plan_Ankunft', 'Plan_Abfahrt']" ng-click="vm.openDetailPopup(order)"
+                ng-class="{priorisierung: order.Priorisierung == true}">
+                <td>{{order.Spediteur}}</td>
+                <td>{{order.Bearbeiter}}</td>
+                <td>{{order.Datum | date: 'dd.MM.yyyy'}}</td>
+                <td style="min-width: 8em">{{order.Plan_Ankunft}} - {{order.Plan_Abfahrt}}</td>
+                <td>{{order.Fehler_Buero}}</td>
+                <td>{{order.Pack_Soll}}</td>
+                <td>{{order.Auslagerung_Ist}}</td>
+                <!--  <td ng-class="{allReady: (order.Pack_Soll - order.Auslagerung_Ist) == 0, zeroReady: order.Auslagerung_Ist == 0 ,  notAllReady:(order.Pack_Soll - order.Auslagerung_Ist)>0}">-->
+                <td style="min-width: 8em">{{order.StorageTimeStart}} - {{order.StorageTimeEnd}}</td>
+                <td style="min-width: 5em"><span>{{order.Fehler_IPunkt1}}<span ng-if="order.Fehler_IPunkt2 != 0"> : {{order.Fehler_IPunkt2}}<span
+                        ng-if="order.Fehler_IPunkt3 != 0"> : {{order.Fehler_IPunkt3}}</span></span></span></td>
+                <td style="min-width: 5em"><span>{{order.Fehler_Verladung1}}<span ng-if="order.Fehler_Verladung2 != 0"> : {{order.Fehler_Verladung2}}<span
+                        ng-if="order.Fehler_Verladung3 != 0"> : {{order.Fehler_Verladung3}}</span></span></span></td>
+                <td style="min-width: 8em">{{order.Ist_Ankunft}} - {{order.Ist_Abfahrt}}</td>
+                <td>{{order.Versanddatum | date: 'dd.MM.yyyy'}}</td>
+                <td class="Comment">{{order.Bemerkung}}</td>
+                <td ng-click=" vm.saveD(order); $event.stopPropagation();">
+                    <input type="checkbox"
+                           ng-model="order.Durchsprache"
+                           placeholder="{{order.Durchsprache}}"
+                           ng-if="vm.AuthorizedWrite('monitor') && (order.Fehler_IPunkt1 != 0 || order.Fehler_IPunkt2 != 0 || order.Fehler_IPunkt3 != 0 || order.Fehler_Verladung1 != 0|| order.Fehler_Verladung2 != 0|| order.Fehler_Verladung3 != 0)"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-if="vm.monitorViewFilter">
+<!------------------------------------------------------------------- monitor view fo today ------------------------------------------------------------------>
+        <table class="orderlist">
+            <thead>
+            <tr>
+                <th>Spedition/Kunde</th>
+                <th>Bearbeiter</th>
+                <th>Zeitfenster<br/>Verladung</th>
+                <th>Versanddatum<br/>SOLL</th>
+                <th style="text-align: center !important;">Z</th>
+                <th style="text-align: center !important;">B</th>
+                <th style="text-align: center !important;">V</th>
+                <th style="width: 5%"></th>
+                <th>Verladene<br/>Packstücke</th>
+                <th>Versanddatum<br/>IST</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in vm.orders | orderBy: ['Datum', 'Plan_Ankunft', 'Plan_Abfahrt']" ng-click="vm.openDetailPopup(order)"  ng-class="{priorisierung: order.Priorisierung == true}">
+                <td>{{order.Spediteur}}</td>
+                <td>{{order.Bearbeiter}}</td>
+                <td style="min-width: 8em">{{order.Plan_Ankunft}} - {{order.Plan_Abfahrt}}</td>
+                <td >{{order.Datum | date: 'dd.MM.yyyy'}}</td>
+                <td style="width: 30px"><span class="dot" ng-class="{allReady: order.Fehler_Buero === 0, notAllReady: order.Fehler_Buero != 0 || (order.Ausgelagert === true && order.Pack_Soll != order.Auslagerung_Ist)}"></span></td>
+                <td style="width: 30px"><span class="dot" ng-class="{nothing: (order.kPointRelevant=== false), notAllReady: (order.Ausgelagert === true && (order.Pack_Soll != order.Auslagerung_Ist || order.Fehler_Buero != 0 )), allReady: (order.Ausgelagert === true && order.Pack_Soll === order.Auslagerung_Ist), zeroReady: order.Ausgelagert === false}"></span></td>
+                <td style="width: 30px"><span class="dot" ng-class="{zeroReady: order.Versand === false, notAllReady: ((order.Ist_Abfahrt > order.Plan_Abfahrt)||(order.Ist_Ankunft < order.Plan_Ankunft )) && order.Versand === true, allReady:((order.Ist_Abfahrt < order.Plan_Abfahrt)||(order.Ist_Ankunft > order.Plan_Ankunft )) && order.Versand === true}"></span></td>
+                <td></td>
+                <td><span ng-if="order.Versand === false"></span><span ng-if="order.Versand === true">{{order.Auslagerung_Ist}}</span></td>
+                <!--  <td ng-class="{allReady: (order.Pack_Soll - order.Auslagerung_Ist) == 0, zeroReady: order.Auslagerung_Ist == 0 ,  notAllReady:(order.Pack_Soll - order.Auslagerung_Ist)>0}">-->
+                <td>{{order.Versanddatum | date: 'dd.MM.yyyy'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>  
+
+</html>

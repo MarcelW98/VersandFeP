@@ -1,0 +1,59 @@
+{
+  "name": "text area",
+  "default": {
+    "id": "1",
+    "name": "Standard text area"
+  },
+  "variants": [
+    {
+      "id": "2",
+      "name": "Standard text area disabled",
+      "disabled": true
+    },
+    {
+      "id": "3",
+      "name": "Standard text area label",
+      "label": "Label"
+    },
+    {
+      "id": "4",
+      "name": "Standard text area very long label",
+      "label": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae omnis labore consequatur distinctio provident voluptatum nisi recusandae quod asperiores quo, architecto cum nesciunt nemo, vel minima possimus et blanditiis numquam, cupiditate deserunt fugit delectus earum ducimus alias! Quam atque laborum tempore alias magnam tenetur fuga facere totam, harum, ipsa sit!"
+    },
+    {
+      "id": "5",
+      "name": "Standard text area label and placeholder",
+      "placeholder": "Type something",
+      "label": "Label"
+    },
+    {
+      "id": "6",
+      "name": "Standard text area placeholder",
+      "placeholder": "Type something"
+    },
+    {
+      "id": "7",
+      "name": "Standard text area dynamic Height",
+      "dynamicHeight": true
+    },
+    {
+      "id": "8",
+      "name": "Standard text area disabled dynamic Height",
+      "disabled": true,
+      "dynamicHeight": true
+    },
+    {
+      "id": "9",
+      "name": "Standard text area placeholder dynamic Height",
+      "placeholder": "Type something",
+      "dynamicHeight": true
+    },
+    {
+      "id": "10",
+      "name": "Disabled text area placeholder dynamic Height",
+      "placeholder": "Type something",
+      "disabled": true,
+      "dynamicHeight": true
+    }
+  ]
+}

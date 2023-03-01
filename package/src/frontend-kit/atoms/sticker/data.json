@@ -1,0 +1,29 @@
+{
+  "name": "sticker",
+  "default": {
+    "name": "primary",
+    "label": "Label"
+  },
+  "variants": [
+    {
+      "name": "secondary",
+      "label": "Label"
+    },
+	  {
+      "name": "contrast",
+      "label": "Label"
+    },
+	  {
+      "name": "turquoise",
+      "label": "Label"
+    },
+    {
+      "name": "purple",
+      "label": "Label"
+    },
+    {
+      "name": "green",
+      "label": "Label"
+    }
+  ]
+}

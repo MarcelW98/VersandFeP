@@ -1,0 +1,51 @@
+/* stylelint-disable max-nesting-depth, selector-max-compound-selectors, selector-max-id */
+.o-header {
+  &__logo {
+    height: rem(48px);
+    width: rem(140px);
+    // this defines the logo's safe zone at this size; any change in dimension also needs to update this.
+    padding: rem(12px) rem(15px) rem(12px) rem(16px);
+    // we can, however, bank on the 1rem margin already there in the header and save some space
+    margin-left: rem(-16px);
+    // same with the padding around the integrated-button icon to the right
+    margin-right: rem(-15px);
+    outline-offset: rem(-2px);
+
+    svg {
+      height: 100%;
+      width: auto;
+
+      #bosch-logo-text {
+        fill: #ea0016;
+
+        .-dark-mode & {
+          fill: var(--plain__enabled__front__default);
+        }
+      }
+
+      #bosch-logo-anker {
+        fill: var(--plain__enabled__front__default);
+      }
+    }
+  }
+}
+
+@include tablet-and-up {
+  .o-header {
+    &__logo {
+      height: rem(64px);
+      width: auto;
+      padding: rem(16px) rem(21px);
+    }
+  }
+}
+
+@include desktop-and-up {
+  .o-header {
+    &__logo {
+
+      /* finally, enough space again */
+      margin-left: rem(-21px);
+    }
+  }
+}

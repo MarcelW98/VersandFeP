@@ -1,0 +1,177 @@
+{
+  "name": "menu item",
+  "default": {
+    "name": "Default",
+    "label": "Label",
+    "url": "/#"
+  },
+  "variants": [
+    {
+      "name": "Default disabled",
+      "label": "Label",
+      "url": "/#",
+      "isDisabled": true
+    },
+    {
+      "name": "With divider",
+      "label": "Label",
+      "url": "/#",
+      "hasDivider": true
+    },
+    {
+      "name": "With divider disabled",
+      "label": "Label",
+      "url": "/#",
+      "hasDivider": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With icon",
+      "label": "Label",
+      "iconName": "emoji-happy",
+      "url": "/#"
+    },
+    {
+      "name": "With icon disabled",
+      "label": "Label",
+      "iconName": "emoji-happy",
+      "url": "/#",
+      "isDisabled": true
+    },
+    {
+      "name": "With icon and divider",
+      "label": "Label",
+      "iconName": "emoji-happy",
+      "url": "/#",
+      "hasDivider": true
+    },
+    {
+      "name": "With icon and divider disabled",
+      "label": "Label",
+      "iconName": "emoji-happy",
+      "url": "/#",
+      "hasDivider": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With arrow right",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowRight": true
+    },
+    {
+      "name": "Disabled with arrow right",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowRight": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With arrow right and divider",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowRight": true,
+      "hasDivider": true
+    },
+    {
+      "name": "Disabled with arrow right and divider",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowRight": true,
+      "hasDivider": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With icon and arrow right",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowRight": true
+    },
+    {
+      "name": "Disabled with icon and arrow right",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowRight": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With icon, arrow right and divider",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowRight": true,
+      "hasDivider": true
+    },
+    {
+      "name": "Disabled with icon, arrow right and divider",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowRight": true,
+      "hasDivider": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With arrow down",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowDown": true
+    },
+    {
+      "name": "Disabled with arrow down",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowDown": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With arrow down and divider",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowDown": true,
+      "hasDivider": true
+    },
+    {
+      "name": "Disabled with arrow down and divider",
+      "label": "Label",
+      "url": "/#",
+      "hasArrowDown": true,
+      "hasDivider": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With icon and arrow down",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowDown": true
+    },
+    {
+      "name": "Disabled with icon and arrow down",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowDown": true,
+      "isDisabled": true
+    },
+    {
+      "name": "With icon, arrow down and divider",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowDown": true,
+      "hasDivider": true
+    },
+    {
+      "name": "Disabled with icon, arrow down and divider",
+      "label": "Label",
+      "url": "/#",
+      "iconName": "emoji-happy",
+      "hasArrowDown": true,
+      "hasDivider": true,
+      "isDisabled": true
+    }
+  ]
+}

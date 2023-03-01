@@ -1,0 +1,100 @@
+.a-notification {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: rem(12px) rem(16px);
+  color: var(--minor-signal-neutral__enabled__front__default);
+  background-color: var(--minor-signal-neutral__enabled__fill__default);
+
+  .a-icon {
+    margin-left: rem(-4px);
+  }
+
+  // banner variants will always be shown on the bottom of the screen
+  &--banner {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+
+    // the margins are different here - 8px is the smallest margin (for the close button)
+    padding: rem(8px);
+
+    // don't show the banner by default
+    /* stylelint-disable a11y/no-display-none */
+    &:not(.-show) {
+      display: none;
+    }
+
+    > .a-icon {
+      font-size: rem(32px);
+      // the icons add some more margins; 8px from above + 8px here = 16px from spec
+      margin-top: rem(8px);
+      margin-left: rem(8px);
+      margin-bottom: rem(8px);
+
+      + .a-notification__content {
+        // with an icon, the margins are set by the icon
+        // if not (see below) the content will bring it's own margin
+        margin-left: 0;
+      }
+    }
+  }
+
+  &--banner .a-button--integrated {
+    justify-self: flex-end;
+    margin-left: auto;
+  }
+
+  /* stylelint-disable no-descending-specificity */
+  &--banner &__content {
+    // margin to the close button
+    margin-right: rem(38px);
+    // 8px padding + 12px margin = 20px distance to border
+    margin-top: rem(12px);
+    margin-bottom: rem(12px);
+
+    // default case: no icon, so the distance has to come from the content
+    // 8px padding + 24px margin = 30px distance to the border
+    margin-left: rem(24px);
+    max-width: rem(1280px);
+  }
+
+  // links inherit the type colors
+  a,
+  a:visited,
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  // the icon-to-content distance
+  > .a-icon {
+    margin-right: rem(12px);
+    flex-shrink: 0;
+  }
+
+  &.-success {
+    color: var(--minor-signal-success__enabled__front__default);
+    background-color: var(--minor-signal-success__enabled__fill__default);
+  }
+
+  &.-warning {
+    color: var(--minor-signal-warning__enabled__front__default);
+    background-color: var(--minor-signal-warning__enabled__fill__default);
+  }
+
+  &.-error {
+    color: var(--minor-signal-error__enabled__front__default);
+    background-color: var(--minor-signal-error__enabled__fill__default);
+  }
+
+  &--text {
+    padding: rem(4px) rem(16px);
+
+    .a-icon {
+      margin-right: rem(6px);
+    }
+  }
+}

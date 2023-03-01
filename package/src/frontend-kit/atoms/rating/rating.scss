@@ -1,0 +1,134 @@
+.a-rating {
+  width: auto;
+  display: flex;
+
+  .a-rating__star-container {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .a-rating__label-container {
+    display: flex;
+  }
+
+  // star button styling
+  .a-icon {
+    cursor: pointer;
+    color: var(--major-highlight-blue__enabled__fill__default);
+  }
+
+  &:hover {
+    .a-icon {
+      color: var(--major-highlight-blue__enabled__fill__hovered);
+    }
+  }
+
+  &:active {
+    .a-icon {
+      color: var(--major-highlight-blue__enabled__fill__pressed);
+    }
+  }
+
+  &__label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+
+    &--complete {
+      font-weight: normal;
+    }
+  }
+
+  &--large {
+    .a-rating__star-container {
+      label {
+        padding-right: .7rem;
+      }
+
+      > :last-child {
+        padding-right: 0;
+      }
+    }
+
+    .a-rating__label-container {
+      margin-left: .7rem;
+      column-gap: .5rem;
+    }
+
+    .a-icon {
+      font-size: 2rem;
+    }
+
+    .a-rating__label {
+      @include size-xl;
+    }
+  }
+
+  &--small {
+    .a-rating__star-container {
+      label {
+        padding-right: .125rem;
+      }
+
+      > :last-child {
+        padding-right: 0;
+      }
+    }
+
+    .a-rating__label-container {
+      margin-left: .25rem;
+      column-gap: .25rem;
+    }
+
+    .a-icon {
+      font-size: 1rem;
+    }
+
+    .a-rating__label {
+      @include size-s;
+    }
+  }
+
+  &--link {
+    cursor: pointer;
+
+    a {
+      display: flex;
+      text-decoration: none;
+    }
+
+    .a-rating__label {
+      color: var(--plain__enabled__front__default);
+    }
+
+    label {
+      pointer-events: none;
+    }
+  }
+
+  &--disabled {
+    pointer-events: none;
+
+    .a-icon {
+      color: var(--plain__disabled__front__default);
+    }
+
+    &:hover {
+      .a-icon {
+        color: var(--plain__disabled__front__default);
+      }
+    }
+  }
+
+  label {
+    display: flex;
+  }
+
+  // hide input radio
+  input[type='radio'] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+}

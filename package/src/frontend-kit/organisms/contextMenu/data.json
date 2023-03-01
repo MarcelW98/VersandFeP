@@ -1,0 +1,146 @@
+{
+  "name": "Context Menu",
+  "default": {
+    "name": "Default",
+    "links": [
+      {
+        "label": "Label with icon",
+        "iconName": "emoji-happy",
+        "url": "/#"
+      },
+      {
+        "label": "Label with icon disabled",
+        "iconName": "emoji-happy",
+        "url": "/#",
+        "isDisabled": true
+      },
+      {
+        "label": "Group",
+        "hasArrowDown": true,
+        "url": "/#",
+        "subNavigation": [
+          {
+            "label": "Sub Item",
+            "url": "/#"
+          },
+          {
+            "label": "Sub Item",
+            "url": "/#"
+          },
+          {
+            "label": "Sub Item",
+            "url": "/#",
+            "hasDivider": true
+          }
+        ]      
+      },
+      {
+        "label": "Group",
+        "url": "/#",
+        "hasArrowDown": true,
+        "subNavigation": [
+          {
+            "label": "Sub Item",
+            "url": "/#"
+          },
+          {
+            "label": "Sub Item",
+            "url": "/#"
+          },
+          {
+            "label": "Sub Item",
+            "url": "/#",
+            "hasDivider": true
+          }
+        ]
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "Subnavigation on the side",
+      "links": [
+        {
+          "label": "Label with icon",
+          "hasArrowRight": true,
+          "url": "/#",
+          "subNavigation": [
+            {
+              "label": "Sub item",
+              "url": "/#"
+            },
+            {
+              "label": "Sub item with long label",
+              "url": "/#"
+            },
+            {
+              "label": "Sub item with very very long label",
+              "url": "/#"
+            }
+          ],
+          "iconName": "emoji-happy"
+        },
+        {
+          "label": "Label with icon disabled",
+          "iconName": "emoji-happy",
+          "url": "/#",
+          "isDisabled": true
+        },
+        {
+          "label": "Label",
+          "hasArrowRight": true,
+          "url": "/#",
+          "subNavigation": [
+            {
+              "label": "Sub item",
+              "url": "/#"
+            },
+            {
+              "label": "Sub item with long label",
+              "url": "/#"
+            },
+            {
+              "label": "Sub item with very very long label",
+              "url": "/#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Demo for Free version",
+      "demonstrator": "contextMenuDemonstrator",
+      "isPopoverArrowMissing": true,
+      "links": [
+        {
+          "label": "Label",
+          "hasArrowRight": true,
+          "url": "/#",
+          "subNavigation": [
+            {
+              "label": "Sub item",
+              "url": "/#"
+            },
+            {
+              "label": "Sub item with long label",
+              "url": "/#"
+            },
+            {
+              "label": "Sub item with very very long label",
+              "url": "/#"
+            }
+          ]
+        },        
+        {
+          "label": "Label with icon",
+          "iconName": "emoji-happy",
+          "url": "/#"
+        },
+        {
+          "label": "Label",
+          "url": "/#"
+        }   
+      ]
+    }
+  ]
+}

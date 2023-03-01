@@ -1,0 +1,192 @@
+{
+  "name": "Header",
+  "default": {
+    "name": "Page header",
+    "quicklinks": [
+      {
+        "label": "Login",
+        "icon": "login"
+      },
+      {
+        "label": "Contact",
+        "icon": "chat"
+      }
+    ],
+    "includeSearch": true,
+    "searchSuggestions": [
+      {
+        "text": "Product XYZ Lorem ipsum dolor",
+        "highlight": "Product XYZ",
+        "href": "#"
+      },
+      {
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr Product XYZ another line can be very long or very short, however when text breaks and the Product XYZ is mentioned again, we should highlight this",
+        "highlight": "we should highlight this",
+        "href": "#"
+      },
+      {
+        "text": "Lorem ipsum Product XYZ",
+        "highlight": "Product XYZ",
+        "href": "#"
+      },
+      {
+        "text": "Product XYZ Lorem ipsum dolor",
+        "highlight": "Product XYZ",
+        "href": "#"
+      }
+    ],
+    "breadcrumbs": [
+      "News and Stories",
+      "Internet of Things",
+      "Page Name"
+    ],
+    "subbrand": "Subbrand identifier",
+    "navigation": [
+      {
+        "label": "Products & Services",
+        "subNavigation": [
+          {
+            "label": "Mobility"
+          },
+          {
+            "label": "At home"
+          },
+          {
+            "label": "Industry and trades"
+          },
+          {
+            "label": "Connected products and services"
+          },
+          {
+            "label": "Market-specific solutions"
+          }
+        ]
+      },
+      {
+        "label": "Internet of Things",
+        "subNavigation": [
+          {
+            "label": "Connected living"
+          },
+          {
+            "label": "Connected mobility"
+          },
+          {
+            "label": "External link",
+            "isExternal": true
+          },
+          {
+            "label": "Connected industry"
+          },
+          {
+            "label": "Connected lorem"
+          },
+          {
+            "label": "Connected ipsum"
+          }
+        ]
+      },
+      {
+        "label": "Stories",
+        "subNavigation": [
+          {
+            "label": "Sustainability #LikeABosch"
+          },
+          {
+            "label": "Tech for transition"
+          },
+          {
+            "label": "#NextBigThing"
+          },
+          {
+            "label": "External link",
+            "isExternal": true
+          },
+          {
+            "label": "Artificial Intelligence"
+          },
+          {
+            "label": "Distributed Ledger Technology"
+          },
+          {
+            "label": "Drive #LikeABosch"
+          },
+          {
+            "label": "Podcast – From KNOW-HOW to WOW"
+          }
+        ]
+      },
+      {
+        "label": "Company",
+        "subNavigation": [
+          {
+            "label": "Our People",
+            "subNavigation": [
+              {
+                "label": "Board of management"
+              },
+              {
+                "label": "Supervisory board"
+              },
+              {
+                "label": "Robert Bosch Industrietreuhand KG"
+              },
+              {
+                "label": "External link",
+                "isExternal": true
+              },
+              {
+                "label": "Honorary chairman"
+              }
+            ]
+          },
+          {
+            "label": "Annual report and figures",
+            "subNavigation": [
+              {
+                "label": "Annual report"
+              },
+              {
+                "label": "Key figures"
+              },
+              {
+                "label": "Business sectors"
+              },
+              {
+                "label": "Ownership structure"
+              },
+              {
+                "label": "Brands"
+              }
+            ]
+          },
+          {
+            "label": "Our history"
+          },
+          {
+            "label": "Sustainability"
+          },
+          {
+            "label": "Supply chain"
+          }
+        ]
+      },
+      {
+        "label": "External link",
+        "isExternal": true
+      },
+      {
+        "label": "Research"
+      },
+      {
+        "label": "Careers"
+      }
+    ],
+    "languages": [
+      "Deutsch",
+      "English",
+      "Französisch"
+    ]
+  },
+  "variants": []
+}

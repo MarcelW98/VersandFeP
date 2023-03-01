@@ -1,0 +1,343 @@
+{
+    "name": "Form field",
+    "default": {
+        "name": "Default Form Field"
+    },
+    "variants": [
+        {
+            "name": "Text field with notification",
+            "id": "text-field-1",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Text field with success notification",
+            "id": "text-field-2",
+            "state": "success",
+            "notification": "Good job!"
+        },
+        {
+            "name": "Text field with success notification",
+            "id": "text-field-3",
+            "state": "success",
+            "notification": "Good job! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis architecto illum eveniet molestiae dicta neque aut sapiente voluptate atque, voluptatum illo! Ad fugit harum enim."
+        },
+        {
+            "name": "Text field with warning notification",
+            "id": "text-field-4",
+            "state": "warning",
+            "notification": "This might be bad."
+        },
+        {
+            "name": "Text field with error notification",
+            "id": "text-field-5",
+            "state": "error",
+            "notification": "This is bad and you need to do something."
+        },
+        {
+            "name": "Text area",
+            "id": "text-area-1",
+            "fieldType": "textarea"
+        },
+        {
+            "name": "Text area with notification",
+            "id": "text-area-2",
+            "fieldType": "textarea",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Text area with success notification",
+            "id": "text-area-3",
+            "fieldType": "textarea",
+            "state": "success",
+            "notification": "Good job!"
+        },
+        {
+            "name": "Text area with warning notification",
+            "id": "text-area-4",
+            "fieldType": "textarea",
+            "state": "warning",
+            "notification": "This might be bad."
+        },
+        {
+            "name": "Text area with error notification",
+            "id": "text-area-5",
+            "fieldType": "textarea",
+            "state": "error",
+            "notification": "This is bad and you need to do something."
+        },
+        {
+            "name": "Checkbox",
+            "id": "checkbox-1",
+            "fieldType": "checkbox",
+            "label": "Checkbox Label"
+        },
+        {
+            "name": "Checkbox with notification",
+            "id": "checkbox-2",
+            "fieldType": "checkbox",
+            "label": "Checkbox Label",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Checkbox with success notification",
+            "id": "checkbox-3",
+            "fieldType": "checkbox",
+            "label": "Checkbox Label",
+            "state": "success",
+            "notification": "Good job!"
+        },
+        {
+            "name": "Checkbox with success notification",
+            "id": "checkbox-4",
+            "fieldType": "checkbox",
+            "label": "Checkbox label",
+            "state": "success",
+            "notification": "Good job! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis architecto illum eveniet molestiae dicta neque aut sapiente voluptate atque, voluptatum illo! Ad fugit harum enim."
+        },
+        {
+            "name": "Checkbox with warning notification",
+            "id": "checkbox-5",
+            "fieldType": "checkbox",
+            "label": "Checkbox Label",
+            "state": "warning",
+            "notification": "This might be bad."
+        },
+        {
+            "name": "Checkbox with error notification",
+            "id": "checkbox-6",
+            "fieldType": "checkbox",
+            "label": "Checkbox Label",
+            "state": "error",
+            "notification": "This is bad and you need to do something."
+        },
+        {
+            "name": "Radio button",
+            "id": "radio-button-1",
+            "fieldType": "radio",
+            "label": "Radio button Label"
+        },
+        {
+            "name": "Radio button with notification",
+            "id": "radio-button-2",
+            "fieldType": "radio",
+            "label": "Radio button Label",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Radio button with success notification",
+            "id": "radio-button-3",
+            "fieldType": "radio",
+            "label": "Radio button Label",
+            "state": "success",
+            "notification": "Good job!"
+        },
+        {
+            "name": "Radio button with warning notification",
+            "id": "radio-button-4",
+            "fieldType": "radio",
+            "label": "Radio button Label",
+            "state": "warning",
+            "notification": "This might be bad."
+        },
+        {
+            "name": "Radio button with error notification",
+            "id": "radio-button-5",
+            "fieldType": "radio",
+            "label": "Radio button Label",
+            "state": "error",
+            "notification": "This is bad and you need to do something."
+        },
+        {
+            "name": "Dropdown",
+            "id": "dropdown-1",
+            "fieldType": "dropdown",
+            "options": [
+                {
+                    "name": "Option 1",
+                    "value": "value1"
+                },
+                {
+                    "name": "Option 2",
+                    "value": "value2"
+                },
+                {
+                    "name": "Option 3",
+                    "value": "value3"
+                }
+            ]
+        },
+        {
+            "name": "Dropdown with notification",
+            "id": "dropdown-2",
+            "fieldType": "dropdown",
+            "options": [
+                {
+                    "name": "Option 1",
+                    "value": "value1"
+                },
+                {
+                    "name": "Option 2",
+                    "value": "value2"
+                },
+                {
+                    "name": "Option 3",
+                    "value": "value3"
+                }
+            ],
+            "notification": "This is optional"
+        },
+        {
+            "name": "Dropdown with success notification",
+            "id": "dropdown-3",
+            "fieldType": "dropdown",
+            "options": [
+                {
+                    "name": "Option 1",
+                    "value": "value1"
+                },
+                {
+                    "name": "Option 2",
+                    "value": "value2"
+                },
+                {
+                    "name": "Option 3",
+                    "value": "value3"
+                }
+            ],
+            "state": "success",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Dropdown with warning notification",
+            "id": "dropdown-4",
+            "fieldType": "dropdown",
+            "options": [
+                {
+                    "name": "Option 1",
+                    "value": "value1"
+                },
+                {
+                    "name": "Option 2",
+                    "value": "value2"
+                },
+                {
+                    "name": "Option 3",
+                    "value": "value3"
+                }
+            ],
+            "state": "warning",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Dropdown with error notification",
+            "id": "dropdown-5",
+            "fieldType": "dropdown",
+            "options": [
+                {
+                    "name": "Option 1",
+                    "value": "value1"
+                },
+                {
+                    "name": "Option 2",
+                    "value": "value2"
+                },
+                {
+                    "name": "Option 3",
+                    "value": "value3"
+                }
+            ],
+            "state": "error",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Toggle",
+            "id": "toggle-1",
+            "fieldType": "toggle",
+            "rightLabel": "Toggle label"
+        },
+        {
+            "name": "Toggle with notification",
+            "id": "toggle-2",
+            "fieldType": "toggle",
+            "rightLabel": "Toggle label",
+            "notification": "This is optional"
+        },
+        {
+            "name": "Toggle with success notification",
+            "id": "toggle-3",
+            "fieldType": "toggle",
+            "rightLabel": "Toggle label",
+            "state": "success",
+            "notification": "Good job!"
+        },
+        {
+            "name": "Toggle with warning notification",
+            "id": "toggle-4",
+            "fieldType": "toggle",
+            "rightLabel": "Toggle label",
+            "state": "warning",
+            "notification": "This might be bad."
+        },
+        {
+            "name": "Toggle with error notification",
+            "id": "toggle-5",
+            "fieldType": "toggle",
+            "rightLabel": "Toggle label",
+            "state": "error",
+            "notification": "This is bad and you need to do something."
+        },
+        {
+            "name": "Text field API demonstration",
+            "id": "text-field-demo",
+            "fieldType": "text",
+            "demonstrator": "notificationFormFieldDemonstrator"
+        },
+        {
+            "name": "Text area API demonstration",
+            "id": "text-area-demo",
+            "fieldType": "textarea",
+            "demonstrator": "notificationFormFieldDemonstrator"
+        },
+        {
+            "name": "Checkbox API demonstration",
+            "id": "checkbox-demo",
+            "fieldType": "checkbox",
+            "label": "Checkbox Label",
+            "demonstrator": "notificationFormFieldDemonstrator"
+        },
+        {
+            "name": "Radio button API demonstration",
+            "id": "radio-button-demo",
+            "fieldType": "radio",
+            "label": "Radio button Label",
+            "demonstrator": "notificationFormFieldDemonstrator"
+        },
+        {
+            "name": "Dropdown API demonstration",
+            "id": "dropdown-demo",
+            "fieldType": "dropdown",
+            "options": [
+                {
+                    "name": "Option 1",
+                    "value": "value1"
+                },
+                {
+                    "name": "Option 2",
+                    "value": "value2"
+                },
+                {
+                    "name": "Option 3",
+                    "value": "value3"
+                }
+            ],
+            "demonstrator": "notificationFormFieldDemonstrator"
+        },
+        {
+            "name": "Toggle API demonstration",
+            "id": "toggle-demo",
+            "fieldType": "toggle",
+            "rightLabel": "toggle Label",
+            "demonstrator": "notificationFormFieldDemonstrator"
+        }
+    ]
+}

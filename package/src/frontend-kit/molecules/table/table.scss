@@ -1,0 +1,46 @@
+$padding-left-right: 1rem;
+$padding-top-bottom: 0.75rem;
+
+.m-table {
+  border-collapse: collapse;
+  font-size: rem(16px);
+  line-height: 1.45;
+  width: 100%;
+
+  td,
+  th {
+
+    @include text-regular;
+
+    height: 3rem;
+    line-height: 0.9rem;
+    box-sizing: border-box;
+    padding: $padding-top-bottom $padding-left-right;
+    border: 0;
+    border-bottom: 0.06rem;
+    border-style: solid;
+    border-color: var(--plain__disabled__front__default);
+
+    > .a-icon {
+      vertical-align: text-bottom;
+    }
+  }
+
+  th {
+    font-weight: 700;
+  }
+
+  thead th {
+    border-color: var(--plain__enabled__front__default);
+  }
+
+  th:first-child,
+  td:first-child {
+    padding-left: $padding-left-right;
+  }
+
+  th:last-child,
+  td:last-child {
+    padding-right: $padding-left-right;
+  }
+}

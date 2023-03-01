@@ -1,0 +1,26 @@
+{
+  "name": "radio button",
+  "default": {
+    "name": "default",
+    "label": "Radio Button Label",
+    "id": 1,
+    "value": "test"
+  },
+  "variants": [
+    {
+      "name": "disabled unchecked",
+      "label": "Radio Button Label",
+      "id": 2,
+      "disabled": true,
+      "value": "test"
+    },
+    {
+      "name": "disabled checked",
+      "label": "Radio Button Label",
+      "id": 3,
+      "disabled": true,
+      "checked": true,
+      "value": "test"
+    }
+  ]
+}

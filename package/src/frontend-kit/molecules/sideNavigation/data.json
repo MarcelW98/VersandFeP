@@ -1,0 +1,79 @@
+{
+  "name": "Side navigation",
+  "default": {
+    "name": "Default",
+    "appName": "App name",
+    "demonstrator": "sideNavigationDemonstrator",
+    "menuItems": [
+      {
+        "label": "Login",
+        "icon": "login",
+        "url": "#"
+      },
+      {
+        "label": "Contact",
+        "icon": "chat",
+        "url": "#"
+      },
+      {
+        "label": "Group",
+        "icon": "battery-0",
+        "subItems": [
+          {
+            "label": "label 1",
+            "url": "#"
+          },
+          {
+            "label": "label 2",
+            "url": "#",
+            "isDisabled": true
+          },
+          {
+            "label": "label 3",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "label": "Group 2 with some extended labels",
+        "icon": "bicycle-e",
+        "subItems": [
+          {
+            "label": "label 1",
+            "url": "#"
+          },
+          {
+            "label": "label 2",
+            "url": "#"
+          }
+        ],
+        "isDisabled": true
+      },
+      {
+        "label": "Group 3 with some extended labels",
+        "icon": "agility",
+        "subItems": [
+          {
+            "label": "label 1",
+            "url": "#"
+          },
+          {
+            "label": "label 2",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "label": "atom",
+        "icon": "atom",
+        "url": "#"
+      },
+      {
+        "label": "fax",
+        "icon": "fax",
+        "url": "#",
+        "isDisabled": true
+      }
+    ]
+  }
+}

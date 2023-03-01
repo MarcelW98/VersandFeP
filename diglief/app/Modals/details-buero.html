@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head class="modal-header">
+    <h4 class="modal-title">Details</h4>
+</head>
+<body class="modal-body">
+<form name="officeDetailForm">
+    <table class="orderlist" ng-if="vm.AuthorizedWrite('buero') || vm.AuthorizedWrite('admin')">
+        <tr>
+            <td style="width: 30%">Spedition</td>
+            <td>
+                {{vm.selectedOrder.Spediteur}}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>earbeiter</td>
+            <td>
+                <input ng-model="vm.selectedOrder.Bearbeiter" placeholder="{{vm.selectedOrder.Bearbeiter}}"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Erstellungsdatum</td>
+            <td>{{vm.selectedOrder.Erstellungs_Datum}}</td>   
+        </tr>
+        <tr>
+            <td>Versanddatum SOLL</td>
+            <td>
+			<input
+                        type="text"
+                        uib-datepicker-popup="dd.MM.yyyy"
+						placeholder="{{vm.selectedOrder.Datum | date:'dd.MM.yyyy'}}"
+                        ng-model="vm.selectedOrder.Datum"
+                        is-open="status.opened"
+						show-button-bar="false"
+                        ng-click="status.opened = true"
+                        datepicker-options="options"
+                        ng-required="true"
+                        close-text="Close">       
+			</td>
+        </tr>
+        <tr>
+            <td>Zeitfenster Spedition</td>
+            <td>{{vm.selectedOrder.Plan_Ankunft}} - {{vm.selectedOrder.Plan_Abfahrt}}</td>
+        </tr>
+        <tr>
+            <td>Packstücke SOLL</td>
+            <td>
+                <input type="number" min="0" ng-model="vm.selectedOrder.Pack_Soll" placeholder="{{vm.selectedOrder.Pack_Soll}}"
+                       onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode === 46 || event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40)'/>
+            </td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>
+                <select ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_buero" ng-model="vm.selectedOrder.Fehler_Buero"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>kPunkt relevant</td>
+            <td><input disabled type="checkbox" ng-model="vm.selectedOrder.kPointRelevant" placeholder="{{vm.newOrder.kPointRelevant}}" /></td>
+        </tr>
+        <tr>
+            <td>Sonderfahrt</td>
+            <td><input disabled type="checkbox" ng-model="vm.selectedOrder.Priorisierung" placeholder="{{vm.newOrder.Priorisierung}}" /></td>
+        </tr>
+        <tr>
+            <td>Bemerkung</td>
+            <td><input style="min-width: 100%;" ng-model="vm.selectedOrder.Bemerkung" placeholder="{{vm.selectedOrder.Bemerkung}}"/></td>
+        </tr>
+    </table>
+    <div class="modal-footer">
+        <button ng-disabled="!vm.AuthorizedWrite('buero') || officeDetailForm.$invalid" type="button" class="btn btn-success" ng-click="vm.save()">Speichern</button>
+        <button ng-disabled="!vm.AuthorizedWrite('buero')" type="button" class="btn btn-danger" ng-click="vm.deleteOrder()">Löschen</button>
+        <button  type="button" class="btn btn-default" ng-click="vm.closePopup()" style="float: left">Schließen</button>
+
+    </div>
+</form>
+
+</body>
+</html>

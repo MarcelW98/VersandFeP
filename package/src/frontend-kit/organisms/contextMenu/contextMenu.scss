@@ -1,0 +1,89 @@
+/* stylelint-disable a11y/no-display-none */
+.o-context-menu {
+  position: relative;
+
+  &__menuSubitems,
+  &__menuSubitems--beside {
+    display: none;
+  }
+  // Reset
+  ul {
+    margin-bottom: 0;
+  }
+
+  a,
+  a:visited {
+    text-decoration: none;
+  }
+
+  .m-popover__content,
+  &__menuItems,
+  &__menuSubitems--beside {
+    padding: 0;
+  }
+
+  .m-popover__content {
+    width: rem(240px);
+  }
+
+  &__trigger[data-frok-action="close"] {
+    display: none;
+  }
+
+  &__menuSubitems--beside {
+    box-shadow: 0 0 0.5rem 0.01rem var(--shadow-fill);
+    position: absolute;
+    top: 0;
+    left: rem(240px);
+    width: rem(240px);
+  }
+
+  &.-open {
+    .o-context-menu__trigger {
+      &[data-frok-action="open"] {
+        display: none;
+      }
+
+      &[data-frok-action="close"] {
+        display: flex;
+      }
+    }
+
+    .m-popover {
+      display: block;
+      z-index: 999;
+    }
+  }
+
+  &.-visible .m-popover {
+    display: block;
+  }
+
+  .a-menu-item {
+    position: relative;
+
+    // Move the popover's arrow (which is made as a square) in the background
+    &:nth-of-type(1) {
+      z-index: 999;
+    }
+
+    &.-open {
+      .o-context-menu__menuSubitems {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        width: 100%;
+      }
+
+      .a-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:hover .o-context-menu__menuSubitems--beside {
+      display: block;
+    }
+  }
+}
+
+/* stylelint-enable a11y/no-display-none */

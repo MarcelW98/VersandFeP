@@ -1,0 +1,386 @@
+/**
+ * in this file, we will reset and overwrite rules from other files, so we need to beat the
+ * specificity; also, since the navigation CSS rules are rather involved, this file is organized
+ * by topics and not the usual order
+ */
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable max-nesting-depth */
+/* stylelint-disable no-duplicate-selectors */
+
+// Step 1 - resets and harmonizations
+.o-header {
+  &__navigation {
+    // buttons and list items are larger in here
+    &-trigger,
+    &-first-level-item {
+
+      @include size-xl;
+    }
+
+    &-sub-level &-trigger {
+
+      @include size-m;
+    }
+
+    &-arrow {
+      font-size: 30px;
+    }
+
+    &-sub-level-item-overview {
+      font-weight: bold;
+    }
+
+    // lists bring their own margin and padding rules
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    // list items do not need decoration, bring their own spacing,
+    // and are completely normal in the flow
+    li {
+      /* stylelint-disable-next-line a11y/content-property-no-static-value */
+      &::before {
+        content: none;
+      }
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100vw;
+    }
+
+    &-first-level-item,
+    &-sub-level-item {
+      margin: 0;
+      padding: 0;
+      position: static;
+    }
+
+    &-first-level {
+      // needs 32px spacing, already has 12px from inner elements
+      padding-top: rem(20px);
+    }
+
+    // since the links and buttons have enough padding to space them from the screen edge,
+    // we don't actually need the container's spacing here (see e-container class definitions)
+    margin-left: rem(-16px);
+    margin-right: rem(-16px);
+
+    // since we're using the trigger's spacing right to the edge of the screen or other elements,
+    // the outline should be a little smaller than usual, inside the spacing, so the outlines do
+    // not get cut off
+    &-trigger,
+    &-trigger a,
+    &-close-trigger {
+      outline-offset: rem(-4px);
+    }
+
+    &-close-trigger .a-icon {
+      font-size: rem(40px);
+    }
+
+    &-close-trigger {
+      display: flex;
+      width: 100vw;
+
+      .a-icon.a-button__icon.boschicon-bosch-ic-arrow-left {
+        margin: unset;
+      }
+    }
+
+    // so that buttons and links are still aligned, we need to adjust their inner spacing to match
+    &-trigger {
+      a {
+        padding: rem(12px) rem(16px);
+      }
+
+      // similarly, full-width buttons should align their text left
+      &.a-button {
+        text-align: left;
+
+        .a-button__label {
+          margin: 0;
+        }
+      }
+
+      // finally, links do look like an "integrated link" in here - a component that does not yet exist
+      a,
+      a:visited {
+        color: var(--integrated__enabled__front__default);
+
+        &:hover {
+          color: var(--integrated__enabled__front__hovered);
+        }
+
+        &:active {
+          color: var(--integrated__enabled__front__pressed);
+        }
+      }
+
+      &--external a {
+        &:hover a::after {
+          text-decoration: none;
+        }
+      }
+
+      // When the link is hovered the arrow gets its color too
+      &:hover + .a-icon {
+        color: var(--integrated__enabled__front__hovered);
+      }
+
+      // When the link is active the arrow gets its color too
+      &:active + .a-icon {
+        color: var(--integrated__enabled__front__pressed);
+      }
+
+      // link or not, underline on hover
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-arrow {
+      padding-right: 1rem;
+    }
+  }
+}
+
+// step 2 - battle of the scrollbars
+
+// We're trying to achieve the following:
+// - the levels are nested in the DOM
+// - each level is scrollable separately
+// - only the current level is scrollable (avoid the scrollbar-in-scrollbar situation)
+
+.o-header {
+  &.-menu-open {
+    // first of all, the header should _never_ make the page scroll,
+    // so that we can use off-canvas techniques without worries
+    overflow-y: hidden;
+  }
+
+  &__navigation {
+    &-first-level,
+    &-sub-level {
+      // by default, do not render any scrollbar
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+
+    // the first level is free to scroll by default
+    &-first-level {
+      overflow-y: auto;
+    }
+
+    // sublevels can only scroll when they're inside an opened entry
+    .-open > &-sub-level {
+      overflow-y: auto;
+    }
+
+    &-first-level,
+    &-sub-level {
+      padding-bottom: rem(64px);
+    }
+  }
+
+  // when any level is open, the first level should stop scrolling and
+  // when the third level is open, the second-level sublevel should stop scrolling, too
+
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  &.-second-level-open &__navigation-first-level,
+  &.-third-level-open &__navigation-first-level,
+  &.-second-level-open &__navigation-sub-level &__navigation-sub-level,
+  &.-third-level-open &__navigation-first-level > * > &__navigation-sub-level {
+    overflow-y: hidden;
+  }
+
+  // minor issue: scrollbars for the first and second level are always rendered on the rightmost side,
+  // which is not visible (it's 100vw off-canvas to the right for the second level and 200vw for this first)
+  // only the third level will show the scrollbar correctly - we don't think this is an issue since the scrollable
+  // lists should be quite short in a three-level navigation (finger crossed though)
+}
+
+// step 3 - side-by-side animation and level changing
+
+.o-header {
+  /* stylelint-disable-next-line a11y/no-display-none */
+  &__navigation {
+    // by default, do not show the navigation
+    display: none;
+
+    // all elements should align relative to here
+    position: relative;
+    // our three-level navigation is setup as follows:
+    // - the navigation has thrice the screen width
+    // - the second level (containing all third levels) has twice the screen width
+    // - the last level has just screen width
+    // side note: percentage calculations (like 33%) did not yield even pixel numbers and
+    // sub-pixel layout shifts, therefore, we're opting for vw units here
+    &-first-level {
+      width: 300vw;
+      // animate the change of lecels
+      transition: transform $default-transition-easing
+        $default-transition-timing;
+      // in order not to "overlay" invisible elements on top of currently visible ones, we need to adjust z-indices
+      position: relative;
+      z-index: 1;
+    }
+
+    // sub levels, although nested, should appear at the "top of the next column" in any case
+    &-sub-level {
+      position: absolute;
+      top: 0;
+      left: 100vw;
+      width: 200vw;
+      opacity: 0;
+      // also, take this element out of any height calculations
+      max-height: 0;
+      // as above, do not show a sub-level above another one
+      z-index: 0;
+      // do not "blink" the levels into and out of existence
+      transition: opacity $default-transition-easing $default-transition-timing;
+    }
+
+    // the second level needs the "padding" the first level already has for spacing
+    &-sub-level {
+      top: rem(20px);
+    }
+
+    // the third does not need that "padding" again
+    &-sub-level &-sub-level {
+      top: 0;
+    }
+
+    // the third and last level has just the needed size
+    &-sub-level &-sub-level {
+      width: 100vw;
+    }
+
+    // here, index 1 will overlay the sub-level, since it is later in the DOM
+    .-open > &-sub-level {
+      max-height: none;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    // our button controls should never exceed "one column" in width
+    &-trigger {
+      max-width: 100vw;
+
+      &.a-button {
+        width: 100vw;
+      }
+    }
+  }
+
+  // show the menu in the menu-open state
+  &.-menu-open &__navigation {
+    display: block;
+  }
+
+  // Add a shadow around the navigation in the menu-open state
+  &.-menu-open &__navigation-container {
+    margin-bottom: rem(16px);
+    box-shadow: -1rem 0 var(--background), 0 0 1rem var(--shadow-fill);
+  }
+
+  // abuse the top container to hide the topmost shadows
+  &.-menu-open &__top-container {
+    position: relative;
+    z-index: 1;
+    background-color: var(--background);
+  }
+
+  // to show the second level, push the whole navigation one column to the left
+  &.-second-level-open &__navigation-first-level {
+    transform: translateX(-100vw);
+  }
+
+  // for the third, two columns
+  &.-third-level-open &__navigation-first-level {
+    transform: translateX(-200vw);
+  }
+}
+
+@include desktop-and-up {
+  .o-header {
+    &__navigation {
+      li {
+        justify-content: initial;
+      }
+
+      // now, we're switching to percentages since the aforementioned pixel-problems do not arise on desktop
+      &-first-level {
+        width: 100%;
+      }
+
+      &-sub-level {
+        width: 66%;
+        left: 33%;
+      }
+
+      &-sub-level &-sub-level {
+        width: 50%;
+        left: 50%;
+      }
+    }
+
+    // also, there is no need to move the "viewport" anymore
+    &.-second-level-open &__navigation-first-level,
+    &.-third-level-open &__navigation-first-level {
+      transform: translateX(0);
+    }
+
+    &__navigation {
+      &-trigger.a-button {
+        // buttons don't need full width anymore
+        width: auto;
+      }
+      // no close button needed
+      /* stylelint-disable-next-line a11y/no-display-none */
+      &-close-trigger {
+        display: none;
+      }
+    }
+  }
+}
+
+// completely unrelated, but nested component
+.o-header__language-selector {
+  padding-left: 0;
+  margin-left: rem(16px);
+  margin-top: rem(48px);
+}
+
+@include desktop-and-up {
+  .o-header {
+    &__navigation-first-level,
+    &__navigation-sub-level {
+      // on desktop, we do not have any scrolling logic inside the levels anymore
+      height: auto;
+    }
+
+    &__navigation-sub-level {
+      padding-bottom: 0;
+
+      .o-header__navigation-arrow {
+        font-size: 20px;
+      }
+    }
+
+    .-open > &__navigation-sub-level {
+      overflow: visible;
+    }
+
+    /* stylelint-disable-next-line selector-max-compound-selectors */
+    &.-second-level-open &__navigation-sub-level &__navigation-sub-level,
+    &.-third-level-open &__navigation-first-level > * > &__navigation-sub-level {
+      overflow: visible;
+    }
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+/* stylelint-enable max-nesting-depth */
+/* stylelint-enable no-duplicate-selectors */

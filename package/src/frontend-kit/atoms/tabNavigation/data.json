@@ -1,0 +1,163 @@
+{
+  "name": "tab navigation",
+  "default": {
+    "name": "tabs with labels",
+    "tabs": [
+      {
+        "identifier": 1,
+        "label": "Tab 1"
+      },
+      {
+        "identifier": 2,
+        "label": "Tab 2"
+      },
+      {
+        "identifier": 3,
+        "label": "Tab 3"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "tabs with labels and icons",
+      "tabs": [
+        {
+          "identifier": 1,
+          "label": "Tab 1",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": 2,
+          "label": "Tab 2",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": 3,
+          "label": "Tab 3",
+          "icon": "emoji-happy"
+        }
+      ]
+    },
+    {
+      "name": "tabs with icons",
+      "tabs": [
+        {
+          "identifier": 1,
+          "icon": "emoji-happy",
+          "isOnlyIcon": true
+        },
+        {
+          "identifier": 2,
+          "icon": "emoji-happy",
+          "isOnlyIcon": true
+        },
+        {
+          "identifier": 3,
+          "icon": "emoji-happy",
+          "isOnlyIcon": true
+        }
+      ]
+    },
+    {
+      "name": "tabs with labels and icons, 3rd disabled",
+      "tabs": [
+        {
+          "identifier": 1,
+          "label": "Tab 1",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": 2,
+          "label": "Tab 2",
+          "icon": "emoji-happy"
+        },
+        {
+          "identifier": 3,
+          "label": "Tab 3",
+          "icon": "emoji-happy",
+          "isDisabled": true
+        }
+      ]
+    },
+    {
+      "name": "tab links with labels",
+      "tabs": [
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels",
+          "identifier": 1,
+          "label": "Tab Link 1"
+        },
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels",
+          "identifier": 2,
+          "label": "Tab Link 2"
+        },
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels",
+          "identifier": 3,
+          "label": "Tab Link 3"
+        }
+      ]
+    },
+    {
+      "name": "tab links with labels and icons",
+      "tabs": [
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels-and-icons",
+          "identifier": 1,
+          "label": "Tab 1",
+          "icon": "emoji-happy"
+        },
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels-and-icons",
+          "identifier": 2,
+          "label": "Tab 2",
+          "icon": "emoji-happy"
+        },
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels-and-icons",
+          "identifier": 3,
+          "label": "Tab 3",
+          "icon": "emoji-happy"
+        }
+      ]
+    },
+    {
+      "name": "tab links with labels and icons, 3rd disabled",
+      "tabs": [
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels-and-icons-3rd-disabled",
+          "identifier": 1,
+          "label": "Tab 1",
+          "icon": "emoji-happy"
+        },
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels-and-icons-3rd-disabled",
+          "identifier": 2,
+          "label": "Tab 2",
+          "icon": "emoji-happy"
+        },
+        {
+          "type": "link",
+          "href": "#tab-links-with-labels-and-icons-3rd-disabled",
+          "identifier": 3,
+          "label": "Tab 3",
+          "icon": "emoji-happy",
+          "isDisabled": true
+        }
+      ]
+    },
+    {
+      "name": "Demo: simple tabbed content",
+      "demonstrator": "simpleTabbedContentDemonstrator"
+    }
+  ]
+}

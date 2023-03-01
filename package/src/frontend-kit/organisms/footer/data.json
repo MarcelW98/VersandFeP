@@ -1,0 +1,105 @@
+{
+  "name": "Footer",
+  "default": {
+    "name": "Default",
+    "claim": "Invented for life",
+    "searchCta": "Still looking for something?",
+    "topLinks": [
+      {
+        "label": "Contact Us",
+        "href": "#"
+      },
+      {
+        "label": "Product Security (PSIRT)",
+        "href": "#",
+        "isExternal": true
+      },
+      {
+        "label": "Licenses & patents",
+        "href": "#"
+      },
+      {
+        "label": "Purchasing & logistics",
+        "href": "#",
+        "isExternal": true
+      }
+    ],
+    "languages": [
+      "Deutsch",
+      "English",
+      "Französisch"
+    ],
+    "shareOptions": [
+      "facebook",
+      "youtube",
+      "linkedin",
+      "twitter"
+    ],
+    "bottomLinks": [
+      {
+        "label": "Corporate information",
+        "href": "#"
+      },
+      {
+        "label": "Legal notice",
+        "href": "#"
+      },
+      {
+        "label": "Data protection notice",
+        "href": "#"
+      },
+      {
+        "label": "Privacy settings",
+        "href": "#"
+      }
+    ],
+    "copyright": "© Robert Bosch Gmbh 2021, all rights reserved",
+    "suggestions": [
+      {
+        "text": "Product XYZ Lorem ipsum dolor",
+        "highlight": "Product XYZ",
+        "href": "#"
+      },
+      {
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr Product XYZ another line can be very long or very short, however when text breaks and the Product XYZ is mentioned again, we should highlight this",
+        "highlight": "we should highlight this",
+        "href": "#"
+      },
+      {
+        "text": "Lorem ipsum Product XYZ",
+        "highlight": "Product XYZ",
+        "href": "#"
+      },
+      {
+        "text": "Product XYZ Lorem ipsum dolor",
+        "highlight": "Product XYZ",
+        "href": "#"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "Minimal",
+      "isMinimal": true,
+      "bottomLinks": [
+        {
+          "label": "Imprint",
+          "href": "#"
+        },
+        {
+          "label": "Legal information",
+          "href": "#"
+        },
+        {
+          "label": "Data privacy",
+          "href": "#"
+        },
+        {
+          "label": "Disclosure documents",
+          "href": "#"
+        }
+      ],
+      "copyright": "2021 Bosch.IO GmbH, all rights reserved"
+    }
+  ]
+}

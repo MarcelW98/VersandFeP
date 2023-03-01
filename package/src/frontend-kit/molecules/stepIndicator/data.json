@@ -1,0 +1,254 @@
+{
+  "name": "Step indicator",
+  "default": {
+    "name": "Step indicator",
+    "items": [
+      {
+        "id": 1,
+        "content": "1",
+        "label": "lorem ipsum"
+      },
+      {
+        "id": 2,
+        "content": "2",
+        "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
+      },
+      {
+        "id": 3,
+        "content": "3",
+        "label": "lorem ipsum"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "Step indicator 5 steps",
+      "items": [
+        {
+          "id": 1,
+          "content": "1",
+          "label": "lorem ipsum dolor"
+        },
+        {
+          "id": 2,
+          "content": "2",
+          "label": "lorem ipsum"
+        },
+        {
+          "id": 3,
+          "content": "3",
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+        },
+        {
+          "id": 4,
+          "content": "4",
+          "label": "lorem"
+        },
+        {
+          "id": 5,
+          "content": "5",
+          "label": "lorem ipsum"
+        }
+      ]
+    },
+    {
+      "name": "Step indicator 5 steps icons only",
+      "items": [
+        {
+          "id": 1,
+          "label": "lorem ipsum dolor",
+          "iconName": "address-consumer-data"
+        },
+        {
+          "id": 2,
+          "label": "lorem ipsum",
+          "iconName": "info-i"
+        },
+        {
+          "id": 3,
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.",
+          "iconName": "calendar"
+        },
+        {
+          "id": 4,
+          "label": "lorem",
+          "iconName": "document-save-to"
+        },
+        {
+          "id": 5,
+          "label": "lorem ipsum",
+          "iconName": "refresh"
+        }
+      ]
+    },
+    {
+      "name": "Step indicator small 8 steps",
+      "withoutContent": true,
+      "items": [
+        {
+          "id": 1,
+          "label": "lorem ipsum dolor"
+        },
+        {
+          "id": 2,
+          "label": "lorem ipsum"
+        },
+        {
+          "id": 3,
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+        },
+        {
+          "id": 4,
+          "label": "lorem"
+        },
+        {
+          "id": 5,
+          "label": "lorem"
+        },
+        {
+          "id": 6,
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+        },
+        {
+          "id": 7,
+          "label": "lorem"
+        },
+        {
+          "id": 8,
+          "label": "lorem ipsum"
+        }
+      ]
+    },
+    {
+      "name": "Step indicator small 8 steps without labels",
+      "withoutContent": true,
+      "items": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 5
+        },
+        {
+          "id": 6
+        },
+        {
+          "id": 7
+        },
+        {
+          "id": 8
+        }
+      ]
+    },
+    {
+      "name": "Step indicator 5 steps demonstrator",
+      "demonstrator": "stepIndicatorDemonstrator",
+      "items": [
+        {
+          "id": 1,
+          "content": "1",
+          "label": "lorem ipsum dolor"
+        },
+        {
+          "id": 2,
+          "content": "2",
+          "label": "lorem ipsum"
+        },
+        {
+          "id": 3,
+          "content": "3",
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+        },
+        {
+          "id": 4,
+          "content": "4",
+          "label": "lorem"
+        },
+        {
+          "id": 5,
+          "content": "5",
+          "label": "lorem ipsum"
+        }
+      ]
+    },
+    {
+      "name": "Step indicator 5 steps icons only demonstrator",
+      "demonstrator": "stepIndicatorIconsOnlyDemonstrator",
+      "items": [
+        {
+          "id": 1,
+          "label": "lorem ipsum dolor",
+          "iconName": "address-consumer-data"
+        },
+        {
+          "id": 2,
+          "label": "lorem ipsum",
+          "iconName": "info-i"
+        },
+        {
+          "id": 3,
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.",
+          "iconName": "calendar"
+        },
+        {
+          "id": 4,
+          "label": "lorem",
+          "iconName": "document-save-to"
+        },
+        {
+          "id": 5,
+          "label": "lorem ipsum",
+          "iconName": "refresh"
+        }
+      ]
+    },
+    {
+      "name": "Step indicator small 8 steps demonstrator",
+      "demonstrator": "stepIndicatorSmallDemonstrator",
+      "withoutContent": true,
+      "items": [
+        {
+          "id": 1,
+          "label": "lorem ipsum dolor"
+        },
+        {
+          "id": 2,
+          "label": "lorem ipsum"
+        },
+        {
+          "id": 3,
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+        },
+        {
+          "id": 4,
+          "label": "lorem"
+        },
+        {
+          "id": 5,
+          "label": "lorem"
+        },
+        {
+          "id": 6,
+          "label": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+        },
+        {
+          "id": 7,
+          "label": "lorem"
+        },
+        {
+          "id": 8,
+          "label": "lorem ipsum"
+        }
+      ]
+    }
+  ]
+}

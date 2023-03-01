@@ -1,0 +1,172 @@
+@import './parts/supergraphic.scss';
+@import './parts/logo.scss';
+@import './parts/search.scss';
+@import './parts/menuTrigger.scss';
+@import './parts/navigation.scss';
+
+/**
+  * in this file, the ordering of rules is sorted by topics, and therefore
+  * have repetitions and other liniting violations
+  */
+
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable max-nesting-depth */
+/* stylelint-disable no-duplicate-selectors */
+
+.o-header {
+  max-width: 100%;
+
+  &__top {
+    display: flex;
+    height: rem(48px);
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__top {
+    // since buttons' inner spacings are used right up to the edges of the screen
+    // and/or other elements, we reduce the oultine size so that the outline does
+    // not get cut
+    button {
+      outline-offset: rem(-4px);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: rem(48px);
+  }
+
+  &__breadcrumbs {
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-size: rem(12px);
+
+    // reset list items to make the usable for our case
+    > li {
+      /* stylelint-disable-next-line a11y/content-property-no-static-value */
+      &::before {
+        content: none;
+      }
+
+      font-size: 1em;
+      padding: 0 rem(8px) 0 0;
+      margin: 0;
+    }
+
+    // the links are of the "integrated" variant, which does not exist yet
+    .a-link,
+    .a-link:visited {
+      a:not(:hover):not(:active):not(:focus) {
+        color: var(--integrated__enabled__front__default);
+
+        &::after {
+          border-color: currentColor;
+        }
+      }
+    }
+
+    // remove the arrow from the last link
+    /* stylelint-disable-next-line a11y/content-property-no-static-value */
+    li:last-child a::after {
+      content: none;
+    }
+  }
+
+  &__subbrand {
+    font-weight: bold;
+  }
+
+  &__quicklinks {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: auto;
+  }
+
+  // by default, do not show buttons labels
+  // this means, that we also need to increase the icon padding
+  // to make square buttons again
+
+  /* stylelint-disable-next-line a11y/no-display-none */
+  &__quicklinks .a-button__label,
+  &__menu-trigger .a-button__label,
+  &__search-open .a-button__label {
+    display: none;
+  }
+
+  &__quicklinks .a-button__icon,
+  &__menu-trigger .a-button__icon,
+  &__search-open .a-button__icon {
+    padding-right: rem(12px);
+  }
+
+  /* the right-most button does not need the padding around the icon */
+  &__menu-trigger {
+    margin-right: rem(-12px);
+  }
+
+  // when the search is open, push the menu-trigger off-canvas to the right */
+  &.-search-open &__menu-trigger {
+    width: 0;
+    margin-right: rem(-16px);
+  }
+
+  /* stylelint-disable-next-line a11y/no-display-none */
+  &.-menu-open &__meta,
+  &.-search-open &__meta {
+    display: none;
+  }
+}
+
+@include tablet-and-up {
+  .o-header {
+    &__top {
+      height: rem(96px);
+    }
+
+    &__menu-trigger {
+      margin-right: rem(-16px);
+    }
+
+    &.-search-open &__menu-trigger {
+      // on tablet, do not push the button off-canvas
+      width: auto;
+      margin-right: rem(-16px);
+      // keep the menu trigger clickable
+      z-index: 1;
+    }
+
+
+    // on tablet and above, remove the "no labels" rule
+    &__quicklinks .a-button__label,
+    &__menu-trigger .a-button__label,
+    &__search-open .a-button__label {
+      display: block;
+    }
+
+    // also, restore the normal icon-to-label spacing
+    &__quicklinks .a-button__icon,
+    &__menu-trigger .a-button__icon,
+    &__search-open .a-button__icon {
+      padding-right: rem(8px);
+    }
+  }
+}
+
+@include desktop-and-up {
+  .o-header {
+    // on desktop sizes, start showing the header
+    &__breadcrumbs {
+      width: auto;
+    }
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+/* stylelint-enable max-nesting-depth */
+/* stylelint-enable no-duplicate-selectors */

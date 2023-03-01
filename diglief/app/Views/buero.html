@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<div style="padding: 0px 10px">
+<div style="position: absolute; right: 10px; top: 5px; display: inline">
+    <button class="btn btn-info" ng-click="vm.openLegend()">Legende</button>
+    <button class="btn" ng-if="vm.AuthorizedWrite('buero')" ng-click="vm.logout()">Logout</button>
+    <input type="button" ng-if="!vm.AuthorizedWrite('buero')" onclick="window.location.href='#!/login';" class="btn" value="Login" />
+</div>
+<div style="position: absolute; top: 5px; right: 15%; color: red; width: 50%">
+    {{vm.dataStatus}}
+</div>
+<h2>Büro/Werkstatt</h2>
+<nav>
+    <div ng-if="vm.AuthorizedWrite('buero')" style="margin-bottom:10px;">
+        <button id="hinzu" class="btn btn-default" ng-click="vm.openAddPopup()">Hinzufügen</button>
+        <button class="btn btn-default" ng-click="vm.showFilter()">Filter Datum</button>               
+    </div>
+    <div ng-if="vm.AuthorizedWrite('buero')" ng-show="vm.showFilterOptions">
+           <div style="display: inline">
+               <div style="display: inline-block">Datum Anfang: </div>
+               <div style="display: inline-block">
+                <input
+                        type="text"
+                        uib-datepicker-popup="dd.MM.yyyy"
+                        placeholder="{{vm.filterDateStart| date:'dd.MM.yyyy'}}"
+                        ng-model="vm.filterPreDateStart"
+                        is-open="status.opened"
+                        show-button-bar="false"
+                        ng-click="status.opened = true; vm.filterChangeMaxDate()"                     
+                        datepicker-options="filterMaxDateOption"
+                        ng-required="true"
+                        close-text="Close"> </div>
+               <div style="display: inline-block">Datum Ende: </div>
+               <div style="display: inline-block">
+                    <input
+                            type="text"
+                            uib-datepicker-popup="dd.MM.yyyy"
+                            placeholder="{{vm.filterDateStart| date:'dd.MM.yyyy'}}"
+                            ng-model="vm.filterPreDateEnd"
+                            is-open="statusEnd.opened"
+                            show-button-bar="false"
+                            ng-click="statusEnd.opened = true; vm.filterChangeMinDate()"                           
+                            datepicker-options="filterMinDateOption"
+                            ng-required="true"
+                            close-text="Close">
+                </div>
+                </div>           
+            <div style = "margin: 5px 0">
+                <span>Versand</span>
+                <span><input type="checkbox" ng-model="vm.filterPreSend" placeholder="vm.filterPreSend"></span>
+            </div>
+            <div style="display: inline-block">Bearbeiter: </div>
+            <div style="display: inline-block;margin-left: 31px">
+                <input 
+                type="text"
+                ng-model = "vm.filterName"
+                placeholder="Name"></input>
+            </div>
+        <div style = "margin:5px 0">
+            <button class="btn btn-secondary" ng-click="vm.resetFilter()">Zurücksetzen</button>
+            <button class="btn btn-secondary" ng-click="vm.applyFilter()">Übernehmen</button>
+        </div>        
+    </div>                            
+    <div ng-if="vm.AuthorizedWrite('admin')" style = "margin-bottom: 5px">
+        <button class="btn btn-default" ng-click="vm.openSpedManagment()">Spedition</button>
+        <button class="btn btn-default" ng-click="vm.openStatusBueroManagment()">Status Büro/Werkstatt</button>
+        <button class="btn btn-default" ng-click="vm.openStatusIPunktManagment()">Status kPunkt</button>
+        <button class="btn btn-default" ng-click="vm.openStatusVerladungManagment()">Status Verladung</button>
+        <button class="btn btn-default" ng-click="vm.openUserMngmnt()">Benutzer Managment</button>
+    </div>
+    
+</nav>
+<div style="overflow-x:auto;">
+    <table class="orderlist">
+        <thead>
+        <tr>            
+            <th ng-click="vm.orderByMe('Spediteur')">Spedition</th>
+            <th ng-click="vm.orderByMe('Bearbeiter')">Bearbeiter</th>
+            <th ng-click="vm.orderByMe('Datum')">Versanddatum<br/>SOLL</th>
+            <th>Packstücke<br/>SOLL</th>
+            <th ng-click="vm.orderByMe('Fehler_Buero')">Status<br/>Büro</th>
+            <th>Bemerkung</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="order in vm.orders | orderBy : vm.myOrder" ng-click="vm.openDetailPopup(order)"
+            ng-class="{priorisierung: order.Priorisierung == true}">            
+            <td>{{order.Spediteur}}</td>
+            <td>{{order.Bearbeiter}}</td>
+            <td>{{order.Datum | date: 'dd.MM.yyyy'}}</td>
+            <td>{{order.Pack_Soll}}</td>
+            <td>{{order.Fehler_Buero}}</td>
+            <td class="Comment">{{order.Bemerkung}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</html>

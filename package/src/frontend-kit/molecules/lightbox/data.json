@@ -1,0 +1,212 @@
+{
+  "name": "Lightbox",
+  "default": {
+    "name": "Default Lightbox",
+    "lightboxId": "default-lightbox",
+    "demonstrator": "modalLightboxDemonstrator",
+    "images": [
+      {
+        "altText": "Lorem ipsum dolor sit amet",
+        "srcSet": [
+          {
+            "width": 400,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+          },
+          {
+            "width": 800,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+          },
+          {
+            "width": 1600,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+          }
+        ],
+        "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "name": "Default Lightbox with short caption",
+      "lightboxId": "default-lightbox-with-short-caption",
+      "demonstrator": "modalLightboxDemonstrator",
+      "extended": true,
+      "images": [
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg",
+          "caption": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
+        }
+      ]
+    },
+    {
+      "name": "Default Lightbox with long caption",
+      "lightboxId": "default-lightbox-with-long-caption",
+      "demonstrator": "modalLightboxDemonstrator",
+      "extended": true,
+      "images": [
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg",
+          "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum."
+        }
+      ]
+    },
+    {
+      "name": "Lightbox with a sequence of images",
+      "lightboxId": "lightbox-with-a-sequence-of-images",
+      "demonstrator": "modalLightboxDemonstrator",
+      "sequence": true,
+      "images": [
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+        },
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/stage-sustainability-likeabosch-16x9_res_800x450.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/stage-sustainability-likeabosch-16x9_res_1280x720.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/stage-sustainability-likeabosch-16x9_res_1600x900.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+        },
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Lightbox with a sequence of images with captions",
+      "lightboxId": "lightbox-with-a-sequence-of-images-with-captions",
+      "demonstrator": "modalLightboxDemonstrator",
+      "extended": true,
+      "sequence": true,
+      "images": [
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg",
+          "caption": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
+        },
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/stage-sustainability-likeabosch-16x9_res_800x450.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/stage-sustainability-likeabosch-16x9_res_1280x720.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/stage-sustainability-likeabosch-16x9_res_1600x900.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg",
+          "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum."
+        },
+        {
+          "altText": "Lorem ipsum dolor sit amet",
+          "srcSet": [
+            {
+              "width": 400,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+            },
+            {
+              "width": 800,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+            },
+            {
+              "width": 1600,
+              "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+            }
+          ],
+          "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg",
+          "caption": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
+        }
+      ]
+    }
+  ]
+}

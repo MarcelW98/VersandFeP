@@ -1,0 +1,33 @@
+{
+  "name": "badge",
+  "default": {
+    "name": "default",
+    "label": "1"
+  },
+  "variants": [
+    {
+      "name": "Warning",
+      "label": "1",
+      "type": "warning"
+    },
+    {
+      "name": "Error",
+      "label": "1",
+      "type": "error"
+    },
+    {
+      "name": "Long label",
+      "label": "A badge with an unlimited label text lorem ipsum"
+    },
+    {
+      "name": "Badge on a Integrated Button",
+      "demonstrator": "badgeIconDemonstrator",
+      "label": "999+"
+    },
+    {
+      "name": "inline Badge",
+      "demonstrator": "badgeInlineDemonstrator",
+      "label": "lorem ipsum"
+    }
+  ]
+}

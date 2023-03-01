@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head class="modal-header">
+    <h4 class="modal-title">Details</h4>
+</head>
+<body class="modal-body">
+<table class="orderlist" ng-if="vm.AuthorizedWrite('monitor') || vm.AuthorizedWrite('admin')">
+    <tr>
+        <td style="width: 40%">Spedition</td>
+        <td>{{vm.selectedOrder.Spediteur}}</td>
+    </tr>
+    <tr>
+        <td>Bearbeiter</td>
+        <td>{{vm.selectedOrder.Bearbeiter}}</td>
+    </tr>
+    <tr>
+        <td>Packstücke SOLL: {{vm.selectedOrder.Pack_Soll}}</td>
+        <td>Auslagerung IST: {{vm.selectedOrder.Auslagerung_Ist}}</td>
+    </tr>
+    <tr>
+        <td>Auslagerzeitfenster</td>
+        <td>{{vm.selectedOrder.StorageTimeStart}} - {{vm.selectedOrder.StorageTimeEnd}}</td>
+    </tr>
+    <tr>
+        <td>Versanddatum SOLL</td>
+        <td>{{vm.selectedOrder.Datum | date: 'dd.MM.yyyy'}}</td>
+    </tr>
+    <tr>
+        <td>Versanddatum IST</td>
+        <td>{{vm.selectedOrder.Versanddatum | date: 'dd.MM.yyyy'}}</td>
+    </tr>
+    <tr>
+        <td>Zeitfenster Spedition SOLL</td>
+        <td>{{vm.selectedOrder.Plan_Ankunft}} - {{vm.selectedOrder.Plan_Abfahrt}}</td>
+    </tr>
+    <tr>
+        <td>Zeitfenster Spedition IST</td>
+        <td>{{vm.selectedOrder.Ist_Ankunft}} - {{vm.selectedOrder.Ist_Abfahrt}}</td>
+    </tr>
+    <tr>
+        <td>Status kPunkt</td>
+        <td><span>{{vm.selectedOrder.Fehler_IPunkt1}}<span ng-if="vm.selectedOrder.Fehler_IPunkt2 != 0"> : {{vm.selectedOrder.Fehler_IPunkt2}}<span
+                ng-if="vm.selectedOrder.Fehler_IPunkt3 != 0"> : {{vm.selectedOrder.Fehler_IPunkt3}}</span></span></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Status Verladung</td>
+        <td><span>{{vm.selectedOrder.Fehler_Verladung1}}<span ng-if="vm.selectedOrder.Fehler_Verladung2 != 0"> : {{vm.selectedOrder.Fehler_Verladung2}}<span
+                ng-if="vm.selectedOrder.Fehler_Verladung3 != 0"> : {{vm.selectedOrder.Fehler_Verladung3}}</span></span></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Durchsprache erfolgt</td>
+        <td>
+            <input type="checkbox" ng-model="vm.selectedOrder.Durchsprache"
+                   placeholder="{{vm.selectedOrder.Durchsprache}}"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Bemerkung</td>
+        <td><input style="min-width: 100%" ng-model="vm.selectedOrder.Bemerkung"
+                   placeholder="{{vm.selectedOrder.Bemerkung}}"/></td>
+    </tr>
+</table>
+
+<div class="modal-footer">
+    <button type="button" ng-disabled="!vm.AuthorizedWrite('monitor')" class="btn btn-success" ng-click="vm.save()">
+        Speichern
+    </button>
+    <button type="button" class="btn btn-default" ng-click="vm.closePopup()" style="float: left">Schließen</button>
+</div>
+</body>
+</html>

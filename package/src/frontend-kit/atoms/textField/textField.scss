@@ -1,0 +1,131 @@
+/* stylelint-disable no-descending-specificity */
+.a-text-field {
+  position: relative;
+  height: rem(48px);
+  width: auto;
+
+  input {
+    background-color: var(--neutral__enabled__fill__default);
+    border: 0;
+    border-bottom: rem(1px) solid var(--neutral__enabled__front__default);
+    color: var(--neutral__enabled__front__default);
+    height: rem(48px);
+    padding: 0 rem(16px);
+    width: 100%;
+
+    &::placeholder {
+      color: var(--bosch-gray-40);
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: var(--neutral__enabled__fill__hovered);
+    }
+
+    &:active {
+      background-color: var(--neutral__enabled__fill__pressed);
+    }
+
+    &:focus {
+      background-color: var(--neutral__focused__fill__default);
+      border-bottom-color: var(--neutral__focused__front__default);
+      outline: none;
+    }
+
+    &:disabled {
+      border-bottom-color: var(--neutral__disabled__front__default);
+      pointer-events: none;
+
+      + label::before {
+        color: var(--neutral__disabled__front__default);
+      }
+
+      &::placeholder {
+        color: var(--neutral__disabled__front__default);
+      }
+
+      + .a-text-field__icon-password {
+        color: var(--neutral__disabled__front__default);
+        pointer-events: none;
+      }
+    }
+  }
+
+  &--password {
+    input {
+      padding-right: rem(64px);
+    }
+
+    input::-ms-reveal,
+    input::-ms-clear {
+      display: none;
+    }
+  }
+
+  &--search {
+    // Input's padding if the search icon is present.
+    input:nth-last-child(2) {
+      padding-right: 3rem;
+    }
+
+    // Input's padding if the search AND close icons are present.
+    input:nth-last-child(3) {
+      padding-right: 6rem;
+    }
+  }
+
+  // If close is present, padding-right: 96px
+
+  label {
+    position: absolute;
+    margin: rem(4px) rem(16px) auto rem(16px);
+    font-size: rem(12px);
+    max-width: calc(100% - 4rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    + input {
+      padding-top: rem(18px);
+      padding-bottom: rem(5px);
+    }
+  }
+
+  &__icon-password,
+  &__icon-close,
+  &__icon-search {
+    border: 0;
+    position: absolute;
+    cursor: pointer;
+    background-color: var(--neutral__enabled__fill__default);
+    color: var(--neutral__enabled__front__default);
+    width: 3rem;
+    height: calc(3rem - 1px);
+    padding-top: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--neutral__enabled__fill__hovered);
+    }
+
+    &:active {
+      background-color: var(--neutral__enabled__fill__pressed);
+    }
+  }
+
+  &__icon-close,
+  &__icon-search {
+    background: transparent;
+  }
+
+  &__icon-password,
+  &__icon-search {
+    right: 0;
+  }
+
+  &__icon-close {
+    right: rem(48px);
+  }
+}

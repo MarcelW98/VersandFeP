@@ -1,0 +1,100 @@
+/* stylelint-disable no-descending-specificity */
+.a-radio-button {
+  position: relative;
+  display: inline-block;
+
+  input {
+    height: 0;
+    width: 0;
+    -moz-appearance: none; // Hides the input in Firefox
+    outline: none; // Hides the input's native outline
+
+    &:focus {
+      outline: hidden;
+    }
+
+    // Outline for keyboard navigation
+    &:focus-visible + label::before {
+      outline: auto;
+      outline-offset: 3px;
+    }
+  }
+
+  label {
+    color: var(--plain__enabled__front__default);
+    padding-left: rem(32px);
+    line-height: 1.5;
+    font-size: rem(16px);
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: rem(24px);
+      height: rem(24px);
+      background-color: var(--small__enabled__fill__default);
+      left: 0;
+      top: 0;
+      border-radius: rem(12px);
+    }
+
+    &:hover::before,
+    &:focus::before {
+      background-color: var(--small__enabled__fill__hovered);
+    }
+
+    &:active::before {
+      background-color: var(--small__enabled__fill__pressed);
+    }
+  }
+
+  // Input is disabled
+  input:disabled ~ label {
+    cursor: default;
+    color: var(--plain__disabled__front__default);
+
+    &::before {
+      background-color: var(--small__disabled__fill__default);
+    }
+  }
+
+  // Input is checked
+  input:checked ~ label {
+    &::before {
+      background-color: var(--major-accent__enabled__fill__default);
+    }
+
+    &::after {
+      background-color: var(--major-accent__enabled__front__default);
+      border-radius: 50%;
+      content: "";
+      display: inline-block;
+      height: rem(12px);
+      left: 0;
+      position: absolute;
+      top: 0;
+      transform-origin: top left;
+      transform: translateX(rem(6px)) translateY(rem(6px));
+      width: rem(12px);
+    }
+
+    &:hover::before {
+      background-color: var(--major-accent__enabled__fill__hovered);
+    }
+
+    &:active::before {
+      background-color: var(--major-accent__enabled__fill__pressed);
+    }
+  }
+
+  // Input is checked and disabled
+  input:checked:disabled ~ label {
+    &::before {
+      background-color: var(--major-accent__disabled__fill__default);
+    }
+
+    &::after {
+      background-color: var(--major-accent__disabled__front__default);
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de" ng-if="vm.AuthorizedWrite('admin')">
+<head>
+    <meta charset="UTF-8">
+    <div class="modal-header">
+        <h4 class="modal-title">Benutzer</h4>
+    </div>
+</head>
+<body>
+<div class="modal-body">
+    <form name="userMngForm">
+        <table class="orderlist">
+            <thead>
+            <tr>
+                <td>
+                    Nutzername
+                </td>
+                <td>
+                    Password
+                </td>
+                <td>Gruppe</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in vm.user | orderBy: ['Group', 'User']">
+                <td>{{user.User}}</td>
+
+                <td><input type="text" ng-model="user.Password" placeholder="New Password"></td>
+                <td>{{user.Group}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="vm.changePW(user)">Password Ändern</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" ng-click="vm.deleteUser(user)">Löschen</button>
+                </td>
+            </tr>
+            <tr>
+                <td><input ng-model="vm.newUser.User" placeholder="Username" required></td>
+                <td><input ng-model="vm.newUser.Password" placeholder="Password" required></td>
+                <td><select ng-model="vm.newUser.Group" required>
+                    <option>admin</option>
+                    <option>buero</option>
+                    <option>kpunkt</option>
+                    <option>monitor</option>
+                    <option>verladung</option>
+                    <option>Schicht</option>
+                </select></td>
+                <td>
+                    <button class="btn btn-success" ng-disabled="userMngForm.$invalid" ng-click="vm.addUser()">Hinzufügen
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+</body>
+<button class="btn btn-default" ng-click="vm.closePopup()">Schließen</button>
+</html>

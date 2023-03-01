@@ -1,0 +1,409 @@
+/* stylelint-disable
+  declaration-colon-space-after,
+  length-zero-no-unit,
+  a11y/no-display-none,
+  selector-no-qualifying-type
+  */
+
+/* none-zero units are needed, so that the calculations will work */
+
+/* css custom property --width-fix is the number which allows us to take the space around
+the light box into account
+the other values are
+  --offset-header: number which determines how much the header will be move up
+  --offset-content: number which determines how much the content will be moved down;
+  --offset-footer: number which determines how much the footer will be moved down;
+  --content-height-fix: number which determines if the image have a caption and take this into account;
+  --background-height: number which the height of the background of the lightbox
+  --caption-height-fix: number which presents the cumulated height of header and footer;
+  --caption-height-mobile:number which determines how much space is available for the caption;
+
+There are 4 different markup variants to be handled
+  (A) Default: Header + Content
+  (B) Caption (short/long): Header + Content + Caption + Footer (initial hidden, only needed for long caption, will be determined in JS)
+  (C) Sequence: Header + Content + Footer
+  (D) Sequence with Caption: Header + Content + Caption + Footer (only expand button hidden, will be determined in JS)
+*/
+
+
+// (A)
+.m-lightbox {
+  --ratio-width: 16;
+  --ratio-height: 9;
+  --width-fix: 10.6rem;
+  --offset-header: 0rem;
+  --offset-content: 0rem;
+  --offset-footer: 0rem;
+  --content-height-fix: 0rem;
+  --header-height: 3rem;
+  --footer-height: 0rem;
+  --background-height: calc(100% + calc(var(--header-height) + var(--footer-height) + var(--content-height-fix)));
+  --caption-height-fix: calc((var(--header-height) + var(--footer-height)));
+  --caption-height-mobile:
+    calc(
+      100vh - var(--caption-height-fix) - 100vw /
+      (var(--ratio-width) / var(--ratio-height))
+    );
+
+  // background is used to get floating background
+  &__background {
+    position: fixed;
+    top: var(--offset-header);
+    height: var(--background-height);
+    width: 100%;
+    left: 0;
+  }
+
+  // wrapper is responsible for getting the spacing around the light box in tablet viewport
+  // on mobile no spacing is visible
+  &__wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'center';
+  }
+
+  // aspect-wrapper will generate the correct 16:9 ratio for the content
+  &__aspect-wrapper {
+    grid-area: center;
+    position: relative;
+    width: 100%;
+    max-width:
+      calc(
+        calc(var(--ratio-width) / var(--ratio-height) * 100vh) - var(--width-fix)
+      );
+
+    &::after {
+      content: '';
+      display: block;
+      padding-top: calc(var(--ratio-height) / var(--ratio-width) * 100%);
+    }
+  }
+
+  // header and footer will be taken out of the site flow
+  // to be attached to the top/bottom of the page
+  &__header,
+  &__footer {
+    position: fixed;
+    left: 0;
+    height: 3rem;
+    width: 100%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    top: var(--offset-header);
+    z-index: 1;
+  }
+
+  &__content {
+    position: absolute;
+    top: var(--offset-content);
+    width: 100%;
+    height: calc(100% + var(--content-height-fix));
+  }
+
+  .a-image {
+    display: none;
+
+    &.-active {
+      display: block;
+    }
+  }
+
+  // footer is not visible in default case
+  // only visible when caption is to long or sequence variant
+  &__footer {
+    display: none;
+    bottom: var(--offset-footer);
+    grid-template-areas: 'controls';
+    grid-template-rows: 3rem;
+    background-color: var(--plain__enabled__fill__default);
+
+    .m-lightbox__counter {
+      grid-area: controls;
+      place-self: center start;
+      height: 3rem;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+
+    .m-lightbox__expand {
+      display: none;
+      grid-area: controls;
+      place-self: center;
+
+      > i {
+        height: 3rem;
+        width: 3rem;
+        display: block;
+      }
+
+      &.-open {
+        transform: rotate(180deg);
+      }
+
+      .m-lightbox.-long-caption & {
+        display: block;
+      }
+    }
+
+    .m-lightbox__sequence-buttons {
+      grid-area: controls;
+      place-self: center end;
+    }
+  }
+
+  // (C)
+  &--sequence {
+    --width-fix: 10.6rem;
+
+    .m-lightbox__image-wrapper {
+      overflow: hidden;
+    }
+
+    .m-lightbox__footer {
+      display: grid;
+    }
+  }
+
+  // (B) short caption
+  &.-extended {
+    --width-fix: 10.6rem;
+
+    .m-lightbox__aspect-wrapper {
+      position: absolute;
+      top: 3rem;
+    }
+
+    // (B) long caption
+    &.-long-caption {
+      --footer-height: 3rem;
+
+      .m-lightbox__footer::after {
+        content: '';
+        position: absolute;
+        top: -1rem;
+        left: 0;
+        background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), var(--background) 90%);
+        width: 100%;
+        height: 1rem;
+      }
+
+
+      // open class to move caption up to be readable
+      // only needed when height of caption is higher than available space
+      // if this is necessary should be determined in JS
+      figcaption.-open {
+        position: fixed;
+        top: unset;
+        bottom: 3rem;
+        max-height: unset;
+        padding-bottom: 1rem;
+      }
+
+      .m-lightbox__footer {
+        display: grid;
+      }
+    }
+
+    figcaption {
+      position: absolute;
+      margin: 0;
+      padding: 1rem 1rem 0;
+      width: 100%;
+      max-width: 40rem;
+      height: auto;
+      max-height: var(--caption-height-mobile);
+      top: 100%;
+      overflow: hidden;
+      background-color: var(--background);
+
+      &::before {
+        position: absolute;
+        display: inline-block;
+        content: '';
+        background-color: var(--background);
+        top: 0;
+        left: 100%;
+        height: 100%;
+        width: 100vw;
+      }
+    }
+  }
+
+  @media (max-width: 767px) and (orientation: landscape) {
+    // reducing fixed with to zero, so the content goes to the viewport borders
+    // reset all -extended / --sequence styles to achieve same style as default version
+    --width-fix: 0rem;
+
+    &__footer {
+      display: none;
+      background-color: transparent;
+    }
+
+    &.m-lightbox--sequence {
+      --width-fix: 0rem;
+
+      .m-lightbox__footer::after {
+        display: none;
+      }
+
+      .m-lightbox__footer {
+        display: grid;
+      }
+    }
+
+    &.-extended {
+      --width-fix: 0rem;
+
+      .m-lightbox__aspect-wrapper {
+        position: relative;
+        top: unset;
+      }
+
+      &.-long-caption .m-lightbox__footer::after {
+        display: none;
+      }
+
+      &.-long-caption .m-lightbox__footer .m-lightbox__expand {
+        display: none;
+      }
+    }
+
+    &__header {
+      width: 3rem;
+      left: auto;
+      right: 0;
+    }
+
+    // no caption visible in mobile landscape mode
+    figcaption {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  // (A)
+  .m-lightbox {
+    --width-fix: 16rem;
+    --offset-header: -1.5rem;
+    --offset-content: 1.5rem;
+
+    &__background {
+      position: absolute;
+    }
+
+    // adjust grid to have spacing around the lightbox
+    // background to transparent, background will now be handled by "a-box"
+    &__wrapper {
+      grid-template-columns: 3rem 1fr 3rem;
+      grid-template-rows: 3rem 1fr 3rem;
+      grid-template-areas:
+        '. . .'
+        '. center .'
+        '. . .';
+      background-color: transparent;
+    }
+
+    &__aspect-wrapper {
+      position: relative;
+      top: unset;
+    }
+
+    &__header,
+    &__footer {
+      position: absolute;
+      left: 0;
+    }
+
+    &__header {
+      width: 100%;
+    }
+
+    &__content {
+      overflow: hidden;
+    }
+
+    // (C)
+    &.m-lightbox--sequence {
+      --width-fix: 22rem;
+      --offset-header: -3rem;
+      --offset-content: 0;
+      --offset-footer: -3rem;
+      --footer-height: 3rem;
+      --content-height-fix: 0rem;
+
+      // (D)
+      &.-extended {
+        --width-fix: 27rem;
+        --offset-header: -4.5rem;
+        --offset-content: -1.5rem;
+        --offset-footer: -4.5rem;
+        --footer-height: 3rem;
+        --content-height-fix: 3rem;
+
+        .m-lightbox__footer {
+          display: grid;
+        }
+      }
+    }
+
+    // (B) short caption
+    &.-extended {
+      --width-fix: 22rem;
+      --offset-header: -3rem;
+      --offset-content: 0rem;
+      --offset-footer: 0rem;
+      --footer-height: 0rem;
+      --content-height-fix: 3rem;
+
+      .m-lightbox__aspect-wrapper {
+        position: relative;
+        top: unset;
+      }
+
+      figcaption {
+        position: absolute;
+        display: block;
+        height: 3rem;
+        max-height: unset;
+        top: auto;
+        bottom: 0;
+      }
+
+      // (B) long caption
+      &.-long-caption {
+        --width-fix: 27rem;
+        --offset-header: -4.5rem;
+        --offset-content: -1.5rem;
+        --offset-footer: -4.5rem;
+        --footer-height: 3rem;
+        --content-height-fix: 3rem;
+
+        // open class to move caption up to be readable
+        // only needed when height of caption is higher than available space
+        // if this is necessary should be determined in JS
+        figcaption.-open {
+          position: absolute;
+          height: auto;
+          bottom: 0;
+          overflow: visible;
+          padding-bottom: 1rem;
+        }
+
+        .m-lightbox__footer {
+          display: grid;
+        }
+      }
+    }
+  }
+}

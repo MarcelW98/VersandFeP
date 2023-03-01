@@ -1,0 +1,38 @@
+.a-search-suggestions {
+  margin: 0;
+  padding: 1rem;
+
+  a,
+  a:visited {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__item {
+    /* stylelint-disable-next-line a11y/content-property-no-static-value */
+    &::before {
+      content: none;
+    }
+
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__result-link,
+  &__result-link:visited {
+    color: var(--integrated__enabled__front__default);
+
+    em {
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+
+  &__results-link {
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+  }
+}

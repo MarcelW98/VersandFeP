@@ -1,0 +1,111 @@
+{
+  "name": "Minimal Header",
+  "default": {
+    "name": "Minimal Header",
+    "actions": [{
+        "label": "Action 1",
+        "icon": "emoji-happy",
+        "url": "#",
+        "id": "action-1"
+      },
+      {
+        "label": "Action 2",
+        "icon": "emoji-happy",
+        "url": "#",
+        "id": "action-2"
+      },
+      {
+        "label": "Action 3",
+        "icon": "emoji-happy",
+        "url": "#",
+        "id": "action-3"
+      },
+      {
+        "label": "Action 4",
+        "icon": "emoji-happy",
+        "url": "#",
+        "id": "action-4"
+      },
+      {
+        "label": "Action 5",
+        "icon": "emoji-happy",
+        "url": "#",
+        "id": "action-5"
+      }
+    ],
+    "sideNavigation": {
+      "appName": "App name",
+      "menuItems": [{
+          "label": "Login",
+          "icon": "login",
+          "url": "#"
+        },
+        {
+          "label": "Contact",
+          "icon": "chat",
+          "url": "#"
+        },
+        {
+          "label": "Group",
+          "icon": "battery-0",
+          "subItems": [{
+              "label": "label 1",
+              "url": "#"
+            },
+            {
+              "label": "label 2",
+              "url": "#",
+              "isDisabled": true
+            },
+            {
+              "label": "label 3",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "label": "Group 2 with some extended labels",
+          "icon": "bicycle-e",
+          "subItems": [{
+              "label": "label 1",
+              "url": "#"
+            },
+            {
+              "label": "label 2",
+              "url": "#"
+            }
+          ],
+          "isDisabled": true
+        },
+        {
+          "label": "Group 3 with some extended labels",
+          "icon": "agility",
+          "subItems": [{
+              "label": "label 1",
+              "url": "#"
+            },
+            {
+              "label": "label 2",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "label": "atom",
+          "icon": "atom",
+          "url": "#"
+        },
+        {
+          "label": "fax",
+          "icon": "fax",
+          "url": "#",
+          "isDisabled": true
+        }
+      ]
+    }
+  },
+  "variants": [{
+    "name": "Minimal Header with Content",
+    "demonstrator": "minimalHeaderWithContentDemonstrator"
+  }]
+}

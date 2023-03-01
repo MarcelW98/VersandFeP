@@ -1,0 +1,84 @@
+{
+  "default": {
+    "amount": 5,
+    "label": false,
+    "name": "Rating small",
+    "rating": 3.5,
+    "size": "small",
+    "variant": "link"
+  },
+  "name": "rating",
+  "variants": [
+    {
+      "amount": 5,
+      "label": false,
+      "name": "Rating large",
+      "rating": 3.5,
+      "size": "large",
+      "variant": "link"
+    },
+    {
+      "amount": 5,
+      "completedAmount": 45,
+      "label": true,
+      "name": "Rating with label, small",
+      "rating": 3.5,
+      "size": "small",
+      "variant": "link"
+    },
+    {
+      "amount": 5,
+      "completedAmount": 45,
+      "label": true,
+      "name": "Rating with label, large",
+      "rating": 3.5,
+      "size": "large",
+      "variant": "link"
+    },
+    {
+      "amount": 5,
+      "label": false,
+      "name": "Rating selection",
+      "size": "large",
+      "variant": "selection"
+    },
+    {
+      "amount": 5,
+      "disabled": true,
+      "label": false,
+      "name": "Rating small disabled",
+      "rating": 3.5,
+      "size": "small",
+      "variant": "link"
+    },
+    {
+      "amount": 5,
+      "disabled": true,
+      "label": false,
+      "name": "Rating large disabled",
+      "rating": 3.5,
+      "size": "large",
+      "variant": "link"
+    },
+    {
+      "amount": 5,
+      "completedAmount": 45,
+      "disabled": true,
+      "label": true,
+      "name": "Rating with label, small disabled",
+      "rating": 3.5,
+      "size": "small",
+      "variant": "link"
+    },
+    {
+      "amount": 5,
+      "completedAmount": 45,
+      "disabled": true,
+      "label": true,
+      "name": "Rating with label, large disabled",
+      "rating": 3.5,
+      "size": "large",
+      "variant": "link"
+    }
+  ]
+}

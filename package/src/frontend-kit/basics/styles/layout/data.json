@@ -1,0 +1,108 @@
+{
+  "name": "layout",
+  "default": {
+    "name": "layout with image",
+    "demonstrator": "layoutWithImageDemonstrator",
+    "altText": "Lorem ipsum dolor sit amet",
+    "caption": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+    "srcSet": [
+      {
+        "width": 400,
+        "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+      },
+      {
+        "width": 800,
+        "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+      },
+      {
+        "width": 1600,
+        "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      }
+    ],
+    "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+  },
+  "variants": [
+    {
+      "name": "layout with text image",
+      "demonstrator": "layoutWithTextImageDemonstrator",
+      "headingText": [
+        {
+          "headline": {
+            "level": 2,
+            "content": "Text View h2 bold"
+          },
+          "paragraph": [
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          ]
+        }
+      ],
+      "image": {
+        "altText": "Lorem ipsum dolor sit amet",
+        "caption": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        "srcSet": [
+          {
+            "width": 400,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+          },
+          {
+            "width": 800,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+          },
+          {
+            "width": 1600,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+          }
+        ],
+        "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      },
+      "paragraph": [
+        {
+          "paragraph": [
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "layout with text image full width",
+      "demonstrator": "layoutWithTextImageFullWidthDemonstrator",
+      "headingText": [
+        {
+          "headline": {
+            "level": 2,
+            "content": "Text View h2 bold"
+          },
+          "paragraph": [
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          ]
+        }
+      ],
+      "image": {
+        "altText": "Lorem ipsum dolor sit amet",
+        "caption": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        "srcSet": [
+          {
+            "width": 400,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-400w.jpg"
+          },
+          {
+            "width": 800,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-800w.jpg"
+          },
+          {
+            "width": 1600,
+            "source": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+          }
+        ],
+        "defaultSrc": "https://frok.ui.bosch.tech/cdn/example-image-1600w.jpg"
+      },
+      "paragraph": [
+        {
+          "paragraph": [
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          ]
+        }
+      ]
+    }
+  ]
+}

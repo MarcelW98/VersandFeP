@@ -1,0 +1,63 @@
+{
+  "name": "link",
+  "default": {
+    "name": "inline link",
+    "level": "inline",
+    "disabled": true,
+    "href": "https://www.bosch.com",
+    "label": "Link Label",
+    "demonstrator": "inlineLinkDemonstrator"
+  },
+  "variants": [{
+      "name": "default",
+      "level": "simple",
+      "href": "https://www.bosch.com",
+      "label": "Link Label"
+    },
+    {
+      "name": "primary",
+      "level": "primary",
+      "href": "https://www.bosch.com",
+      "label": "Link Label"
+    },
+    {
+      "name": "disabled",
+      "disabled": true,
+      "level": "simple",
+      "href": "https://www.bosch.com",
+      "label": "Link Label"
+    },
+    {
+      "name": "with icon",
+      "href": "https://www.bosch.com",
+      "icon": "emoji-happy",
+      "label": "Link Label"
+    },
+    {
+      "name": "with icon left, disabled",
+      "disabled": true,
+      "href": "https://www.bosch.com",
+      "icon": "emoji-happy",
+      "label": "Link Label"
+    },
+    {
+      "name": "with icon right",
+      "href": "https://www.bosch.com",
+      "icon": "emoji-super-happy",
+      "iconPosition": "right",
+      "label": "Link Label"
+    },
+    {
+      "name": "with icon right, disabled",
+      "disabled": true,
+      "href": "https://www.bosch.com",
+      "icon": "emoji-super-happy",
+      "iconPosition": "right",
+      "label": "Link Label"
+    },
+    {
+      "name": "line break behavior",
+      "demonstrator": "linkWithLineBreaksDemonstrator"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+    "name": "@bosch/frontend.kit-npm",
+    "version": "2.2.0",
+    "description": "Frontend-Kit with Bosch UI Components",
+    "main": "index.ts",
+    "scripts": {
+        "lint": "eslint --ext .js,.ts,.tsx .",
+        "lint:fix": "eslint --ext .js,.ts,.tsx . --fix",
+        "stylelint": "stylelint **/*.scss",
+        "stylelint:fix": "stylelint **/*.scss --fix",
+        "build:components": "ts-node buildComponents.ts --build",
+        "build:gatsby": "yarn run clean && gatsby build --prefix-paths",
+        "build": "yarn run build:components && yarn run build:gatsby",
+        "build:compress": "node scripts/compressBuildResult.js",
+        "build:jenkins": "yarn install && node buildComponents.ts --build --prefix-paths && gatsby build --prefix-paths && node ./scripts/adaptPackageDependencies.js",
+        "build:ci": "ts-node buildComponents.ts --build --prefix-paths && gatsby build --prefix-paths && node ./scripts/adaptPackageDependencies.js",
+        "develop:gatsby": "gatsby develop --host=0.0.0.0",
+        "develop:components": "nodemon --watch src/frontend-kit --watch scripts --ext tsx,json,scss,ts buildComponents.ts",
+        "start:gatsby": "yarn run develop:gatsby",
+        "serve": "gatsby serve --prefix-paths --host=0.0.0.0",
+        "clean": "gatsby clean",
+        "oss:scan": "yarn install @bosch/ci.bom.license.checker-npm && license-checker --bom --out BOM_OSS.xlsx",
+        "test:visual:run": "docker -D -l info run --rm -i --mount type=bind,source=$(pwd),target=/src visual-regression-test:latest test --config=./visual-regression-test/backstop.config.js",
+        "test:visual:run:ci": "backstop test --config=./visual-regression-test/backstop.config.js",
+        "test:visual:approve": "docker -D -l info run --rm -i --mount type=bind,source=$(pwd),target=/src visual-regression-test:latest approve --config=./visual-regression-test/backstop.config.js"
+    },
+    "keywords": [
+        "JavaScript",
+        "TypeScript",
+        "Gatsbyjs",
+        "Components",
+        "React",
+        "React-DOM"
+    ],
+    "browserslist": [
+        "Chrome >= 88",
+        "Firefox >= 78",
+        "Edge >= 88",
+        "Safari >= 14",
+        "not IE 11"
+    ],
+    "author": "Robert Bosch GmbH",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.boschdevcloud.com/rb-ui/frontend.kit-npm"
+    },
+    "files": [
+        "dist/",
+        "src/frontend-kit",
+        "src/assets/fonts",
+        "LICENSE",
+        "BOM_OSS.xlsx",
+        "test-results"
+    ],
+    "engines": {
+        "node": ">=12.18.1",
+        "yarn": ">=1.22.5"
+    },
+    "dependencies": {
+        "classnames": "^2.2.6",
+        "core-js": "^3.7.0",
+        "normalize.css": "^8.0.1"
+    },
+    "devDependencies": {
+        "@types/react": "^16.14.1",
+        "@types/react-dom": "^16.9.10",
+        "@typescript-eslint/eslint-plugin": "^4.20.0",
+        "@typescript-eslint/parser": "^4.20.0",
+        "archiver": "^3.1.1",
+        "eslint": "^7.23.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "minimist": "^1.2.0",
+        "nodemon": "^2.0.13",
+        "parcel-bundler": "^1.12.4",
+        "prettier": "^2.2.1",
+        "rimraf": "^3.0.0",
+        "sass": "^1.43.4",
+        "stylelint": "^13.11.0",
+        "stylelint-a11y": "^1.2.2",
+        "stylelint-config-standard": "^19.0.0",
+        "stylelint-order": "^3.1.1",
+        "stylelint-scss": "^3.18.0",
+        "stylelint-selector-bem-pattern": "^2.1.0",
+        "svg-sprite": "^1.5.2",
+        "ts-node": "^10.2.1",
+        "typescript": "^3.9.7",
+        "unzipper": "^0.10.11",
+        "yargs": "^16.2.0"
+    },
+    "resolutions": {
+        "immer": "9.0.6",
+        "object-path": "0.11.8",
+        "set-value": "4.0.1",
+        "glob-parent": "5.1.2",
+        "trim": "0.0.3"
+    },
+    "homepage": "https://frok.ui.bosch.tech/",
+    "bugs": "https://github.boschdevcloud.com/rb-ui/frontend.kit-npm/issues"
+}

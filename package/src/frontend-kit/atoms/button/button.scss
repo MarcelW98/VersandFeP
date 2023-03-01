@@ -1,0 +1,128 @@
+.a-button {
+  display: inline-flex;
+  letter-spacing: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &__label {
+    padding: rem(12px) rem(16px) rem(12px) 0;
+  }
+
+  &__icon + &__label {
+    text-align: left;
+  }
+
+  &__icon {
+    font-size: rem(24px);
+    padding: rem(12px) rem(8px) rem(12px) rem(14px);
+  }
+
+  &.-fixed {
+    width: rem(128px);
+  }
+
+  &.-fixed &__label {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &.-without-label &__icon {
+    margin: auto;
+    padding: rem(12px);
+  }
+
+  &.-without-icon &__label {
+    margin: auto;
+    padding: rem(12px) rem(16px);
+  }
+
+  &--primary {
+    background-color: var(--major-accent__enabled__fill__default);
+    color: var(--major-accent__enabled__front__default);
+
+    &:hover {
+      background-color: var(--major-accent__enabled__fill__hovered);
+    }
+
+    &:active {
+      background-color: var(--major-accent__enabled__fill__pressed);
+    }
+
+    &:disabled {
+      background-color: var(--major-accent__disabled__fill__default);
+      color: var(--major-accent__disabled__front__default);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--minor-accent__enabled__fill__default);
+    color: var(--minor-accent__enabled__front__default);
+    border: 1px solid var(--minor-accent__enabled__front__default);
+
+    &:hover {
+      background-color: var(--minor-accent__enabled__fill__hovered);
+      color: var(--minor-accent__enabled__front__hovered);
+      border-color: var(--minor-accent__enabled__front__hovered);
+    }
+
+    &:active {
+      background-color: var(--minor-accent__enabled__fill__pressed);
+      color: var(--minor-accent__enabled__front__pressed);
+      border-color: var(--minor-accent__enabled__front__pressed);
+    }
+
+    &:disabled {
+      background-color: var(--minor-accent__disabled__fill__default);
+      color: var(--minor-accent__disabled__front__default);
+      border-color: var(--minor-accent__disabled__front__default);
+    }
+  }
+
+  &--tertiary {
+    background-color: var(--minor-accent__enabled__fill__default);
+    color: var(--minor-accent__enabled__front__default);
+
+    &:hover {
+      background-color: var(--minor-accent__enabled__fill__hovered);
+      color: var(--minor-accent__enabled__front__hovered);
+    }
+
+    &:active {
+      background-color: var(--minor-accent__enabled__fill__pressed);
+      color: var(--minor-accent__enabled__front__pressed);
+    }
+
+    &:disabled {
+      background-color: var(--minor-accent__disabled__fill__default);
+      color: var(--minor-accent__disabled__front__default);
+    }
+  }
+
+  &--integrated {
+    color: var(--integrated__enabled__front__default);
+    background-color: var(--integrated__enabled__fill__default);
+
+    &:hover {
+      color: var(--integrated__enabled__front__hovered);
+      background-color: var(--integrated__enabled__fill__hovered);
+    }
+
+    &:active {
+      color: var(--integrated__enabled__front__pressed);
+      background-color: var(--integrated__enabled__fill__pressed);
+    }
+
+    &:disabled {
+      color: var(--integrated__disabled__front__default);
+      background-color: var(--integrated__disabled__fill__default);
+    }
+  }
+}
+

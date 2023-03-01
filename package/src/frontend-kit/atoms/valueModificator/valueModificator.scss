@@ -1,0 +1,88 @@
+/* stylelint-disable no-descending-specificity */
+.a-value-modificator {
+  position: relative;
+  height: 3rem;
+  width: 13.5rem;
+  margin: 0.5rem;
+  background-color: var(--neutral__enabled__fill__default);
+  border-bottom: 1px solid var(--neutral__enabled__front__default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.-disabled {
+    border-bottom-color: var(--neutral__disabled__front__default);
+
+    input,
+    .a-value-modificator__icon {
+      // Important is required to override the specificity of the hover pseudo class
+      color: var(--neutral__disabled__front__default) !important;
+    }
+
+    .a-value-modificator__icon:hover {
+      background-color: var(--neutral__disabled__fill__default);
+    }
+  }
+
+  .a-value-modificator__icon-disabled {
+    color: var(--neutral__disabled__front__default);
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+    box-shadow: none;
+  }
+
+  input {
+    height: 100%;
+    // minus two icons with margins
+    width: calc(100% - 6rem);
+    border: 0;
+    background-color: var(--neutral__enabled__fill__default);
+    color: var(--neutral__enabled__front__default);
+    line-height: 1.5rem;
+    font-size: 16px;
+    padding: 0 1rem;
+
+    &:focus {
+      outline: none;
+      background-color: var(--neutral__focused__fill__default);
+    }
+  }
+
+  .a-value-modificator__icon {
+    padding: 0.75rem 0.75rem 0.6875rem;
+
+    &:hover {
+      background-color: var(--neutral__enabled__fill__hovered);
+    }
+
+    &.-pressed {
+      // Important is required to override the specificity of the hover pseudo class
+      background-color: var(--neutral__enabled__fill__pressed) !important;
+    }
+  }
+
+  label {
+    position: absolute;
+    align-self: flex-start;
+    margin: rem(4px) rem(16px) auto rem(16px);
+    font-size: rem(12px);
+    max-width: calc(100% - 7rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--neutral__enabled__front__default);
+
+    + input {
+      padding-top: rem(18px);
+      padding-bottom: rem(5px);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+$formFieldSpacing: rem(16px);
+
+.m-form-field {
+  margin-bottom: $formFieldSpacing;
+  flex-shrink: 1;
+  flex-grow: 1;
+
+  &.-quarter {
+    flex-basis: 25%;
+    flex-grow: 0;
+  }
+
+  &.-half {
+    flex-basis: 50%;
+  }
+
+  &--radio,
+  &--checkbox,
+  &--dropdown,
+  &--toggle {
+    margin-top: rem(24px);
+  }
+
+  &--radio,
+  &--toggle {
+    .a-notification {
+      margin-top: rem(16px);
+    }
+  }
+
+  &--checkbox {
+    label {
+      position: unset; // Unset the label on the checkbox's demo
+    }
+
+    .a-notification {
+      margin-top: rem(16px);
+    }
+  }
+}

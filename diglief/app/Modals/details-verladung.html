@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head class="modal-header">
+    <h4 class="modal-title"style="padding-left:6px">Details</h4>
+</head>
+<body class="modal-body">
+<form name="detailsLoadingForm">
+    <table class="orderlist" ng-if="vm.AuthorizedWrite('verladung') || vm.AuthorizedWrite('admin')">
+        <tr>
+            <td style="width: 40%">Spedition</td>
+            <td>{{vm.selectedOrder.Spediteur}}</td>
+        </tr>
+        <tr>
+            <td>Versanddatum SOLL</td>
+            <td>{{vm.selectedOrder.Datum | date: 'dd.MM.yyyy'}}</td>
+        </tr>
+        <tr>
+            <td>Zeitfenster Spedition</td>
+            <td>{{vm.selectedOrder.Plan_Ankunft}} - {{vm.selectedOrder.Plan_Abfahrt}}</td>
+        </tr>
+        <tr>
+            <td>Versanddatum IST</td>
+            <td>
+                {{vm.selectedOrder.Versanddatum | date: 'dd.MM.yyyy'}}
+                <!--<input
+                       type="text"
+                       uib-datepicker-popup="dd.MM.yyyy"
+                       ng-model="vm.selectedOrder.Versanddatum"
+                       is-open="status.opened"
+                       ng-click="status.opened = true"
+                       ng-focus="status.opened = true"
+                       ng-required="true"
+                       close-text="Close"> -->
+            </td>
+        </tr>
+        <tr>
+            <td>Ankunft Spedition: <input type="text" ng-model="vm.selectedOrder.Ist_Ankunft"
+                                          placeholder="HH:mm"
+                                          onkeypress='return !(event.charCode >= 97 && event.charCode <= 122)'
+                                          pattern="^((0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])$"
+                                          title="Format: HH:mm bsp.: 03:20" ng-trim="false"
+                                          required/>
+            </td>
+            <td></td>
+            
+        </tr>
+        <tr>
+        <td>
+                                Ladebeginn: <input style="margin-left: 33px"name="Ladebeginn" type="text" ng-model="vm.selectedOrder.Ladebeginn"
+                                placeholder="HH:mm"
+                                onkeypress='return !(event.charCode >= 97 && event.charCode <= 122)'
+                                pattern="^((0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])$"
+                                title="Format: HH:mm bsp.: 03:20" ng-trim="false"
+                                required/>
+                        </td>
+            <td >Ladeende: <input style="margin-left: 11px" name="AnkunftCarrier" type="text" ng-model="vm.selectedOrder.Ist_Abfahrt"
+                                          placeholder="HH:mm"
+                                          onkeypress='return !(event.charCode >= 97 && event.charCode <= 122)'
+                                          pattern="^((0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])$"
+                                          title="Format: HH:mm bsp.: 03:20" ng-trim="false"
+                                          required/>
+            </td>
+        </tr>
+        <tr>
+            <td>Auslagerung IST</td>
+            <td>{{vm.selectedOrder.Auslagerung_Ist}}</td>
+        </tr>
+        <tr>
+            <td>Auslagerung Zeitfenster</td>
+            <td>{{vm.selectedOrder.StorageTimeStart}} - {{vm.selectedOrder.StorageTimeEnd}}</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>
+                <select ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_verladung"
+                        ng-model="vm.selectedOrder.Fehler_Verladung1"></select>
+                <select ng-if="vm.selectedOrder.Fehler_Verladung1 != 0"
+                        ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_verladung"
+                        ng-model="vm.selectedOrder.Fehler_Verladung2"></select>
+                <select ng-if="vm.selectedOrder.Fehler_Verladung2 != 0"
+                        ng-options="error.ID as error.ID + ' - ' + error.Text for error in vm.statuses_verladung"
+                        ng-model="vm.selectedOrder.Fehler_Verladung3"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Bemerkung</td>
+            <td><input style="min-width: 100%;" ng-model="vm.selectedOrder.Bemerkung"
+                       placeholder="{{vm.selectedOrder.Bemerkung}}"/></td>
+        </tr>
+        <tr ng-if="detailsLoadingForm.$invalid" style="color: red">
+            <td>
+                Zum Abschließen der Verladung wird die Ankunfts- / Abfahrtszeit benötigt!!
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr ng-if="(vm.selectedOrder.Ist_Ankunft != '' && (vm.selectedOrder.Plan_Ankunft > vm.selectedOrder.Ist_Ankunft) || vm.selectedOrder.Plan_Abfahrt < vm.selectedOrder.Ist_Ankunft) && vm.selectedOrder.Fehler_Verladung1 === 0" style="color: red">
+            <td>Zeitfensterabweichung. Status wird benötigt!</td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="modal-footer">
+        <button type="button" ng-disabled="!vm.AuthorizedWrite('verladung')|| detailsLoadingForm.$invalid || ((vm.selectedOrder.Plan_Ankunft > vm.selectedOrder.Ist_Ankunft || vm.selectedOrder.Plan_Abfahrt<vm.selectedOrder.Ist_Ankunft) && vm.selectedOrder.Fehler_Verladung1 === 0)"
+                class="btn btn-success" ng-click="vm.sendLoading()">Verladung abgeschlossen
+        </button>
+        <button type="button" class="btn btn-default" style="background-color: orange" ng-click="vm.save()" ng-disabled="!vm.AuthorizedWrite('verladung')">Speichern</button>
+        <button type="button" class="btn btn-default" ng-click="vm.closePopup()" style="float: left">Schließen</button>
+
+    </div>
+</form>
+
+</body>
+</html>
